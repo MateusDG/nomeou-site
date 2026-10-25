@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <!--
+    O elenco do site (seção 5.4 da especificação): um <symbol> por objeto e um "-sombra" com a silhueta
+    de cada objeto duro. Medidas em px do tamanho de referência do desktop. Cores só dos tokens; o que
+    muda por instância vem por propriedade CSS herdada pelo <use>: chapa, registro, cmyk-fio e px (escritas
+    com os dois hífens no CSS; aqui não, porque comentário de XML não aceita hífen duplo).
+    Nenhum id mora dentro de um símbolo: copiar o conteúdo de um deles para um <svg> inline (para animar
+    uma peça de dentro) não duplica id. Gerado por elenco/gerar.mjs; pode ser editado à mão.
+  -->
+  <defs>
+    <!-- A retícula da face de sombra quando o objeto não tem o tom escuro (5.4). -->
+    <pattern id="ret" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#16161B" fill-opacity=".28"/></pattern>
+    <!-- A retícula invertida: pontos de folha sobre a tinta (a metade de baixo do marca-texto). -->
+    <pattern id="ret-folha" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#FAF8F3" fill-opacity=".2"/></pattern>
+    <!-- As fibras do papel pardo, sempre as mesmas (semente "kraft-do-envelope"): só o envelope usa. -->
+    <pattern id="kraft" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M91.9 10.2q1.8 -0.3 3.6 -0.9M22.6 99.2q2.6 1.1 5.2 2.4M39.9 19.2q2.3 0 4.7 -1.1M39.9 94.3q1.6 0.3 3.1 0.2M83.1 65.2q2.8 -0.6 5.6 -2.5M66.8 93.8q2 0.4 3.9 1.3M37.3 61.6q1.8 0.8 3.7 0.7M103.5 36.4q1.6 0 3.3 0.2M105.2 31.7q1.6 0.6 3.2 -0.5M36.5 70.9q1.8 -0.6 3.5 -1.4M69.6 21.3q2.5 1.8 5 2.3M61.9 97q1.9 0.4 3.8 -0.7M45.5 5.8q3.2 -0.6 6.4 -1.1M96.3 26q1.7 -0.3 3.4 -1.4M71.5 114.6q3.2 -0.5 6.4 -2.9M24 83.3q1.5 -0.8 3 -0.9M16.4 104.4q2.3 0.3 4.5 1.1M42.9 87.1q1.6 1.2 3.1 0.5M65.6 94.4q2.3 -0.4 4.5 -0.3M105.1 89.8q1.8 -0.1 3.5 -1.1M51.3 109.9q2.5 -0.4 4.9 0.5M24.2 100q1.6 0.6 3.3 1.5M79.2 101.1q1.9 -1.2 3.8 -0.8M26.6 114.7q2.7 -1 5.4 -1M115.9 2q1.7 -0.1 3.3 1M23.3 27.4q1.9 -0.4 3.8 -0.3M52.5 79q1.6 -0.7 3.2 -0.2M9.1 114.4q2.2 -0.5 4.4 -0.9M58.3 103.9q3.3 -1.2 6.6 -1.7M8.9 9.4q2.9 -0.8 5.7 -1.8" fill="none" stroke="rgba(92,60,24,.15)" stroke-width=".7" stroke-linecap="round"/>
+      <path d="M118.7 79.4q2.3 -0.2 4.7 -2.1M-1.3 79.4q2.3 -0.2 4.7 -2.1M89.9 4.6q2.7 -1 5.5 0M84.4 46.6q2.3 1.5 4.7 1.3M113.9 116.1q2.7 0.3 5.4 0.4M116.4 55q2.2 0.6 4.5 -0.8M-3.6 55q2.2 0.6 4.5 -0.8M80.5 8q2.9 0.2 5.9 0.2M0.6 118.3q1.7 -0.3 3.4 1.1M1 119.7q1.9 0.2 3.8 0M102.1 54.1q2.9 -0.9 5.9 -1.6M64.2 47q2.7 -0.4 5.5 -1M65.7 3.9q2 -0.8 4 -0.8M1.6 0.4q1.6 0 3.3 0.1M119.4 35.3q1.6 -0.1 3.1 -0.9M-0.6 35.3q1.6 -0.1 3.1 -0.9M24.4 38.1q1.5 0.3 3.1 -0.1M68.3 99.4q2.3 -0.2 4.6 -1M63.2 80q2.7 0.6 5.3 -0.2M104.1 12.1q1.8 0.3 3.6 -0.5M21.7 47q1.7 -0.7 3.4 -1.5M0.9 109.3q3.3 1.5 6.7 1.8M60.8 108.9q2.5 -1.2 5 -1.8M51.5 43.5q1.8 0.6 3.6 1.3M61.2 16.9q2.9 0.3 5.7 0M63.9 70.3q1.7 0.2 3.4 -0.6M6.2 61.4q2.9 1.4 5.9 2.3M60.5 93.2q2.4 -1.2 4.8 -1.5M89.3 13.1q2.1 -0.2 4.2 -0.2M17.1 108.2q2 -0.5 4 0.6M25.5 41.5q1.7 -0.1 3.4 -1.5M87 23.2q3.1 1.2 6.2 1.5M33.9 76.5q1.5 0.1 3 -0.7" fill="none" stroke="rgba(255,243,220,.24)" stroke-width=".8" stroke-linecap="round"/>
+    </pattern>
+    <!-- O corpo da Bic: as faixas das faces correm por dentro dele, ele fica parado. -->
+    <clipPath id="recorte-bic"><rect x="40" y="4" width="153" height="20"/></clipPath>
+    <clipPath id="recorte-xicara"><path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z"/></clipPath>
+    <!-- As duas metades do lacre, separadas pela rachadura. -->
+    <clipPath id="recorte-lacre-esquerda"><path d="M226 150 H261.4 L261.4 160 L259.6 171 L263 181 L259.4 191 L262.6 201 L260 211 L261.2 222 V230 H226 Z"/></clipPath>
+    <clipPath id="recorte-lacre-direita"><path d="M294 150 H260.6 L260.6 160 L258.8 171 L262.2 181 L258.6 191 L261.8 201 L259.2 211 L260.4 222 V230 H294 Z"/></clipPath>
+    <!-- Onde a borracha do correio falha: falhasDaTinta(56, 34, 11, 0.9), deslocada (36, 6), como no app. -->
+    <mask id="falhas-postal" x="0" y="0" width="100" height="100" maskUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#FFFFFF"/>
+      <g transform="translate(36 6)"><path d="M12.8,20.7a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M25,27.7a0.5,0.5 0 1,0 1.1,0a0.5,0.5 0 1,0 -1.1,0M44.5,27.5a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M40.2,16a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M5.4,33a1.1,1.1 0 1,0 2.1,0a1.1,1.1 0 1,0 -2.1,0M0.8,13a0.5,0.5 0 1,0 1,0a0.5,0.5 0 1,0 -1,0M54.2,7.4a1.1,1.1 0 1,0 2.2,0a1.1,1.1 0 1,0 -2.2,0M55.1,21.5a0.5,0.5 0 1,0 1.1,0a0.5,0.5 0 1,0 -1.1,0M17.4,4.4a0.6,0.6 0 1,0 1.1,0a0.6,0.6 0 1,0 -1.1,0M44.1,3.6a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M54.5,32.9a0.5,0.5 0 1,0 1,0a0.5,0.5 0 1,0 -1,0M5.8,8.1a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M17,30.9a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M2.4,31.3a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0" fill="#000000"/><path d="M19.5,1.4a0.4,0.4 0 1,0 0.7,0a0.4,0.4 0 1,0 -0.7,0M44.2,2.7a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M55.4,5.3a0.5,0.5 0 1,0 0.9,0a0.5,0.5 0 1,0 -0.9,0M53.1,16.5a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0M16.2,6a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M1.6,3.3a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M17.3,30.3a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M18.4,26.3a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M0.6,0.9a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M2,0.6a0.9,0.9 0 1,0 1.7,0a0.9,0.9 0 1,0 -1.7,0" fill="#000000" fill-opacity=".55"/></g>
+    </mask>
+  </defs>
+
+  <!-- A Bic azul deitada (7.2). As seis faixas da .bic__faces sobem 6, 8 e 6 a cada passo de 60°; depois
+       de três passos o desenho é o mesmo e o grupo volta sem transição. -->
+  <symbol id="o-bic" viewBox="0 0 240 28">
+    <g clip-path="url(#recorte-bic)">
+      <g class="bic__faces" data-passos="6 8 6">
+        <rect x="40" y="4" width="153" height="7" fill="#6F8CF0"/>
+        <rect x="40" y="10" width="153" height="9" fill="#2346C8"/>
+        <rect x="40" y="18" width="153" height="7" fill="#1A3596"/>
+        <rect x="40" y="24" width="153" height="7" fill="#6F8CF0"/>
+        <rect x="40" y="30" width="153" height="9" fill="#2346C8"/>
+        <rect x="40" y="38" width="153" height="6" fill="#1A3596"/>
+      </g>
+    </g>
+    <line x1="44" y1="6.5" x2="186" y2="6.5" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.2"/>
+    <g stroke="#16161B" stroke-width="1.5" stroke-linejoin="round">
+      <rect x="40" y="4" width="153" height="20" fill="none"/>
+      <path d="M40 5 L16 12.5 L16 15.5 L40 23 Z" fill="#16161B"/>
+      <rect x="192" y="3" width="44" height="22" fill="#1A3596"/>
+    </g>
+    <line x1="196" y1="5.6" x2="232" y2="5.6" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.2"/>
+    <circle cx="14" cy="14" r="1.6" fill="#63636C"/>
+    <rect x="200" y=".5" width="32" height="3.5" fill="#1A3596" stroke="#16161B" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-bic-sombra" viewBox="0 0 240 28">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <path d="M40 5 L16 12.5 L16 15.5 L40 23 Z"/><circle cx="14" cy="14" r="1.6"/>
+      <rect x="40" y="4" width="153" height="20"/><rect x="192" y="3" width="44" height="22"/><rect x="200" y=".5" width="32" height="3.5"/>
+    </g>
+  </symbol>
+
+  <!-- A foto 3×4 com grampo (7.7). A imagem pega a chapa da instância; a inicial fica fora (texto). -->
+  <symbol id="o-34" viewBox="0 0 60 86">
+    <rect x=".75" y="6.75" width="58.5" height="78.5" fill="#FAF8F3" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="4" y="10" width="52" height="72" style="fill:var(--chapa,#4DC3B5)"/>
+    <g class="foto34__grampo" fill="none" stroke-linecap="square">
+      <path d="M22 13 V3 H40 V13" stroke="#16161B" stroke-opacity=".22" stroke-width="2"/>
+      <path d="M21 12 V2 H39 V12" stroke="#4A4A53" stroke-width="2"/>
+      <path d="M22 3 H38" stroke="#FAF8F3" stroke-opacity=".5" stroke-width="1"/>
+    </g>
+  </symbol>
+  <symbol id="o-34-sombra" viewBox="0 0 60 86">
+    <g fill="#16161B" stroke="#16161B" opacity=".22">
+      <rect x="0" y="6" width="60" height="80" stroke="none"/>
+      <path d="M21 12 V2 H39 V12" fill="none" stroke-width="2" stroke-linecap="square"/>
+    </g>
+  </symbol>
+
+  <!-- O datador de mesa, de pé e de frente (7.8). A data miúda das fitas vira fio. -->
+  <symbol id="o-datador" viewBox="0 0 100 130">
+    <rect x="43" y="38" width="14" height="22" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <ellipse cx="50" cy="22" rx="26" ry="18" fill="#16161B"/>
+    <path d="M27.92 27.3 A23.5 15.5 0 0 1 47.95 6.56 L44.44 8.96 A21.5 13.5 0 0 0 28.83 24.34 Z" fill="#FAF8F3" fill-opacity=".3"/>
+    <rect x="18" y="60" width="64" height="36" fill="#16161B"/>
+    <rect x="18" y="60" width="64" height="5" fill="#4A4A53"/>
+    <rect x="26" y="68" width="48" height="18" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <path d="M42 68 V86 M58 68 V86" stroke="#16161B" stroke-width="1"/>
+    <path d="M30 76h8v2h-8z M45 76h10v2h-10z M60 76h12v2h-12z" fill="#16161B"/>
+    <rect x="14" y="96" width="72" height="14" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="16" y="110" width="68" height="6" fill="#63636C"/>
+  </symbol>
+  <symbol id="o-datador-sombra" viewBox="0 0 100 130">
+    <ellipse cx="52" cy="120" rx="40" ry="6" fill="#16161B" fill-opacity=".18"/>
+  </symbol>
+
+  <!-- O marca-texto deitado (7.16). O amarelo só onde o grifo nasce: ponta, tampa e janela. -->
+  <symbol id="o-marca-texto" viewBox="0 0 150 40">
+    <rect x="22" y="6" width="96" height="28" rx="4" fill="#16161B"/>
+    <path d="M22 20 H118 V30 A4 4 0 0 1 114 34 H26 A4 4 0 0 1 22 30 Z" fill="url(#ret-folha)"/>
+    <line x1="27" y1="9.5" x2="113" y2="9.5" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.4"/>
+    <rect x="40" y="13" width="40" height="12" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <rect x="42" y="15" width="36" height="8" fill="#FFD21A"/>
+    <g stroke="#16161B" stroke-width="1.5" stroke-linejoin="round">
+      <rect x="118" y="4" width="28" height="32" rx="3" fill="#FFD21A"/>
+      <path d="M22 10 L8 14 L4 26 L22 30 Z" fill="#FFD21A"/>
+    </g>
+    <path d="M8 14 L4 26 L14 25 Z" fill="#E3B200"/>
+    <rect x="122" y="1" width="20" height="5" rx="1.5" fill="#16161B"/>
+  </symbol>
+  <symbol id="o-marca-texto-sombra" viewBox="0 0 150 40">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <path d="M22 10 L8 14 L4 26 L22 30 Z"/><rect x="22" y="6" width="96" height="28" rx="4"/>
+      <rect x="118" y="4" width="28" height="32" rx="3"/><rect x="122" y="1" width="20" height="5" rx="1.5" stroke="none"/>
+    </g>
+  </symbol>
+
+  <!-- A xícara com pires, de perfil (7.15). O vapor é traço parado: nunca anima. -->
+  <symbol id="o-xicara" viewBox="0 0 96 64">
+    <ellipse cx="48" cy="56" rx="44" ry="6" fill="#FAF8F3"/>
+    <path d="M4 56 A44 6 0 0 0 92 56 Z" fill="#E4DFD3"/>
+    <ellipse cx="48" cy="56" rx="44" ry="6" fill="none" stroke="#16161B" stroke-width="1.5"/>
+    <path d="M78 28 q12 2 10 12 q-2 8 -12 8" fill="none" stroke="#16161B" stroke-width="3" stroke-linecap="round"/>
+    <path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z" fill="#FAF8F3"/>
+    <rect x="58" y="20" width="22" height="36" fill="url(#ret)" clip-path="url(#recorte-xicara)"/>
+    <path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z" fill="none" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round"/>
+    <ellipse cx="48" cy="22" rx="30" ry="4" fill="#16161B"/>
+    <path d="M38 16 q-2.4 -2.5 0 -5 t0 -5 M48 14.5 q-2.4 -2.8 0 -5.6 t0 -5.6 M58 16.5 q-2.4 -2.2 0 -4.4" fill="none" stroke="#4F4B45" stroke-width="1.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="o-xicara-sombra" viewBox="0 0 96 64">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <ellipse cx="48" cy="56" rx="44" ry="6"/><path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z"/>
+      <ellipse cx="48" cy="22" rx="30" ry="4"/><path d="M78 28 q12 2 10 12 q-2 8 -12 8" fill="none" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </symbol>
+
+  <!-- A folha de prova dobrada (7.17): a metade direita é a dobra, para baixo. -->
+  <symbol id="o-folha-dobrada" viewBox="0 0 140 100">
+    <rect x=".5" y=".5" width="139" height="99" fill="#FAF8F3"/>
+    <rect x="70" y=".5" width="69.5" height="99" fill="#E4DFD3"/>
+    <rect x=".5" y=".5" width="69.5" height="10" fill="#16161B"/>
+    <g fill="none" stroke="#16161B" stroke-width=".8">
+      <circle cx="24" cy="26" r="3"/><circle cx="38" cy="26" r="3" fill="#16161B"/><circle cx="52" cy="26" r="3"/>
+      <circle cx="24" cy="40" r="3" fill="#16161B"/><circle cx="38" cy="40" r="3"/><circle cx="52" cy="40" r="3"/>
+      <circle cx="24" cy="54" r="3"/><circle cx="38" cy="54" r="3"/><circle cx="52" cy="54" r="3" fill="#16161B"/>
+      <circle cx="24" cy="68" r="3"/><circle cx="38" cy="68" r="3" fill="#16161B"/><circle cx="52" cy="68" r="3"/>
+      <circle cx="24" cy="82" r="3" fill="#16161B"/><circle cx="38" cy="82" r="3"/><circle cx="52" cy="82" r="3"/>
+    </g>
+    <line x1="70" y1=".5" x2="70" y2="99.5" stroke="rgba(22,22,27,.15)" stroke-width="1"/>
+    <rect x=".5" y=".5" width="139" height="99" fill="none" stroke="rgba(22,22,27,.32)" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-folha-dobrada-sombra" viewBox="0 0 140 100">
+    <rect width="140" height="100" fill="#16161B" opacity=".22"/>
+  </symbol>
+
+  <!-- A numeradora (7.18, opcional). Os algarismos rolam em HTML por cima da janela. -->
+  <symbol id="o-numeradora" viewBox="0 0 160 110">
+    <g class="numeradora__alavanca">
+      <rect x="75" y="10" width="10" height="21" fill="#16161B"/>
+      <ellipse cx="80" cy="10" rx="16" ry="7" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    </g>
+    <rect x="10" y="30" width="140" height="70" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="10" y="30" width="140" height="8" fill="#16161B"/>
+    <rect x="30" y="48" width="100" height="34" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <path d="M63.3 48 V82 M96.7 48 V82" stroke="#16161B" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-numeradora-sombra" viewBox="0 0 160 110">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" opacity=".22">
+      <rect x="75" y="10" width="10" height="21"/><ellipse cx="80" cy="10" rx="16" ry="7"/><rect x="10" y="30" width="140" height="70"/>
+    </g>
+  </symbol>
+
+  <!-- O envelope pardo, visto pelo verso (7.10). Todas as peças dividem o viewBox de 520 × 340: empilhadas
+       num mesmo lugar, encaixam. O remetente fica fora (texto em 28, 312). -->
+  <symbol id="o-envelope-corpo" viewBox="0 0 520 340">
+    <rect width="520" height="340" fill="#CDA672"/>
+    <rect width="520" height="340" fill="url(#kraft)"/>
+    <path d="M0 340 L210 175 M520 340 L310 175" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+    <rect x=".5" y=".5" width="519" height="339" fill="none" stroke="rgba(22,22,27,.38)" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-envelope-sombra" viewBox="0 0 520 340">
+    <rect width="520" height="340" fill="#16161B" opacity=".22"/>
+  </symbol>
+  <!-- A aba vira em escala chapada (scaleY de 1 a -1) presa à linha de cima; no zero, troca pelo avesso. -->
+  <symbol id="o-envelope-aba" viewBox="0 0 520 340">
+    <path d="M0 0 L260 190 L520 0 Z" fill="#CDA672"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="url(#kraft)"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="rgba(92,60,24,.12)"/>
+    <path d="M.5 .5 L260 190 L519.5 .5" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="o-envelope-aba-avesso" viewBox="0 0 520 340">
+    <path d="M0 0 L260 190 L520 0 Z" fill="#CDA672"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="url(#kraft)"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="rgba(92,60,24,.22)"/>
+    <path d="M.5 .5 L260 190 L519.5 .5" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+  </symbol>
+  <!-- O lacre, em duas metades (cada uma num elemento: o romper as afasta), com a sombra da cera dentro. A
+       direita vai por cima da esquerda. A origem do giro das duas é a base da rachadura, (260, 216). -->
+  <symbol id="o-lacre-esquerda" viewBox="0 0 520 340">
+    <g transform="translate(1.5 1.5)" clip-path="url(#recorte-lacre-esquerda)"><path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#16161B" fill-opacity=".22"/></g>
+    <g clip-path="url(#recorte-lacre-esquerda)">
+      <path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#A3231C"/>
+      <circle cx="260" cy="190" r="16.12" fill="none" stroke="rgba(22,22,27,.30)" stroke-width="1.6"/>
+      <path d="M266.15 198.1 254.98 183.86Q254.83 183.66 254.65 183.47Q254.47 183.28 254.32 183.15V195.35Q254.32 196.26 254.87 196.93Q255.43 197.59 256.34 197.59V197.8H251.91V197.59Q252.85 197.59 253.4 196.93Q253.96 196.26 253.96 195.33V182.85Q253 182.13 251.93 182.02V181.81H257.41L265.79 192.62V184.26Q265.79 183.35 265.23 182.68Q264.68 182.02 263.76 182.02V181.81H268.18V182.02Q267.26 182.02 266.71 182.68Q266.15 183.35 266.15 184.26Z" fill="rgba(250,248,243,.62)"/>
+    </g>
+  </symbol>
+  <symbol id="o-lacre-direita" viewBox="0 0 520 340">
+    <g transform="translate(1.5 1.5)" clip-path="url(#recorte-lacre-direita)"><path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#16161B" fill-opacity=".22"/></g>
+    <g clip-path="url(#recorte-lacre-direita)">
+      <path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#A3231C"/>
+      <circle cx="260" cy="190" r="16.12" fill="none" stroke="rgba(22,22,27,.30)" stroke-width="1.6"/>
+      <path d="M266.15 198.1 254.98 183.86Q254.83 183.66 254.65 183.47Q254.47 183.28 254.32 183.15V195.35Q254.32 196.26 254.87 196.93Q255.43 197.59 256.34 197.59V197.8H251.91V197.59Q252.85 197.59 253.4 196.93Q253.96 196.26 253.96 195.33V182.85Q253 182.13 251.93 182.02V181.81H257.41L265.79 192.62V184.26Q265.79 183.35 265.23 182.68Q264.68 182.02 263.76 182.02V181.81H268.18V182.02Q267.26 182.02 266.71 182.68Q266.15 183.35 266.15 184.26Z" fill="rgba(250,248,243,.62)"/>
+    </g>
+  </symbol>
+
+  <!-- O carimbo postal por cima do selo (7.4), no viewBox de 100 do selo. A data vai fora, como texto em
+       (74, 24.8), dentro de um <g> com o mesmo giro, a mesma opacidade e a mesma máscara. A propriedade px (100 / lado
+       do selo) engrossa o traço no selo pequeno, como o app: sem ele, vale o traço da especificação. -->
+  <symbol id="o-carimbo-postal" viewBox="0 0 100 100">
+    <g opacity=".78" transform="rotate(-9 74 23)" mask="url(#falhas-postal)">
+      <path d="M22 16 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0 M22 22 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0 M22 28 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0" fill="none" stroke="#16161B" stroke-linecap="round" style="stroke-width:max(1.3px,calc(.9px * var(--px,1)))"/>
+      <circle cx="74" cy="23" r="15" fill="#FAF8F3" fill-opacity=".35" stroke="#16161B" style="stroke-width:max(1.6px,calc(1px * var(--px,1)))"/>
+      <circle cx="74" cy="23" r="11" fill="none" stroke="#16161B" style="stroke-width:max(.8px,calc(.7px * var(--px,1)))"/>
+    </g>
+  </symbol>
+
+  <!-- A costura da folhinha (7.12): a tira de tinta com os dois furos. -->
+  <symbol id="o-costura" viewBox="0 0 64 10">
+    <rect width="64" height="10" fill="#16161B"/>
+    <circle cx="20" cy="5" r="2" fill="#FAF8F3"/>
+    <circle cx="44" cy="5" r="2" fill="#FAF8F3"/>
+  </symbol>
+
+  <!-- As marcas da gráfica (7.14). O alvo pega a cor da propriedade registro (folha sobre a tarja de tinta). -->
+  <symbol id="o-registro" viewBox="0 0 20 20">
+    <g fill="none" style="stroke:var(--registro,#16161B)" stroke-width="1.2">
+      <circle cx="10" cy="10" r="7"/>
+      <path d="M0 10 H20 M10 0 V20"/>
+    </g>
+  </symbol>
+  <!-- A barra CMYK: o quadrado de tinta ganha um fio (a propriedade cmyk-fio, folha por padrão) para não sumir na tarja. -->
+  <symbol id="o-cmyk" viewBox="0 0 36 9">
+    <rect width="9" height="9" fill="#00A3E0"/>
+    <rect x="9" width="9" height="9" fill="#E4007C"/>
+    <rect x="18" width="9" height="9" fill="#FFD21A"/>
+    <rect x="27.5" y=".5" width="8" height="8" fill="#16161B" style="stroke:var(--cmyk-fio,#FAF8F3)" stroke-width="1"/>
+  </symbol>
+</svg>

@@ -1,0 +1,403 @@
+/* O elenco da rodada: a mesa e os atores (papelaria desenhada em src/ e no sprite), o selo, a folha de prova, o
+   envelope e o ofício, as folhinhas, a grade do Diário, o edital, a primeira página, os carimbos e a mão.
+   Só transform, opacity, clip-path e stroke-dashoffset se mexem; o que o JS anima fica no .ator__corpo. */
+
+/* ------------------------------------------------------------------ A mesa e os atores (kit de ilustração, 5.4) */
+
+.mesa { position: relative; }
+.mesa__palco { --D: clamp(240px, 68vw, 300px); position: relative; width: var(--D); height: var(--D); margin: 0 auto; }
+@media (min-width: 768px) { .mesa__palco { --D: 300px; } }
+@media (min-width: 1200px) { .mesa__palco { --D: min(460px, 32vw); } }
+
+.disco-casa { position: absolute; inset: 0; z-index: 2; touch-action: pan-y pinch-zoom; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.disco-casa.is-ativo { cursor: pointer; }
+.disco-casa .disco { width: 100%; height: 100%; overflow: visible; }
+
+.ator {
+  position: absolute; z-index: 1;
+  left: calc(50% + var(--x) * var(--D)); top: calc(50% + var(--y) * var(--D));
+  width: calc(var(--l) * var(--D));
+  pointer-events: none;
+}
+button.ator { padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; color: inherit; z-index: 3; }
+button.ator:focus-visible { outline-offset: 6px; }
+.ator__pose { display: block; position: relative; transform: translate(-50%, -50%) rotate(var(--r, 0deg)); }
+.ator__corpo { display: block; position: relative; transition: translate 140ms var(--assenta); }
+.ator__corpo > svg, .ator__corpo > span > svg { width: 100%; height: auto; overflow: visible; }
+.ator__sombra { position: absolute; left: 0; top: 0; width: 100%; height: auto; color: var(--sombra); fill: var(--sombra); translate: 2px 2px; transition: translate 140ms var(--assenta); }
+.ator.is-em-jogo .ator__pose { transform: translate(-50%, -50%) translate(8px, 8px) rotate(0deg); transition: transform 240ms var(--assenta); }
+@media (hover: hover) {
+  button.ator:hover .ator__corpo { translate: -1px -3px; }
+  button.ator:hover .ator__sombra { translate: 3px 3px; }
+}
+.ator--data { width: auto; }
+.ator--data .ator__corpo { white-space: nowrap; }
+.ator--data .carimbo { height: 56px; }
+
+/* No celular, só os protagonistas, nas posições do celular (e cortados pela borda da tela). */
+@media (max-width: 767px) {
+  .ator--largo { display: none; }
+  .mesa--abertura .ator { left: calc(50% + var(--xc, var(--x)) * var(--D)); top: calc(50% + var(--yc, var(--y)) * var(--D)); width: calc(var(--lc, var(--l)) * var(--D)); }
+  .ator--data .carimbo { height: 44px; }
+}
+
+/* A abertura entra: as casas se imprimem em sentido horário, a caneta aparece; os atores pousam pelo JS. */
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.calmo) .abertura:not(.is-pronta) .disco__base { opacity: 0; transform: translateY(8px); }
+  .js:not(.calmo) .abertura.is-in:not(.is-pronta) .disco__base { opacity: 1; transform: none; transition: opacity 300ms var(--assenta) 200ms, transform 300ms var(--assenta) 200ms; }
+  .js:not(.calmo) .abertura:not(.is-pronta) .disco__casa { opacity: 0; }
+  .js:not(.calmo) .abertura.is-in:not(.is-pronta) .disco__casa { opacity: 1; transition: opacity 160ms linear calc(320ms + var(--i) * 55ms); }
+  .js:not(.calmo) .abertura:not(.is-pronta) .disco__caneta, .js:not(.calmo) .abertura:not(.is-pronta) .disco__sombra { opacity: 0; }
+  .js:not(.calmo) .abertura.is-in:not(.is-pronta) .disco__caneta, .js:not(.calmo) .abertura.is-in:not(.is-pronta) .disco__sombra { opacity: 1; transition: opacity 80ms linear 640ms; }
+  .js:not(.calmo) .abertura:not(.is-pronta) .disco__pintar, .js:not(.calmo) .abertura:not(.is-pronta) .disco__apagar, .js:not(.calmo) .abertura:not(.is-pronta) .disco__circulo { opacity: 0; }
+  /* Os atores esperam a mesa começar a pousar (.is-mesa): daí em diante, cada pouso segura o seu (fill backwards). */
+  .js:not(.calmo) .abertura:not(.is-pronta):not(.is-mesa) .ator__corpo, .js:not(.calmo) .abertura:not(.is-pronta):not(.is-mesa) .ator__sombra { opacity: 0; }
+}
+/* A entrada não revela casa nenhuma: com JS, o disco espera o toque (sem JS, fica revelado em PT). */
+.js .abertura .disco__pintar:empty, .js .abertura .disco__circulo:empty { opacity: 0; }
+
+/* A mesa do fecho: posições em % da faixa. */
+.mesa--fecho { position: absolute; inset: 0; z-index: 1; }
+.mesa--fecho .ator { left: var(--px); top: var(--py); width: var(--w); }
+.mesa--fecho .ator--toque { pointer-events: auto; cursor: pointer; }
+@media (max-width: 1023px) { .mesa--fecho .ator--tablet { display: none; } }
+@media (max-width: 767px) {
+  .mesa--fecho .ator { width: var(--wc); }
+  .mesa--fecho .ator--largo { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.calmo) .fecho:not(.is-pronta):not(.is-objeto) .ator__corpo, .js:not(.calmo) .fecho:not(.is-pronta):not(.is-objeto) .ator__sombra { opacity: 0; }
+}
+
+/* As duas mesas que a rolagem mexe (só CSS; sem suporte, ficam paradas). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.calmo):not(.fraco) .mesa--abertura .ator { --f: 0.5; animation: mesa-sai linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    html:not(.calmo):not(.fraco) .mesa--fecho .ator { --f: 0.5; animation: mesa-passa linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    @media (min-width: 768px) {
+      html:not(.calmo):not(.fraco) .mesa--abertura .ator, html:not(.calmo):not(.fraco) .mesa--fecho .ator { --f: 1; }
+    }
+  }
+}
+@keyframes mesa-sai { to { translate: 0 calc(var(--k) * var(--f) * -1px); rotate: calc(var(--g) * 1deg); } }
+@keyframes mesa-passa {
+  from { translate: 0 calc(var(--k) * var(--f) * 1px); rotate: calc(var(--g) * -1deg); }
+  to { translate: 0 calc(var(--k) * var(--f) * -1px); rotate: calc(var(--g) * 1deg); }
+}
+
+/* ------------------------------------------------------------------ O selo postal */
+
+.selo { width: 100%; height: auto; overflow: visible; }
+.selo__sigla { font-family: var(--f-tarja); fill: var(--tinta); letter-spacing: 0.5px; }
+.selo__sigla--lapis { fill: var(--tinta-3); }
+.selo__legenda { font-family: var(--f-interface); font-weight: 700; font-size: 6.4px; letter-spacing: 1px; fill: var(--tinta); }
+.selo__data { font-family: var(--f-interface); font-weight: 700; font-size: 5.4px; letter-spacing: 0.4px; fill: var(--tinta); }
+.selo__postal { transform-origin: 74px 23px; transform-box: view-box; }
+.foto34__inicial { font-family: var(--f-manchete); font-size: 34px; fill: var(--tinta); }
+.foto34--visitante .foto34__inicial { fill: var(--caneta); }
+.ator__sombra, .envelope__sombra { color: var(--sombra); }
+
+/* A tira de selos da faixa. */
+.tira__grupo { display: flex; flex-direction: column; gap: 8px; max-width: 100%; }
+.tira__rotulo { font-weight: 600; font-size: 0.875rem; color: var(--tinta-2); padding-left: 2px; }
+[data-ui] .tira__selos { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 6px; background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); }
+.tira__selo {
+  position: relative; flex: none; width: 76px; padding: 0; border: 0; background: none; cursor: pointer;
+  transition: transform 160ms var(--assenta), opacity 200ms linear;
+}
+.tira__selo[aria-pressed="true"] { transform: translateY(-4px); }
+.tira__selo[aria-pressed="true"] .selo { filter: none; }
+.tira__selo.is-fora-da-area { opacity: 0.4; }
+@media (min-width: 768px) { .tira__selo { width: 80px; } }
+@media (min-width: 1440px) { .tira__selo { width: 88px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.calmo) .faixa:not(.is-pronta):not(.is-objeto) .tira { opacity: 0; transform: translateY(8px); }
+  .js:not(.calmo) .faixa.is-objeto:not(.is-pronta) .tira { transition: opacity 300ms var(--assenta), transform 300ms var(--assenta); }
+  .js:not(.calmo) .faixa:not(.is-pronta):not(.is-objeto) .tira__selos { opacity: 0; }
+  .js:not(.calmo) .faixa.is-objeto:not(.is-pronta) .tira__selos { transition: opacity 200ms linear 150ms; }
+}
+
+/* ------------------------------------------------------------------ A folha de prova (a pilha) */
+
+.pilha { position: relative; isolation: isolate; padding: 0 8px 8px 0; }
+.folha { position: relative; background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); max-width: 640px; } /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+.folha::before, .folha::after { content: ""; position: absolute; inset: 0; background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte); z-index: -1; transform: translate(4px, 4px); } /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+.folha::after { z-index: -2; transform: translate(8px, 8px); }
+.folha__tira { height: 32px; line-height: 32px; padding: 0 16px; background: var(--tinta); color: var(--folha); font-weight: 700; font-size: var(--t-chapeu); letter-spacing: 0.08em; }
+.folha__miolo { padding: 18px 16px 22px; }
+.folha__cabeca { display: grid; grid-template-columns: 32px 1fr; column-gap: 12px; align-items: center; }
+.folha__selo { width: 32px; grid-row: 1 / 3; }
+.folha__materia { font-weight: 600; font-size: 0.9375rem; }
+.folha__estilo { font-size: var(--t-legenda); color: var(--tinta-2); }
+.folha__enunciado, .recorte__enunciado, .oficio__enunciado { position: relative; margin-top: 18px; font-family: var(--f-leitura); font-size: var(--t-enunciado); line-height: 1.46; }
+.pegadinha { position: relative; }
+.folha__fim { font-family: var(--f-leitura); font-size: var(--t-lead); line-height: 1.4; }
+.folha__miolo--fim { min-height: 240px; display: grid; align-items: center; }
+@media (min-width: 768px) { .folha__miolo { padding: 24px 28px 28px; } .folha__tira { padding: 0 28px; } }
+
+.alternativas { display: flex; flex-direction: column; gap: 2px; margin-top: 18px; }
+.alternativa {
+  position: relative; display: flex; align-items: flex-start; gap: 12px; width: 100%; min-height: 56px; padding: 12px 8px;
+  background: none; border: 0; border-radius: 2px; text-align: left; cursor: pointer;
+  font-family: var(--f-leitura); font-size: var(--t-alternativa); line-height: 1.5;
+}
+.alternativa .bolha { margin-top: -4px; }
+.alternativa__texto { position: relative; padding-top: 2px; }
+.alternativa:disabled { cursor: default; color: inherit; }
+@media (hover: hover) { .alternativa:not(:disabled):hover { background: rgba(22, 22, 27, 0.05); } }
+.alternativa:not(:disabled):active .bolha { box-shadow: inset 0 0 0 2.5px var(--caneta); } /* taste-skill-ignore: bolha do gabarito apertada (campo de formulário) */
+
+.ce { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.ce__botao { position: relative; width: 100% !important; min-height: 64px; }
+.ce__botao.is-marcada { box-shadow: inset 0 0 0 2px var(--caneta), 0 2px 0 var(--fio-forte); color: var(--caneta); } /* taste-skill-ignore: botão marcado: contorno e borda tátil do app */
+.ce__botao:disabled { cursor: default; color: inherit; }
+.ce__rotulo { position: relative; }
+
+/* Sem JavaScript, o grifo e o risco saem em CSS (com JS, a mão desenha). */
+html:not(.js) .is-certa .alternativa__texto, html:not(.js) .is-certa .ce__rotulo { background: var(--amarelo); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+html:not(.js) .is-errada .alternativa__texto, html:not(.js) .is-errada .ce__rotulo { text-decoration: line-through; text-decoration-color: var(--vermelho); text-decoration-thickness: 2px; }
+
+.resultado-linha {
+  display: flex; align-items: center; gap: 12px; min-height: 46px; margin-top: 16px;
+  border-top: 1px solid var(--fio); border-bottom: 1px solid var(--fio); /* taste-skill-ignore: as linhas do campo de resultado da folha */
+}
+.resultado-linha:has(.carimbo, .carimbo-estatico, .resultado-linha__errou:not([hidden])) { border-color: var(--tinta); }
+.resultado-linha__carimbo .carimbo { height: 40px; }
+.resultado-linha__errou { font-family: var(--f-tarja); font-size: 25px; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; color: var(--vermelho); }
+
+.folha__depois { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.comentario { font-family: var(--f-leitura); font-size: var(--t-alternativa); line-height: 1.55; padding-top: 12px; border-top: 3px solid var(--tinta); }
+.folha__aviso, .errata__aviso, .oficio__legenda { font-weight: 600; font-size: 0.9375rem; min-height: 1.5em; }
+
+/* ------------------------------------------------------------------ A nota à mão (NotaAMao) */
+
+.nota { font-family: var(--f-mao); font-size: var(--t-mao); line-height: 1.2; color: var(--lapis); transform: rotate(-1.5deg); transform-origin: left center; margin-left: 24px; }
+.nota--erro { color: var(--vermelho); }
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.calmo) .nota:not(.is-escrita) { clip-path: inset(-0.4em 100% -0.4em -0.2em); }
+  .js:not(.calmo) .nota { transition: clip-path var(--escrita, 700ms) linear; }
+  .js:not(.calmo) .nota.is-escrita { clip-path: inset(-0.4em -0.4em -0.4em -0.2em); }
+  .js .is-pronta .nota { transition: none; }
+}
+
+/* ------------------------------------------------------------------ O envelope pardo e o ofício */
+
+.convocacao__mesa { display: grid; justify-items: center; align-items: start; min-height: 240px; }
+.convocacao__mesa > * { grid-area: 1 / 1; }
+/* A margem de cima é a altura da aba aberta (190 de 340 no desenho): aberta, ela não sobe por cima da manchete. */
+.envelope { position: relative; width: min(100%, 340px); aspect-ratio: 520 / 340; margin-top: calc(min(100%, 340px) * 0.365); transform: rotate(2deg); }
+@media (min-width: 768px) { .envelope { width: min(100%, 440px); margin-top: calc(min(100%, 440px) * 0.365); transform: rotate(-3deg); } }
+@media (min-width: 1200px) { .envelope { width: min(100%, 520px); margin-top: calc(min(100%, 520px) * 0.365); } }
+.envelope svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.envelope__sombra { color: var(--sombra); fill: var(--sombra); translate: 2px 2px; }
+.envelope__corpo { position: absolute; inset: 0; }
+.envelope__remetente { position: absolute; left: 5.4%; bottom: 6%; font-weight: 700; font-size: clamp(0.5625rem, 0.4rem + 0.6vw, 0.8125rem); letter-spacing: 0.04em; text-transform: uppercase; color: var(--tinta); }
+.envelope__aba { position: absolute; inset: 0; transform-origin: 50% 0; }
+.envelope__avesso { display: none; }
+.envelope.is-aberto .envelope__aba, .envelope.is-virada .envelope__aba { transform: scaleY(-1); }
+.envelope.is-aberto .envelope__frente, .envelope.is-virada .envelope__frente { display: none; }
+.envelope.is-aberto .envelope__avesso, .envelope.is-virada .envelope__avesso { display: inline; }
+.envelope__lacre { position: absolute; inset: 0; pointer-events: none; }
+.lacre { transform-origin: 50% 63.5%; }
+.envelope.is-aberto .lacre--e { transform: translate(-1%, 0.9%) rotate(-14deg); }
+.envelope.is-aberto .lacre--d { transform: translate(1%, 1.2%) rotate(11deg); }
+.envelope__toque { position: absolute; left: 44%; top: 47%; width: 12%; aspect-ratio: 1; border-radius: 50%; cursor: pointer; }
+.envelope.is-aberto { opacity: 0.3; translate: 0 24px; }
+.envelope.is-aberto .envelope__toque { display: none; }
+
+.oficio {
+  position: relative; z-index: 2; width: min(100%, 366px); margin-top: 0;
+  background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+  padding: 22px 18px 24px;
+}
+@media (min-width: 768px) { .oficio { width: min(100%, 420px); padding: 26px 26px 28px; } }
+@media (min-width: 1200px) { .oficio { width: 380px; } }
+.oficio__fio { height: 6px; border-top: 3px solid var(--tinta); border-bottom: 1px solid var(--tinta); } /* taste-skill-ignore: o fio duplo de jornal do ofício */
+.oficio__tarja { position: relative; margin-top: 12px; font-family: var(--f-tarja); font-size: 2.75rem; line-height: 1; letter-spacing: 0.02em; text-align: center; }
+.oficio__titulo { margin-top: 8px; text-align: center; }
+.oficio__selos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+.oficio__selo { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; padding: 4px 0; background: none; border: 0; cursor: pointer; }
+.oficio__selo-papel { display: block; width: 100%; max-width: 104px; }
+.oficio__selo:nth-child(odd) .oficio__selo-papel { transform: rotate(-2deg); }
+.oficio__selo-nome { font-weight: 600; font-size: var(--t-legenda); text-align: center; line-height: 1.3; }
+.oficio__selo:disabled { cursor: default; color: inherit; }
+.oficio__questao .chapeu { margin-top: 16px; }
+.oficio__item { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: start; }
+.oficio__em-jogo { display: block; width: 72px; margin-top: 18px; position: relative; z-index: 3; }
+.oficio__outra { margin-top: 6px; }
+
+/* ------------------------------------------------------------------ O recorte (Errata, Diário, Resultado) */
+
+.recorte { position: relative; background: var(--papel); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); padding: 18px 16px 20px; } /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+.errata .recorte { background: var(--papel); }
+@media (min-width: 768px) { .recorte { padding: 22px 24px 24px; } }
+.errata__folha { display: flex; flex-direction: column; gap: 12px; }
+.errata__marcada { position: relative; display: flex; align-items: flex-start; gap: 12px; font-family: var(--f-leitura); font-size: var(--t-alternativa); line-height: 1.5; color: var(--tinta-2); }
+.errata__marcada .bolha { margin-top: -4px; }
+.errata__riscada { position: relative; text-decoration: line-through; text-decoration-color: var(--vermelho); text-decoration-thickness: 2px; }
+.js .errata__riscada { text-decoration: none; }
+.errata__refazer .alternativas { margin-top: 4px; }
+.errata__botao { margin-top: 6px; align-self: flex-start; }
+
+/* As folhinhas: o espaço vazio é o tempo (a posição de cada uma é o dia em que a questão volta). */
+.folhinhas { position: relative; display: flex; flex-direction: column; margin-top: 22px; }
+.folhinha { display: flex; align-items: center; gap: 12px; margin-top: calc(var(--vao, 0) * 6px); }
+.folhinha:first-child { margin-top: 0; }
+.folhinha__bloco { position: relative; display: block; flex: none; width: 64px; }
+.folhinha__costura { position: relative; z-index: 2; width: 64px; height: 10px; }
+.folhinha__pagina {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 66px;
+  background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+  transform-origin: 50% 0;
+}
+.folhinha__pagina--baixo { position: absolute; left: 0; right: 0; top: 10px; box-shadow: 0 2px 0 var(--folha), 0 3px 0 var(--fio-forte), 0 5px 0 var(--folha), 0 6px 0 var(--fio-forte); } /* taste-skill-ignore: as páginas de baixo do bloco de folhinhas */
+.folhinha__mes { font-weight: 700; font-size: var(--t-chapeu); letter-spacing: 0.08em; color: var(--tinta-2); }
+.folhinha__dia { font-family: var(--f-tarja); font-size: 2.5rem; line-height: 0.95; }
+.folhinha-da-mesa { display: block; width: 100%; height: auto; overflow: visible; }
+.folhinha-da-mesa__mes { font-family: var(--f-interface); font-weight: 700; font-size: 11.5px; letter-spacing: 0.9px; fill: var(--tinta-2); }
+.folhinha-da-mesa__dia { font-family: var(--f-tarja); font-size: 40px; fill: var(--tinta); }
+.folhinha__visto { position: relative; display: block; width: 26px; height: 26px; }
+.folhinha__rotulo { font-size: 0.9375rem; color: var(--tinta-2); }
+.folhinhas__sanada { margin-top: 18px; }
+.folhinhas__carimbo { display: inline-block; }
+.folhinhas__carimbo .carimbo { height: 56px; }
+/* Em linha: cada folhinha cresce na proporção do intervalo antes dela; o espaço vazio é o tempo. */
+@media (min-width: 768px) {
+  .folhinhas { flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 28px; }
+  .folhinha { flex: var(--vao) 1 auto; flex-direction: column; align-items: flex-end; gap: 6px; margin-top: 0; padding-left: 12px; }
+  .folhinha:first-child { flex: 0 0 auto; padding-left: 0; align-items: flex-start; }
+  .folhinha__rotulo { align-self: flex-end; }
+  .folhinha:first-child .folhinha__rotulo { align-self: flex-start; }
+  .folhinhas__sanada { flex: none; margin: 18px 0 0 18px; }
+}
+@media (min-width: 1024px) {
+  .errata__recorte { display: flex; flex-direction: column; }
+  .folhinhas { grid-column: 1 / -1; }
+}
+
+/* ------------------------------------------------------------------ A grade do Diário */
+
+.grade { display: flex; flex-direction: column; gap: 10px; }
+.grade__titulo, .grade__siglas { font-weight: 600; color: var(--tinta-2); }
+.grade__convite { font-family: var(--f-leitura); font-style: italic; }
+.grade__fileira { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4em; margin-bottom: 6px; font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9; }
+.grade__quadrados { display: inline-flex; gap: 6px; }
+/* No telefone estreito os quadrados encolhem para o total caber na mesma linha. */
+.grade__q { width: clamp(32px, 9vw, 44px); height: clamp(32px, 9vw, 44px); }
+.grade__q--certo { background: var(--verde); }
+.grade__q--errado { background: var(--vermelho); }
+.grade__q--falta { outline: 1.5px dashed var(--lapis); outline-offset: -1.5px; }
+.grade__total { position: relative; isolation: isolate; margin-left: 0.3em; }
+@media (min-width: 768px) { .grade__q { width: 56px; height: 56px; } }
+@media (min-width: 1200px) { .grade__q { width: 64px; height: 64px; } }
+@media (forced-colors: active) {
+  .grade__q, .bolha, .selo, .verticalizado__barra { forced-color-adjust: none; }
+  .botao--contorno { border: 1.5px solid ButtonText; }
+  .ficha[aria-checked="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; border-color: Highlight; }
+  .ce__botao.is-marcada { border: 3px solid Highlight; }
+  .jornal__campo:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.calmo) .cena:not(.is-pronta) .grade__q { opacity: 0; transform: translateY(-2px); }
+  .js:not(.calmo) .cena.is-objeto:not(.is-pronta) .grade__q { opacity: 1; transform: none; transition: opacity 160ms var(--assenta) calc(var(--q) * 110ms), transform 160ms var(--assenta) calc(var(--q) * 110ms); }
+}
+
+/* ------------------------------------------------------------------ O edital verticalizado */
+
+.fichas { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0; }
+/* O nome do cargo é longo: a ficha quebra a linha dentro dela, nunca passa da borda. */
+.ficha { min-height: 44px; max-width: 100%; padding-block: 8px; font-size: 0.875rem; white-space: normal; text-align: left; justify-content: flex-start; }
+.ficha[aria-checked="true"] { background: var(--tinta); color: var(--folha); box-shadow: 0 2px 0 var(--tinta-2); } /* taste-skill-ignore: o botão tátil do app (DESIGN.md: 0 2px 0) */
+.edital__formato { margin-top: 18px; font-weight: 600; }
+.verticalizado { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; max-width: 720px; }
+.verticalizado__linha { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "nome pct" "barra barra"; column-gap: 12px; row-gap: 4px; align-items: baseline; }
+.verticalizado__nome { grid-area: nome; font-size: 0.9375rem; }
+.verticalizado__pct { grid-area: pct; font-weight: 600; font-variant-numeric: tabular-nums; }
+.verticalizado__barra { grid-area: barra; display: block; height: 10px; background: var(--fio); }
+.verticalizado__barra > span { display: block; height: 100%; width: calc(var(--pct) * 100%); background: var(--chapa, var(--fio-forte)); transform-origin: left center; }
+.edital__corpo .nota { margin-top: 16px; }
+.edital__sem { margin-top: 14px; font-family: var(--f-leitura); font-style: italic; color: var(--tinta-2); }
+/* No computador o edital verticalizado vira a folha do app, ao lado da manchete. */
+@media (min-width: 1024px) {
+  [data-ui].edital__corpo { padding: 24px 24px 28px; background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); }
+}
+@media (min-width: 768px) {
+  .verticalizado__linha { grid-template-columns: minmax(0, 15em) 1fr 3.5em; grid-template-areas: "nome barra pct"; align-items: center; }
+}
+
+/* ------------------------------------------------------------------ A primeira página (o Resultado) */
+
+.jornal {
+  position: relative; width: min(100%, 960px); padding: 18px 14px 22px;
+  background: var(--folha); box-shadow: 0 0 0 1px var(--fio-forte), 1px 1px 0 var(--sombra); /* taste-skill-ignore: papel do app (DESIGN.md: 1px 1px 0) */
+}
+@media (min-width: 768px) { .jornal { padding: 28px 32px 32px; } }
+.jornal.is-extra { background: var(--amarelo); }
+.jornal.is-extra::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(227, 178, 0, 0.4) 1.2px, transparent 1.3px); background-size: 4px 4px; /* taste-skill-ignore: a retícula de impressão da Edição Extra */
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% 44px no-repeat, linear-gradient(#000 0 0) bottom / 100% 44px no-repeat; /* taste-skill-ignore: máscara de forma, não degradê */
+  mask: linear-gradient(#000 0 0) top / 100% 44px no-repeat, linear-gradient(#000 0 0) bottom / 100% 44px no-repeat; /* taste-skill-ignore: máscara de forma, não degradê */
+} /* taste-skill-ignore: a retícula do meio-tom, nas bordas */
+.jornal__cabeca { text-align: center; padding-bottom: 8px; border-bottom: 6px double var(--tinta); }
+.jornal__nome { font-family: var(--f-manchete); font-size: 1.75rem; line-height: 1.1; }
+.jornal__data { margin-top: 4px; font-weight: 700; font-size: var(--t-chapeu); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-2); }
+.jornal__tarja { position: relative; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 6px 12px; background: var(--tinta); }
+.jornal__tarja-texto { font-family: var(--f-tarja); font-size: clamp(2.75rem, 2rem + 2vw, 3.5rem); line-height: 1; letter-spacing: 0.02em; color: var(--folha); }
+.jornal__registro { width: 20px; height: 20px; color: var(--folha); }
+.jornal__data--extra { text-align: center; margin-top: 8px; color: var(--tinta); }
+.jornal__manchete {
+  position: relative; margin-top: 18px; text-align: center;
+  font-family: var(--f-manchete); font-size: clamp(2.5625rem, 1.6rem + 3.6vw, 6rem); line-height: 1.05; letter-spacing: -0.015em;
+}
+.jornal__branco { position: relative; display: inline-block; min-width: 4em; width: var(--largura, auto); vertical-align: baseline; }
+.jornal__fio { display: block; height: 0.9em; border-bottom: 1.5px solid var(--tinta); transform-origin: left center; }
+.jornal__campo {
+  width: 100%; min-width: 4em; padding: 0; border: 0; border-bottom: 1.5px solid var(--tinta); border-radius: 0; background: transparent; outline: none;
+  font: inherit; color: inherit; text-align: center; transform-origin: left center;
+}
+.jornal__campo:focus-visible { box-shadow: 0 3px 0 var(--caneta); } /* taste-skill-ignore: o foco do campo, em caneta */
+.jornal__espelho { position: absolute; left: 0; top: 0; visibility: hidden; white-space: pre; }
+.jornal__rotulo { display: block; margin-top: 8px; text-align: center; font-size: 0.9375rem; color: var(--tinta-2); }
+.jornal__corpo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 22px; }
+.jornal__retrato { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; }
+.jornal__foto { display: block; width: 64px; }
+.jornal__fina { font-family: var(--f-leitura); font-size: var(--t-lead); line-height: 1.35; }
+.jornal__recorte { background: var(--folha); }
+.jornal.is-extra .jornal__recorte { background: var(--folha); }
+.jornal__selos { display: flex; gap: 10px; }
+.jornal__selo { width: 72px; }
+.jornal__nomes { margin-top: 10px; font-weight: 600; }
+.jornal__regra { margin-top: 4px; font-size: 0.9375rem; color: var(--tinta-2); }
+.jornal__linha-nome { position: relative; width: fit-content; max-width: calc(100% - 72px); margin-top: 10px; font-family: var(--f-tarja); font-size: 1.75rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; isolation: isolate; }
+.jornal__linha-nome > [data-linha-nome] { position: relative; }
+.jornal__eu { position: absolute; left: calc(100% + 40px); top: -6px; font-family: var(--f-mao); font-size: 1.5rem; color: var(--caneta); text-transform: none; }
+.jornal__carimbo { position: absolute; right: -6px; top: -14px; }
+.jornal__carimbo .carimbo { height: 52px; }
+.jornal__cmyk { position: absolute; right: 14px; bottom: 10px; width: 36px; }
+@media (min-width: 768px) {
+  .jornal__corpo { grid-template-columns: 1fr 1fr; align-items: start; }
+  .jornal__retrato { grid-template-columns: 96px 1fr; }
+  .jornal__foto { width: 96px; }
+  .jornal__selo { width: 96px; }
+}
+
+/* ------------------------------------------------------------------ A mão e o carimbo */
+
+.rabisco { position: absolute; pointer-events: none; overflow: visible; z-index: 1; max-width: none; }
+.rabisco--atras { z-index: -1; }
+.grifo { position: absolute; pointer-events: none; overflow: visible; z-index: -1; max-width: none; }
+.alternativa__texto, .ce__rotulo, .jornal__linha-nome > [data-linha-nome] { isolation: isolate; }
+.alternativa, .ce__botao, .oficio__selo { isolation: isolate; }
+.carimbo { display: block; overflow: visible; transform: rotate(var(--giro, -3deg)); transform-origin: 50% 50%; height: clamp(48px, 20px + 4vw, 72px); width: auto; }
+
+.carimbo-estatico {
+  display: inline-block; padding: 0.05em 0.35em;
+  border: 4px double var(--verde); color: var(--verde);
+  font-family: var(--f-tarja); font-size: 1.75rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.06em;
+  transform: rotate(-3deg);
+}
+.carimbo-estatico--tinta { border-color: var(--tinta); color: var(--tinta); }
+
+/* "Entrar em registro": os fantasmas ciano e magenta encaixam na tinta (os elementos vêm do movimento). */
+.registro__fantasma { position: absolute; inset: 0; pointer-events: none; }

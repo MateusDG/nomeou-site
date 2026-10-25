@@ -1,0 +1,17 @@
+{
+  "name": "nomeou-site",
+  "private": true,
+  "version": "0.0.0",
+  "description": "O site de divulgação do Nomeou: a rodada de amostra.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --observar",
+    "check": "tsc --noEmit",
+    "dados": "node scripts/dados-do-app.mjs ../turno-concurso"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3"
+  }
+}

@@ -1,104 +1,145 @@
 # nomeou-site
 
-O site de divulgação do **Nomeou** (o app de `turno-concurso`), para `https://nomeou.app`. É a página que recebe quem chega pelo link do Diário ou do convite ("Será que você gabarita? nomeou.app") e a que leva para as lojas.
+O site de divulgação do **Nomeou** (o app de `turno-concurso`), para `https://nomeou.app`. Recebe quem chega pelo link do Diário ou do convite ("Será que você gabarita? nomeou.app") e leva para as lojas.
 
-O site segue o sistema do app, **"Anotado à margem"** (`turno-concurso/docs/DESIGN.md`), enxuto: uma manchete por tela, muito papel e a mão do app anotando a tipografia. Não há telas do app na página: o que se mostra é desenhado com a tipografia, as cores e os gestos do próprio app (o disco do sorteio, a grade do Diário, o risco vermelho, o grifo amarelo, a nota a lápis e os carimbos).
+A página é uma **rodada de amostra**: em vez de telas do app, a pessoa joga uma rodada curta feita com as peças do próprio app (o disco do sorteio, a folha de questão, o ofício de convocação, a Errata, o Diário, o edital verticalizado e a primeira página do jornal). Tudo segue o sistema **"Anotado à margem"** (`turno-concurso/docs/DESIGN.md`): papel, tinta, a mão que risca, grifa e carimba, sombras só duras, nenhum personagem e nada em laço. Os objetos da papelaria (a Bic, o carimbo datador, o marca-texto, a xícara, os selos) fazem o papel que o mascote faz em sites como o do Duolingo.
 
-## O que tem na página
+## A rodada
 
-| Bloco | O que mostra |
+| Bloco | O que acontece |
 |---|---|
-| Abertura | "Concurso é jogo." em corpo de cartaz, a linha do que é o app e as lojas |
-| Duelo 1×1 | O disco do sorteio da roleta geral, com a física do app: um toque (ou um peteleco na caneta) sorteia a matéria, com as chances reais (15% cada matéria, 10% a convocação). Uma linha avisa que Saúde e TI têm as matérias da área |
-| 5 questões por dia | O Diário do Nomeou: a grade de compartilhar da edição do dia, com o 4/5 circulado a caneta |
-| O erro volta | A Errata: a frase errada riscada e os intervalos (amanhã, 1, 3, 7 e 15 dias) até o carimbo SANADA |
-| O edital do seu cargo | "seu cargo" grifado, os cargos e concursos do catálogo e a regra a lápis |
-| O jogo é grátis | O que é grátis, o que o PRO faz e as lojas, na tinta |
-| Rodapé | Os avisos (jogo de estudo, questões autorais, rival simulado) e o contato |
+| Sorteio (`#sorteio`) | "Concurso é jogo." e o disco da roleta da área, com a física do app: um toque (ou um peteleco na caneta) sorteia a matéria com as chances reais (15% cada matéria, 10% a convocação). Os objetos da mesa também respondem ao toque: o datador bate a data de novo e a 3×4 da rival troca de inicial |
+| Matérias (`#materias`) | A cartela com os selos das 14 matérias em 3 áreas. A pessoa escolhe a área (Conhecimentos gerais, Saúde, TI) e o disco troca as casas |
+| Questão (`#questao`) | Uma questão real do banco numa folha. A caneta corrige como no app: o risco na errada, o grifo na certa, a nota a lápis, o carimbo. Três acertos abrem a convocação |
+| Convocação (`#convocacao`) | O envelope lacrado. Romper o lacre abre o ofício com três selos; a Questão do selo decide. Acertou, o carimbo postal bate e o selo voa para o álbum do cabeçalho |
+| Errata (`#errata`) | A questão que a pessoa errou volta, com a marcada riscada. Refeita certa, as folhinhas do calendário (amanhã, 1, 3, 7 e 15 dias) são arrancadas uma a uma até o SANADA |
+| Diário (`#diario`) | A grade das respostas da pessoa, no formato de compartilhar do app, e o botão de mandar o resultado |
+| Edital (`#edital`) | Os cargos do catálogo, as fichas de três cargos de exemplo e o edital verticalizado com o peso de cada matéria |
+| Resultado (`#resultado`) | A primeira página do Diário do Nomeou com o nome que a pessoa digita na manchete. Com os 3 selos, sai a Edição Extra |
+| Fecho (`#baixar`) | "O jogo é grátis." sobre a mesa de objetos, as lojas e o que o PRO faz |
+| Rodapé | O Expediente (o elenco de objetos e o que cada um faz), os avisos, as preferências de som e movimento e o contato |
 
-### As animações
+**A cor é conquistada.** O selo só ganha cor e carimbo postal quando a pessoa acerta a Questão do selo. Os que faltam ficam em contorno, no álbum do cabeçalho e na primeira página.
 
-Cada bloco é uma cena que toca uma vez, em dois tempos. Quando a manchete entra na tela, a palavra sobe da máscara e o texto assenta. Quando o objeto do bloco aparece (o disco, a grade do Diário, a linha da Errata, o 212, as lojas do fim), ele se imprime e a mão anota: risco, grifo, círculo, nota e, por último, o carimbo. Os atrasos do objeto contam a partir dele, para tudo acontecer com a pessoa olhando. O que ninguém viu entra parado: se a página abre no meio, a pessoa rola depressa ou pula por um link, a cena aparece pronta; quem chega pelo teclado também não espera a entrada. Nada fica em laço, nada segue a rolagem e o disco só gira quando alguém toca (a caneta pré-tensiona e acompanha o dedo, como no app).
+O estado da rodada fica em `sessionStorage` (some ao fechar a aba). As preferências (som, movimento, área) ficam em `localStorage`.
 
-Com "reduzir movimento" ligado no sistema, tudo aparece no estado final e o sorteio para direto na casa. Sem JavaScript, o texto inteiro aparece, com o risco e o grifo feitos em CSS e o disco parado em Português.
+### O movimento
+
+Cada bloco é uma cena que toca uma vez, em dois tempos (`src/pagina/cenas.ts`): quando a manchete entra, as palavras sobem da máscara. Quando o objeto do bloco aparece, ele pousa e a mão anota. Os objetos pousam pelo material (papel, carta, plástico, madeira, cera, impresso), com as molas do app convertidas para CSS (`linear()`), e só a rolagem mexe as duas mesas (paralaxe em CSS, `animation-timeline: view()`). O que ninguém viu entra parado: rolagem rápida, âncora, recarga no meio, foco pelo teclado.
+
+- Com "reduzir movimento" no sistema, ou "Movimento: Reduzido" no rodapé, tudo aparece no estado final, sem travessias.
+- Em aparelho com pouca memória ou com economia de dados, só o objeto principal de cada cena anima, e as mesas não acompanham a rolagem.
+- Sem JavaScript, a página é completa: a rodada aparece já resolvida, com o risco e o grifo em CSS e os carimbos impressos.
+- Se o script demorar mais de 3 s (rede ruim), a página segue como sem JavaScript e só as interações ganham vida.
+
+### O som
+
+Desligado por padrão. A chave "Som" fica no cabeçalho e no rodapé. São os 23 sons do app (`assets/sons`) com a mesa de som dele (no máximo 2 eventos em 1,6 s, por categoria). Aberto direto do disco (`file://`), o som vai por `<audio>`.
 
 ## Rodando
 
-Não há build: são arquivos estáticos. Qualquer servidor serve.
+O código é TypeScript (`src/`), juntado pelo esbuild num script só, `assets/js/site.js`, que também abre direto do disco. Todo build carimba no `index.html` a versão do CSS e do JS (`?v=` e um pedaço do hash do conteúdo), para quem volta depois de uma publicação não juntar um arquivo velho do cache com a página nova.
+
+```bash
+npm install
+```
+
+```bash
+npm run build
+```
+
+Depois, sirva a pasta com qualquer servidor estático e abra `http://localhost:8830`:
 
 ```bash
 python -m http.server 8830
 ```
 
-Depois, abra `http://localhost:8830`. O `index.html` também abre direto do disco.
+Os outros comandos:
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Refaz o `site.js` a cada mudança em `src/` (sem minificar) |
+| `npm run check` | Confere os tipos (`tsc --noEmit`) |
+| `npm run dados` | Gera de novo o conteúdo a partir do app (veja abaixo) e faz o build |
 
 ## Publicando
 
-Suba a pasta inteira em qualquer hospedagem estática (Cloudflare Pages, Netlify, Vercel ou GitHub Pages), sem comando de build e com a raiz do repositório como pasta pública.
+O `assets/js/site.js` gerado vai para o repositório, então a pasta já é o site: suba-a inteira numa hospedagem estática (Cloudflare Pages, Netlify, Vercel ou GitHub Pages), com a raiz como pasta pública e sem comando de build. Se preferir que a hospedagem faça o build, use `npm ci && npm run build`. Não publique `node_modules/`, `src/`, `scripts/` nem `.taste-skill/` se a hospedagem deixar escolher (eles não fazem mal, mas não são o site).
 
-## As lojas
+## Configuração
 
-No alto de `assets/js/site.js`, o objeto `CONFIG`:
+Em `src/config.ts` (depois de mudar, rode `npm run build`):
 
-```js
-lojas: {
-  ios: '',     // https://apps.apple.com/br/app/...
-  android: '', // https://play.google.com/store/apps/details?id=...
-},
-```
+| Chave | O que faz |
+|---|---|
+| `lojas.ios`, `lojas.android` | Os links das lojas. Só valem os que começam com `https://apps.apple.com/` e `https://play.google.com/` |
+| `convocacaoLivre` | `true`: o envelope abre sem os 3 acertos (bom para a amostra). `false`: só abre com 3 acertos na questão |
+| `areas` | `true`: a faixa deixa escolher a área. `false`: fica a roleta geral |
 
-- **Sem links**, a abertura e o fim da página dizem "Em breve no iPhone e no Android."
-- **Com um link**, aparece o botão daquela loja e a linha "Android em breve." (ou "iPhone em breve.").
-- **Com os dois**, aparecem os dois botões: no Android, o Google Play vem primeiro; no iPhone e no desktop, a App Store.
-- **Com um ou dois links**, o "Baixar o app" do topo aparece e, no celular, leva à loja do aparelho (ou ao fim da página, se a dele ainda não tem link). O JSON-LD da página ganha `installUrl` e o preço zero.
+### As lojas
 
-Só valem links que começam com `https://apps.apple.com/` e `https://play.google.com/`; outro endereço é ignorado.
+| Situação | Celular | Computador |
+|---|---|---|
+| Sem links | "Em breve no iPhone e no Android." na abertura e no fecho | O mesmo |
+| Com a loja do aparelho | A loja vira o botão cheio da abertura e do fecho; "Sortear a matéria" vira botão de texto logo abaixo. A barra "Baixar o app" aparece embaixo quando a abertura sai da tela | Abertura: as duas lojas em contorno (o sorteio continua sendo o botão cheio). Fecho: a App Store cheia e o Google Play em contorno |
+| Sem a loja do aparelho | "iPhone em breve." ou "Android em breve." | A loja que falta diz "em breve" |
 
-O rodapé já traz a linha de marcas que a Apple pede a quem cita iPhone e App Store (e a do Google). Os botões são de texto, nas cores da marca ("Baixar na App Store", "Baixar no Google Play"). Se preferir os selos oficiais, baixe-os nas páginas de marketing da Apple (App Store Marketing Guidelines) e do Google Play (Google Play badges) e troque o HTML gerado em `iniciarLojas()`, respeitando o tamanho mínimo e a área de respiro que cada guia pede.
+Com qualquer link, o "Baixar o app" do cabeçalho (do tablet para cima) aparece quando os botões de loja saem da tela, e o JSON-LD ganha `installUrl` e o preço zero. Os botões são de texto ("Baixar na App Store", "Baixar no Google Play"); para usar os selos oficiais, troque `botaoDaLoja()` em `src/pagina/lojas.ts`, respeitando o tamanho mínimo e o respiro que as guias da Apple e do Google pedem. O rodapé já traz a linha de marcas da Apple e do Google.
 
-Quando o app estiver na App Store, descomente no `<head>` o `<meta name="apple-itunes-app">` com o id do app: o Safari do iPhone mostra a faixa de abrir ou baixar.
+Quando o app estiver na App Store, descomente no `<head>` o `<meta name="apple-itunes-app">` com o id do app.
 
 ## Atualizando o conteúdo a partir do app
 
-As matérias do disco, a edição do Diário, os números do banco, a marca e a gramática da margem saem do código do app:
+As matérias, as roletas, as questões da página, o Diário, os números, os cargos, os sons e as molas saem do código do app:
 
 ```bash
-node scripts/dados-do-app.mjs ../turno-concurso
+npm run dados
 ```
 
-Sem data, vale o Diário de hoje (horário de Brasília). Para outro dia:
+Para o Diário de outro dia (sem data, vale o de hoje no horário de Brasília):
 
 ```bash
 node scripts/dados-do-app.mjs ../turno-concurso 2026-11-03
 ```
 
-O script importa o TypeScript do app direto (com o `typescript` do próprio app, sem build) e:
+O script importa o TypeScript do app direto (sem build e sem mexer em nada lá) e:
 
-- grava `assets/js/conteudo.js` (as matérias da roleta geral e os números do dia: os concursos contam pela regra do app, que tira os de prova já feita);
-- grava `assets/js/rabisco.js`, a gramática da margem (`src/components/rabisco/geometria.ts`) transpilada sem mudança;
-- reescreve no `index.html` o que sai impresso entre os marcadores `<!-- …:inicio -->` e `<!-- …:fim -->`: a marca, o disco parado em Português, a linha "Fonte:" das chances, a grade do Diário, os 212 cargos, o "com inscrições abertas" (só quando há concurso aberto) e os números;
-- para com erro se a roleta geral deixar de ter 6 matérias ou se as chances do app mudarem (o disco desenha as casas do tamanho delas, em `assets/js/disco.js`).
+- grava `src/gerado/` (conteúdo, questões, a geometria dos gestos, a mesa de som, as molas e os volumes);
+- copia os `.wav` do app para `assets/sons/`;
+- grava as molas entre os marcadores do `assets/css/site.css`;
+- reescreve no `index.html` o sprite (a marca, o selo e o elenco de `assets/img/elenco-simbolos.svg`) e, entre os marcadores `<!-- …:inicio -->` e `<!-- …:fim -->`, o estado sem JavaScript, impresso com as mesmas peças do site (`src/base/pecas.ts`);
+- faz o build.
+
+Ele confere tudo antes de gravar e para com uma mensagem se o app mudar algo que o site usa (as chances do sorteio, a mesa de som, a marca, um marcador que sumiu). O desenho que foi copiado à mão (o carimbo postal, a sigla e a gravura do selo, o lacre) é comparado com o retrato de `scripts/lib/desenho-conferido.json`: se o app mudou, atualize `src/base/pecas.ts` ou `assets/img/elenco-simbolos.svg` e rode de novo com `--aceitar-desenho`, que grava o retrato novo.
 
 ## Estrutura
 
 ```
-index.html                   a página
-assets/css/site.css          os tokens do app, as cenas e cada bloco
-assets/js/site.js            as cenas, os gestos da mão, o sorteio e as lojas
-assets/js/disco.js           o disco do sorteio (a geometria de Roleta.tsx)
-assets/js/rabisco.js         a gramática da margem (gerado)
-assets/js/conteudo.js        o conteúdo do app (gerado)
-assets/fonts/                Gloock, League Gothic, Newsreader, Archivo e a Mynerve congelada do app, em WOFF2, com as licenças OFL
-assets/img/marca/            a marca, o ícone Nº e os favicons
-assets/img/compartilhar.png  a prévia do link (1200 × 630): a marca, a manchete e o disco
-scripts/dados-do-app.mjs     o gerador do conteúdo
+index.html                    a página (com os marcadores do estado sem JavaScript)
+src/main.ts                   liga tudo, na ordem
+src/config.ts                 o que o dono muda à mão (lojas, convocação livre, áreas)
+src/base/                     as peças: pecas.ts (HTML/SVG das peças), disco.ts, mao.ts (risco, grifo, carimbo),
+                              movimento.ts (o motor das entradas), som.ts, rodada.ts (o estado), folha.ts, dom.ts
+src/pagina/                   um módulo por bloco e cenas.ts, o motor das cenas
+src/gerado/                   o que sai do app (gerado, não edite)
+assets/js/site.js             o build (gerado, vai para o repositório) e o site.js.map
+assets/css/site.css           os tokens do app, o cabeçalho, as cenas e cada bloco
+assets/css/elenco.css         as mesas, os objetos e as peças de papel
+assets/img/elenco-simbolos.svg  os desenhos dos objetos
+assets/img/marca/             a marca, o ícone e os favicons
+assets/img/compartilhar.png   a prévia do link (1200 × 630)
+assets/fonts/                 Gloock, League Gothic, Newsreader, Archivo e a Mynerve do app, em WOFF2, com as licenças OFL
+assets/sons/                  os sons do app (gerado)
+scripts/build.mjs             o build (esbuild)
+scripts/dados-do-app.mjs      o gerador (com scripts/lib/)
 ```
 
 ## Antes de publicar
 
 - **Lojas:** preencha `CONFIG.lojas` e o `apple-itunes-app` quando o app sair.
-- **Domínio e e-mail:** `nomeou.app` e `contato@nomeou.app` ainda não estão confirmados (`docs/LIGA.md`, pendência 4). O site usa os dois.
+- **Domínio e e-mail:** `nomeou.app` e `contato@nomeou.app` ainda não estão confirmados (`docs/LIGA.md` do app, pendência 4). O site usa os dois.
 - **Termos, privacidade e responsáveis:** as lojas pedem um endereço de política de privacidade (e o Google Play, um de exclusão de conta). `URLS_LEGAIS` no app aponta para `nomeou.app/termos`, `nomeou.app/privacidade` e `nomeou.app/responsaveis`, que ainda não existem neste site. O corpo de cada uma sai de `turno-concurso/dist/legal/<doc>.html` (`npm run legal` no app). Os links do rodapé entram junto com as páginas, nunca antes.
-- **Quem publica:** o app mostra o Expediente (razão social e CNPJ) por causa do Decreto 7.962/2013. Se o site também for vender o PRO ou falar dele como hoje, vale repetir o Expediente no rodapé; fica para o dono decidir, junto com a revisão jurídica.
-- **O Diário** mostrado é o nº 024 (24/10/2026). Rode o script perto do lançamento.
-- **Os números** (2.425 questões, 65 concursos e 212 cargos) são os do app em 24/10/2026, no dia em que o script rodou; rodando de novo, eles mudam (concurso com prova feita sai do catálogo).
+- **Quem publica:** o app mostra o expediente legal (razão social e CNPJ) por causa do Decreto 7.962/2013. Se o site também for vender o PRO ou falar dele como hoje, vale repetir esses dados no rodapé; fica para o dono decidir, junto com a revisão jurídica.
+- **O Diário** mostrado é o nº 025 (25/10/2026). Rode `npm run dados` perto do lançamento.
+- **Os números** (2.425 questões, 65 concursos e 212 cargos) são os do app em 25/10/2026. Rodando de novo, eles mudam (concurso com prova feita sai do catálogo).
+- **A prévia do link** (`assets/img/compartilhar.png`) mostra a abertura com o disco; refaça-a se a abertura mudar.
