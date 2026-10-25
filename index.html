@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nomeou · Questões de concurso em duelos</title>
-  <meta name="description" content="Questões de concurso em duelos 1×1 com quem estuda na sua área: o Diário com 5 questões por dia, a Errata que traz o erro de volta e o treino pelo edital do seu cargo.">
+  <meta name="description" content="Questões de concurso em duelos 1×1 com quem estuda na sua área: o Diário com 5 questões por dia, a Errata e o treino pelo edital do seu cargo.">
   <meta name="theme-color" content="#EFEBE2">
   <link rel="canonical" href="https://nomeou.app/">
   <link rel="icon" href="assets/img/marca/favicon-32.png" sizes="32x32" type="image/png">
@@ -27,7 +27,8 @@
   <link rel="preload" href="assets/fonts/league-gothic-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=2f7e7d44">
+  <link rel="stylesheet" href="assets/css/elenco.css?v=bf322817">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__nomeouPronto)document.documentElement.classList.remove('js')},3000)</script>
   <script type="application/ld+json" id="dados-do-app">
   {
@@ -53,95 +54,416 @@
     <symbol id="marca" viewBox="8 8 380.5 77.83">
       <g transform="translate(8 8)"><path fill="currentColor" d="M 66.8 76.4 L 14.4 9.6 Q 13.7 8.7 12.85 7.8 Q 12 6.9 11.3 6.3 L 11.3 63.5 Q 11.3 67.8 13.9 70.9 Q 16.5 74 20.8 74 L 20.8 75 L 0 75 L 0 74 Q 4.4 74 7 70.9 Q 9.6 67.8 9.6 63.4 L 9.6 4.9 Q 5.1 1.5 0.1 1 L 0.1 0 L 25.8 0 L 65.1 50.7 L 65.1 11.5 Q 65.1 7.2 62.5 4.1 Q 59.9 1 55.6 1 L 55.6 0 L 76.3 0 L 76.3 1 Q 72 1 69.4 4.1 Q 66.8 7.2 66.8 11.5 L 66.8 76.4 Z M 99.1 76.4 Q 90.9 76.4 84.75 73.1 Q 78.6 69.8 75.2 63.8 Q 71.8 57.8 71.8 49.6 Q 71.8 41.4 75.2 35.4 Q 78.6 29.4 84.75 26.1 Q 90.9 22.8 99.1 22.8 Q 107.3 22.8 113.4 26.1 Q 119.5 29.4 122.9 35.4 Q 126.3 41.4 126.3 49.6 Q 126.3 57.8 122.9 63.8 Q 119.5 69.8 113.4 73.1 Q 107.3 76.4 99.1 76.4 Z M 99 75.1 Q 102.5 75.1 105 71.6 Q 107.5 68.1 108.9 62.25 Q 110.3 56.4 110.3 49.5 Q 110.3 42 108.85 36.25 Q 107.4 30.5 104.85 27.25 Q 102.3 24 99.1 24 Q 95.7 24 93.15 27.5 Q 90.6 31 89.2 36.8 Q 87.8 42.6 87.8 49.5 Q 87.8 57.1 89.3 62.9 Q 90.8 68.7 93.35 71.9 Q 95.9 75.1 99 75.1 Z M 125.5 75 L 125.5 74 L 125.6 74 Q 129.2 74 131.4 71.8 Q 133.6 69.6 133.6 66 L 133.6 33.2 Q 133.6 29.4 132.05 27.3 Q 130.5 25.2 125.5 25.2 L 125.5 24.2 L 135.4 24.2 Q 139.5 24.2 141.75 23.8 Q 144 23.4 145.1 22.75 Q 146.2 22.1 146.7 21.4 L 147.7 21.4 L 147.8 34.4 Q 150.4 29.2 155.7 26 Q 161 22.8 166.9 22.8 Q 172.6 22.8 176.4 26 Q 180.2 29.2 181.3 34.6 Q 184.1 29.2 189.35 26 Q 194.6 22.8 200.7 22.8 Q 207.4 22.8 211.45 27.2 Q 215.5 31.6 215.5 38.8 L 215.5 66 Q 215.5 69.6 217.7 71.8 Q 219.9 74 223.5 74 L 223.6 74 L 223.6 75 L 193.1 75 L 193.1 74 L 193.2 74 Q 196.8 74 199 71.8 Q 201.2 69.6 201.2 66 L 201.2 37.8 Q 201.2 32.8 199.2 29.8 Q 197.2 26.8 194 26.8 Q 190.9 26.8 187.5 29.55 Q 184.1 32.3 181.6 36.7 Q 181.7 36.9 181.7 37.2 Q 181.7 37.5 181.7 37.7 L 181.7 66 Q 181.7 69.6 183.9 71.8 Q 186.1 74 189.7 74 L 189.8 74 L 189.8 75 L 159.3 75 L 159.3 74 L 159.4 74 Q 163 74 165.2 71.8 Q 167.4 69.6 167.4 66 L 167.4 37.8 Q 167.4 32.8 165.45 29.8 Q 163.5 26.8 160.3 26.8 Q 157.2 26.8 153.85 29.45 Q 150.5 32.1 148 36.6 L 148 66 Q 148 69.6 150.2 71.8 Q 152.4 74 156 74 L 156.1 74 L 156.1 75 L 125.5 75 Z M 245.5 76.2 Q 238.6 76.2 233.25 72.8 Q 227.9 69.4 224.9 63.35 Q 221.9 57.3 221.9 49.5 Q 221.9 41.5 225.2 35.5 Q 228.5 29.5 234.25 26.15 Q 240 22.8 247.3 22.8 Q 253.4 22.8 258.15 25.2 Q 262.9 27.6 265.75 31.95 Q 268.6 36.3 269 42 L 269.1 43.5 L 235.5 43.5 L 235.5 44 Q 235.5 54.6 240.2 60.95 Q 244.9 67.3 252.8 67.3 Q 257.6 67.3 261.95 64.95 Q 266.3 62.6 269 58.6 L 269.9 58.9 Q 268.2 64 264.6 67.9 Q 261 71.8 256.1 74 Q 251.2 76.2 245.5 76.2 Z M 235.6 42 L 255.9 42 Q 255.9 34.1 253.35 29.2 Q 250.8 24.3 246.2 24.3 Q 241.8 24.3 238.9 29.1 Q 236 33.9 235.6 42 Z M 358.4 77.8 L 358.3 64.9 Q 355.7 70 350.4 73.2 Q 345.1 76.4 339.2 76.4 Q 332.5 76.4 328.45 72 Q 324.4 67.6 324.4 60.4 L 324.4 33.2 Q 324.4 29.4 322.9 27.3 Q 321.4 25.2 316.3 25.2 L 316.3 24.2 L 326.4 24.2 Q 331.5 24.2 334.2 23.1 Q 336.7 22 337.7 20.4 L 338.7 20.4 L 338.7 61.4 Q 338.7 66.4 340.7 69.4 Q 342.7 72.4 345.9 72.4 Q 349 72.4 352.3 69.75 Q 355.6 67.1 358.1 62.6 L 358.1 33.2 Q 358.1 29.6 356.3 27.4 Q 354.5 25.2 350.1 25.2 L 350.1 24.2 L 360.2 24.2 Q 365.3 24.2 368 23.1 Q 370.6 22 371.6 20.4 L 372.6 20.4 L 372.5 66 Q 372.5 69.6 374.7 71.85 Q 376.9 74.1 380.5 74.1 L 380.5 75 L 370.6 75 Q 368 75 366 75.15 Q 364 75.3 362.7 75.5 Q 360 76.1 358.9 77.8 L 358.4 77.8 Z"/><circle cx="295" cy="49.58" r="24" style="fill: var(--bolinha, #2346C8)"/></g>
     </symbol>
+    <!-- selo:simbolos:inicio --><symbol id="o-selo-papel" viewBox="0 0 100 100"><path d="M 10 2 L 12 2 A 3 3 0 0 0 18 2 L 22 2 A 3 3 0 0 0 28 2 L 32 2 A 3 3 0 0 0 38 2 L 42 2 A 3 3 0 0 0 48 2 L 52 2 A 3 3 0 0 0 58 2 L 62 2 A 3 3 0 0 0 68 2 L 72 2 A 3 3 0 0 0 78 2 L 82 2 A 3 3 0 0 0 88 2 L 90 2 L 90 3.8 A 3 3 0 0 0 90 9.8 L 90 13.4 A 3 3 0 0 0 90 19.4 L 90 23 A 3 3 0 0 0 90 29 L 90 32.6 A 3 3 0 0 0 90 38.6 L 90 42.2 A 3 3 0 0 0 90 48.2 L 90 51.8 A 3 3 0 0 0 90 57.8 L 90 61.4 A 3 3 0 0 0 90 67.4 L 90 71 A 3 3 0 0 0 90 77 L 90 80.6 A 3 3 0 0 0 90 86.6 L 90 90.2 A 3 3 0 0 0 90 96.2 L 90 98 L 88 98 A 3 3 0 0 0 82 98 L 78 98 A 3 3 0 0 0 72 98 L 68 98 A 3 3 0 0 0 62 98 L 58 98 A 3 3 0 0 0 52 98 L 48 98 A 3 3 0 0 0 42 98 L 38 98 A 3 3 0 0 0 32 98 L 28 98 A 3 3 0 0 0 22 98 L 18 98 A 3 3 0 0 0 12 98 L 10 98 L 10 96.2 A 3 3 0 0 0 10 90.2 L 10 86.6 A 3 3 0 0 0 10 80.6 L 10 77 A 3 3 0 0 0 10 71 L 10 67.4 A 3 3 0 0 0 10 61.4 L 10 57.8 A 3 3 0 0 0 10 51.8 L 10 48.2 A 3 3 0 0 0 10 42.2 L 10 38.6 A 3 3 0 0 0 10 32.6 L 10 29 A 3 3 0 0 0 10 23 L 10 19.4 A 3 3 0 0 0 10 13.4 L 10 9.8 A 3 3 0 0 0 10 3.8 Z" fill="#FAF8F3" stroke="rgba(22,22,27,.35)" stroke-width=".8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></symbol><symbol id="o-selo-sombra" viewBox="0 0 100 100"><path d="M 10 2 L 12 2 A 3 3 0 0 0 18 2 L 22 2 A 3 3 0 0 0 28 2 L 32 2 A 3 3 0 0 0 38 2 L 42 2 A 3 3 0 0 0 48 2 L 52 2 A 3 3 0 0 0 58 2 L 62 2 A 3 3 0 0 0 68 2 L 72 2 A 3 3 0 0 0 78 2 L 82 2 A 3 3 0 0 0 88 2 L 90 2 L 90 3.8 A 3 3 0 0 0 90 9.8 L 90 13.4 A 3 3 0 0 0 90 19.4 L 90 23 A 3 3 0 0 0 90 29 L 90 32.6 A 3 3 0 0 0 90 38.6 L 90 42.2 A 3 3 0 0 0 90 48.2 L 90 51.8 A 3 3 0 0 0 90 57.8 L 90 61.4 A 3 3 0 0 0 90 67.4 L 90 71 A 3 3 0 0 0 90 77 L 90 80.6 A 3 3 0 0 0 90 86.6 L 90 90.2 A 3 3 0 0 0 90 96.2 L 90 98 L 88 98 A 3 3 0 0 0 82 98 L 78 98 A 3 3 0 0 0 72 98 L 68 98 A 3 3 0 0 0 62 98 L 58 98 A 3 3 0 0 0 52 98 L 48 98 A 3 3 0 0 0 42 98 L 38 98 A 3 3 0 0 0 32 98 L 28 98 A 3 3 0 0 0 22 98 L 18 98 A 3 3 0 0 0 12 98 L 10 98 L 10 96.2 A 3 3 0 0 0 10 90.2 L 10 86.6 A 3 3 0 0 0 10 80.6 L 10 77 A 3 3 0 0 0 10 71 L 10 67.4 A 3 3 0 0 0 10 61.4 L 10 57.8 A 3 3 0 0 0 10 51.8 L 10 48.2 A 3 3 0 0 0 10 42.2 L 10 38.6 A 3 3 0 0 0 10 32.6 L 10 29 A 3 3 0 0 0 10 23 L 10 19.4 A 3 3 0 0 0 10 13.4 L 10 9.8 A 3 3 0 0 0 10 3.8 Z" fill="currentColor"/></symbol><symbol id="o-selo-picote" viewBox="0 0 100 100"><path d="M 10 2 L 12 2 A 3 3 0 0 0 18 2 L 22 2 A 3 3 0 0 0 28 2 L 32 2 A 3 3 0 0 0 38 2 L 42 2 A 3 3 0 0 0 48 2 L 52 2 A 3 3 0 0 0 58 2 L 62 2 A 3 3 0 0 0 68 2 L 72 2 A 3 3 0 0 0 78 2 L 82 2 A 3 3 0 0 0 88 2 L 90 2 L 90 3.8 A 3 3 0 0 0 90 9.8 L 90 13.4 A 3 3 0 0 0 90 19.4 L 90 23 A 3 3 0 0 0 90 29 L 90 32.6 A 3 3 0 0 0 90 38.6 L 90 42.2 A 3 3 0 0 0 90 48.2 L 90 51.8 A 3 3 0 0 0 90 57.8 L 90 61.4 A 3 3 0 0 0 90 67.4 L 90 71 A 3 3 0 0 0 90 77 L 90 80.6 A 3 3 0 0 0 90 86.6 L 90 90.2 A 3 3 0 0 0 90 96.2 L 90 98 L 88 98 A 3 3 0 0 0 82 98 L 78 98 A 3 3 0 0 0 72 98 L 68 98 A 3 3 0 0 0 62 98 L 58 98 A 3 3 0 0 0 52 98 L 48 98 A 3 3 0 0 0 42 98 L 38 98 A 3 3 0 0 0 32 98 L 28 98 A 3 3 0 0 0 22 98 L 18 98 A 3 3 0 0 0 12 98 L 10 98 L 10 96.2 A 3 3 0 0 0 10 90.2 L 10 86.6 A 3 3 0 0 0 10 80.6 L 10 77 A 3 3 0 0 0 10 71 L 10 67.4 A 3 3 0 0 0 10 61.4 L 10 57.8 A 3 3 0 0 0 10 51.8 L 10 48.2 A 3 3 0 0 0 10 42.2 L 10 38.6 A 3 3 0 0 0 10 32.6 L 10 29 A 3 3 0 0 0 10 23 L 10 19.4 A 3 3 0 0 0 10 13.4 L 10 9.8 A 3 3 0 0 0 10 3.8 Z" fill="none" stroke="rgba(22,22,27,0.32)" stroke-width="1" stroke-dasharray="2.5 2" vector-effect="non-scaling-stroke"/></symbol><!-- selo:simbolos:fim -->
+    <!-- elenco:inicio --><defs>
+    <pattern id="ret" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#16161B" fill-opacity=".28"/></pattern>
+    <pattern id="ret-folha" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#FAF8F3" fill-opacity=".2"/></pattern>
+    <pattern id="kraft" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M91.9 10.2q1.8 -0.3 3.6 -0.9M22.6 99.2q2.6 1.1 5.2 2.4M39.9 19.2q2.3 0 4.7 -1.1M39.9 94.3q1.6 0.3 3.1 0.2M83.1 65.2q2.8 -0.6 5.6 -2.5M66.8 93.8q2 0.4 3.9 1.3M37.3 61.6q1.8 0.8 3.7 0.7M103.5 36.4q1.6 0 3.3 0.2M105.2 31.7q1.6 0.6 3.2 -0.5M36.5 70.9q1.8 -0.6 3.5 -1.4M69.6 21.3q2.5 1.8 5 2.3M61.9 97q1.9 0.4 3.8 -0.7M45.5 5.8q3.2 -0.6 6.4 -1.1M96.3 26q1.7 -0.3 3.4 -1.4M71.5 114.6q3.2 -0.5 6.4 -2.9M24 83.3q1.5 -0.8 3 -0.9M16.4 104.4q2.3 0.3 4.5 1.1M42.9 87.1q1.6 1.2 3.1 0.5M65.6 94.4q2.3 -0.4 4.5 -0.3M105.1 89.8q1.8 -0.1 3.5 -1.1M51.3 109.9q2.5 -0.4 4.9 0.5M24.2 100q1.6 0.6 3.3 1.5M79.2 101.1q1.9 -1.2 3.8 -0.8M26.6 114.7q2.7 -1 5.4 -1M115.9 2q1.7 -0.1 3.3 1M23.3 27.4q1.9 -0.4 3.8 -0.3M52.5 79q1.6 -0.7 3.2 -0.2M9.1 114.4q2.2 -0.5 4.4 -0.9M58.3 103.9q3.3 -1.2 6.6 -1.7M8.9 9.4q2.9 -0.8 5.7 -1.8" fill="none" stroke="rgba(92,60,24,.15)" stroke-width=".7" stroke-linecap="round"/>
+      <path d="M118.7 79.4q2.3 -0.2 4.7 -2.1M-1.3 79.4q2.3 -0.2 4.7 -2.1M89.9 4.6q2.7 -1 5.5 0M84.4 46.6q2.3 1.5 4.7 1.3M113.9 116.1q2.7 0.3 5.4 0.4M116.4 55q2.2 0.6 4.5 -0.8M-3.6 55q2.2 0.6 4.5 -0.8M80.5 8q2.9 0.2 5.9 0.2M0.6 118.3q1.7 -0.3 3.4 1.1M1 119.7q1.9 0.2 3.8 0M102.1 54.1q2.9 -0.9 5.9 -1.6M64.2 47q2.7 -0.4 5.5 -1M65.7 3.9q2 -0.8 4 -0.8M1.6 0.4q1.6 0 3.3 0.1M119.4 35.3q1.6 -0.1 3.1 -0.9M-0.6 35.3q1.6 -0.1 3.1 -0.9M24.4 38.1q1.5 0.3 3.1 -0.1M68.3 99.4q2.3 -0.2 4.6 -1M63.2 80q2.7 0.6 5.3 -0.2M104.1 12.1q1.8 0.3 3.6 -0.5M21.7 47q1.7 -0.7 3.4 -1.5M0.9 109.3q3.3 1.5 6.7 1.8M60.8 108.9q2.5 -1.2 5 -1.8M51.5 43.5q1.8 0.6 3.6 1.3M61.2 16.9q2.9 0.3 5.7 0M63.9 70.3q1.7 0.2 3.4 -0.6M6.2 61.4q2.9 1.4 5.9 2.3M60.5 93.2q2.4 -1.2 4.8 -1.5M89.3 13.1q2.1 -0.2 4.2 -0.2M17.1 108.2q2 -0.5 4 0.6M25.5 41.5q1.7 -0.1 3.4 -1.5M87 23.2q3.1 1.2 6.2 1.5M33.9 76.5q1.5 0.1 3 -0.7" fill="none" stroke="rgba(255,243,220,.24)" stroke-width=".8" stroke-linecap="round"/>
+    </pattern>
+    <clipPath id="recorte-bic"><rect x="40" y="4" width="153" height="20"/></clipPath>
+    <clipPath id="recorte-xicara"><path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z"/></clipPath>
+    <clipPath id="recorte-lacre-esquerda"><path d="M226 150 H261.4 L261.4 160 L259.6 171 L263 181 L259.4 191 L262.6 201 L260 211 L261.2 222 V230 H226 Z"/></clipPath>
+    <clipPath id="recorte-lacre-direita"><path d="M294 150 H260.6 L260.6 160 L258.8 171 L262.2 181 L258.6 191 L261.8 201 L259.2 211 L260.4 222 V230 H294 Z"/></clipPath>
+    <mask id="falhas-postal" x="0" y="0" width="100" height="100" maskUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#FFFFFF"/>
+      <g transform="translate(36 6)"><path d="M12.8,20.7a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M25,27.7a0.5,0.5 0 1,0 1.1,0a0.5,0.5 0 1,0 -1.1,0M44.5,27.5a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M40.2,16a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M5.4,33a1.1,1.1 0 1,0 2.1,0a1.1,1.1 0 1,0 -2.1,0M0.8,13a0.5,0.5 0 1,0 1,0a0.5,0.5 0 1,0 -1,0M54.2,7.4a1.1,1.1 0 1,0 2.2,0a1.1,1.1 0 1,0 -2.2,0M55.1,21.5a0.5,0.5 0 1,0 1.1,0a0.5,0.5 0 1,0 -1.1,0M17.4,4.4a0.6,0.6 0 1,0 1.1,0a0.6,0.6 0 1,0 -1.1,0M44.1,3.6a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M54.5,32.9a0.5,0.5 0 1,0 1,0a0.5,0.5 0 1,0 -1,0M5.8,8.1a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M17,30.9a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M2.4,31.3a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0" fill="#000000"/><path d="M19.5,1.4a0.4,0.4 0 1,0 0.7,0a0.4,0.4 0 1,0 -0.7,0M44.2,2.7a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M55.4,5.3a0.5,0.5 0 1,0 0.9,0a0.5,0.5 0 1,0 -0.9,0M53.1,16.5a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0M16.2,6a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M1.6,3.3a0.4,0.4 0 1,0 0.8,0a0.4,0.4 0 1,0 -0.8,0M17.3,30.3a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M18.4,26.3a0.6,0.6 0 1,0 1.2,0a0.6,0.6 0 1,0 -1.2,0M0.6,0.9a0.4,0.4 0 1,0 0.9,0a0.4,0.4 0 1,0 -0.9,0M2,0.6a0.9,0.9 0 1,0 1.7,0a0.9,0.9 0 1,0 -1.7,0" fill="#000000" fill-opacity=".55"/></g>
+    </mask>
+  </defs>
+  <symbol id="o-bic" viewBox="0 0 240 28">
+    <g clip-path="url(#recorte-bic)">
+      <g class="bic__faces" data-passos="6 8 6">
+        <rect x="40" y="4" width="153" height="7" fill="#6F8CF0"/>
+        <rect x="40" y="10" width="153" height="9" fill="#2346C8"/>
+        <rect x="40" y="18" width="153" height="7" fill="#1A3596"/>
+        <rect x="40" y="24" width="153" height="7" fill="#6F8CF0"/>
+        <rect x="40" y="30" width="153" height="9" fill="#2346C8"/>
+        <rect x="40" y="38" width="153" height="6" fill="#1A3596"/>
+      </g>
+    </g>
+    <line x1="44" y1="6.5" x2="186" y2="6.5" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.2"/>
+    <g stroke="#16161B" stroke-width="1.5" stroke-linejoin="round">
+      <rect x="40" y="4" width="153" height="20" fill="none"/>
+      <path d="M40 5 L16 12.5 L16 15.5 L40 23 Z" fill="#16161B"/>
+      <rect x="192" y="3" width="44" height="22" fill="#1A3596"/>
+    </g>
+    <line x1="196" y1="5.6" x2="232" y2="5.6" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.2"/>
+    <circle cx="14" cy="14" r="1.6" fill="#63636C"/>
+    <rect x="200" y=".5" width="32" height="3.5" fill="#1A3596" stroke="#16161B" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-bic-sombra" viewBox="0 0 240 28">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <path d="M40 5 L16 12.5 L16 15.5 L40 23 Z"/><circle cx="14" cy="14" r="1.6"/>
+      <rect x="40" y="4" width="153" height="20"/><rect x="192" y="3" width="44" height="22"/><rect x="200" y=".5" width="32" height="3.5"/>
+    </g>
+  </symbol>
+  <symbol id="o-34" viewBox="0 0 60 86">
+    <rect x=".75" y="6.75" width="58.5" height="78.5" fill="#FAF8F3" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="4" y="10" width="52" height="72" style="fill:var(--chapa,#4DC3B5)"/>
+    <g class="foto34__grampo" fill="none" stroke-linecap="square">
+      <path d="M22 13 V3 H40 V13" stroke="#16161B" stroke-opacity=".22" stroke-width="2"/>
+      <path d="M21 12 V2 H39 V12" stroke="#4A4A53" stroke-width="2"/>
+      <path d="M22 3 H38" stroke="#FAF8F3" stroke-opacity=".5" stroke-width="1"/>
+    </g>
+  </symbol>
+  <symbol id="o-34-sombra" viewBox="0 0 60 86">
+    <g fill="#16161B" stroke="#16161B" opacity=".22">
+      <rect x="0" y="6" width="60" height="80" stroke="none"/>
+      <path d="M21 12 V2 H39 V12" fill="none" stroke-width="2" stroke-linecap="square"/>
+    </g>
+  </symbol>
+  <symbol id="o-datador" viewBox="0 0 100 130">
+    <rect x="43" y="38" width="14" height="22" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <ellipse cx="50" cy="22" rx="26" ry="18" fill="#16161B"/>
+    <path d="M27.92 27.3 A23.5 15.5 0 0 1 47.95 6.56 L44.44 8.96 A21.5 13.5 0 0 0 28.83 24.34 Z" fill="#FAF8F3" fill-opacity=".3"/>
+    <rect x="18" y="60" width="64" height="36" fill="#16161B"/>
+    <rect x="18" y="60" width="64" height="5" fill="#4A4A53"/>
+    <rect x="26" y="68" width="48" height="18" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <path d="M42 68 V86 M58 68 V86" stroke="#16161B" stroke-width="1"/>
+    <path d="M30 76h8v2h-8z M45 76h10v2h-10z M60 76h12v2h-12z" fill="#16161B"/>
+    <rect x="14" y="96" width="72" height="14" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="16" y="110" width="68" height="6" fill="#63636C"/>
+  </symbol>
+  <symbol id="o-datador-sombra" viewBox="0 0 100 130">
+    <ellipse cx="52" cy="120" rx="40" ry="6" fill="#16161B" fill-opacity=".18"/>
+  </symbol>
+  <symbol id="o-marca-texto" viewBox="0 0 150 40">
+    <rect x="22" y="6" width="96" height="28" rx="4" fill="#16161B"/>
+    <path d="M22 20 H118 V30 A4 4 0 0 1 114 34 H26 A4 4 0 0 1 22 30 Z" fill="url(#ret-folha)"/>
+    <line x1="27" y1="9.5" x2="113" y2="9.5" stroke="#FAF8F3" stroke-opacity=".55" stroke-width="1.4"/>
+    <rect x="40" y="13" width="40" height="12" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <rect x="42" y="15" width="36" height="8" fill="#FFD21A"/>
+    <g stroke="#16161B" stroke-width="1.5" stroke-linejoin="round">
+      <rect x="118" y="4" width="28" height="32" rx="3" fill="#FFD21A"/>
+      <path d="M22 10 L8 14 L4 26 L22 30 Z" fill="#FFD21A"/>
+    </g>
+    <path d="M8 14 L4 26 L14 25 Z" fill="#E3B200"/>
+    <rect x="122" y="1" width="20" height="5" rx="1.5" fill="#16161B"/>
+  </symbol>
+  <symbol id="o-marca-texto-sombra" viewBox="0 0 150 40">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <path d="M22 10 L8 14 L4 26 L22 30 Z"/><rect x="22" y="6" width="96" height="28" rx="4"/>
+      <rect x="118" y="4" width="28" height="32" rx="3"/><rect x="122" y="1" width="20" height="5" rx="1.5" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="o-xicara" viewBox="0 0 96 64">
+    <ellipse cx="48" cy="56" rx="44" ry="6" fill="#FAF8F3"/>
+    <path d="M4 56 A44 6 0 0 0 92 56 Z" fill="#E4DFD3"/>
+    <ellipse cx="48" cy="56" rx="44" ry="6" fill="none" stroke="#16161B" stroke-width="1.5"/>
+    <path d="M78 28 q12 2 10 12 q-2 8 -12 8" fill="none" stroke="#16161B" stroke-width="3" stroke-linecap="round"/>
+    <path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z" fill="#FAF8F3"/>
+    <rect x="58" y="20" width="22" height="36" fill="url(#ret)" clip-path="url(#recorte-xicara)"/>
+    <path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z" fill="none" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round"/>
+    <ellipse cx="48" cy="22" rx="30" ry="4" fill="#16161B"/>
+    <path d="M38 16 q-2.4 -2.5 0 -5 t0 -5 M48 14.5 q-2.4 -2.8 0 -5.6 t0 -5.6 M58 16.5 q-2.4 -2.2 0 -4.4" fill="none" stroke="#4F4B45" stroke-width="1.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="o-xicara-sombra" viewBox="0 0 96 64">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" stroke-linejoin="round" opacity=".22">
+      <ellipse cx="48" cy="56" rx="44" ry="6"/><path d="M18 22 L78 22 L72 50 Q70 54 64 54 L32 54 Q26 54 24 50 Z"/>
+      <ellipse cx="48" cy="22" rx="30" ry="4"/><path d="M78 28 q12 2 10 12 q-2 8 -12 8" fill="none" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </symbol>
+  <symbol id="o-folha-dobrada" viewBox="0 0 140 100">
+    <rect x=".5" y=".5" width="139" height="99" fill="#FAF8F3"/>
+    <rect x="70" y=".5" width="69.5" height="99" fill="#E4DFD3"/>
+    <rect x=".5" y=".5" width="69.5" height="10" fill="#16161B"/>
+    <g fill="none" stroke="#16161B" stroke-width=".8">
+      <circle cx="24" cy="26" r="3"/><circle cx="38" cy="26" r="3" fill="#16161B"/><circle cx="52" cy="26" r="3"/>
+      <circle cx="24" cy="40" r="3" fill="#16161B"/><circle cx="38" cy="40" r="3"/><circle cx="52" cy="40" r="3"/>
+      <circle cx="24" cy="54" r="3"/><circle cx="38" cy="54" r="3"/><circle cx="52" cy="54" r="3" fill="#16161B"/>
+      <circle cx="24" cy="68" r="3"/><circle cx="38" cy="68" r="3" fill="#16161B"/><circle cx="52" cy="68" r="3"/>
+      <circle cx="24" cy="82" r="3" fill="#16161B"/><circle cx="38" cy="82" r="3"/><circle cx="52" cy="82" r="3"/>
+    </g>
+    <line x1="70" y1=".5" x2="70" y2="99.5" stroke="rgba(22,22,27,.15)" stroke-width="1"/>
+    <rect x=".5" y=".5" width="139" height="99" fill="none" stroke="rgba(22,22,27,.32)" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-folha-dobrada-sombra" viewBox="0 0 140 100">
+    <rect width="140" height="100" fill="#16161B" opacity=".22"/>
+  </symbol>
+  <symbol id="o-numeradora" viewBox="0 0 160 110">
+    <g class="numeradora__alavanca">
+      <rect x="75" y="10" width="10" height="21" fill="#16161B"/>
+      <ellipse cx="80" cy="10" rx="16" ry="7" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    </g>
+    <rect x="10" y="30" width="140" height="70" fill="#4A4A53" stroke="#16161B" stroke-width="1.5"/>
+    <rect x="10" y="30" width="140" height="8" fill="#16161B"/>
+    <rect x="30" y="48" width="100" height="34" fill="#FAF8F3" stroke="#16161B" stroke-width="1"/>
+    <path d="M63.3 48 V82 M96.7 48 V82" stroke="#16161B" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-numeradora-sombra" viewBox="0 0 160 110">
+    <g fill="#16161B" stroke="#16161B" stroke-width="1.5" opacity=".22">
+      <rect x="75" y="10" width="10" height="21"/><ellipse cx="80" cy="10" rx="16" ry="7"/><rect x="10" y="30" width="140" height="70"/>
+    </g>
+  </symbol>
+  <symbol id="o-envelope-corpo" viewBox="0 0 520 340">
+    <rect width="520" height="340" fill="#CDA672"/>
+    <rect width="520" height="340" fill="url(#kraft)"/>
+    <path d="M0 340 L210 175 M520 340 L310 175" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+    <rect x=".5" y=".5" width="519" height="339" fill="none" stroke="rgba(22,22,27,.38)" stroke-width="1"/>
+  </symbol>
+  <symbol id="o-envelope-sombra" viewBox="0 0 520 340">
+    <rect width="520" height="340" fill="#16161B" opacity=".22"/>
+  </symbol>
+  <symbol id="o-envelope-aba" viewBox="0 0 520 340">
+    <path d="M0 0 L260 190 L520 0 Z" fill="#CDA672"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="url(#kraft)"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="rgba(92,60,24,.12)"/>
+    <path d="M.5 .5 L260 190 L519.5 .5" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="o-envelope-aba-avesso" viewBox="0 0 520 340">
+    <path d="M0 0 L260 190 L520 0 Z" fill="#CDA672"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="url(#kraft)"/>
+    <path d="M0 0 L260 190 L520 0 Z" fill="rgba(92,60,24,.22)"/>
+    <path d="M.5 .5 L260 190 L519.5 .5" fill="none" stroke="rgba(22,22,27,.42)" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="o-lacre-esquerda" viewBox="0 0 520 340">
+    <g transform="translate(1.5 1.5)" clip-path="url(#recorte-lacre-esquerda)"><path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#16161B" fill-opacity=".22"/></g>
+    <g clip-path="url(#recorte-lacre-esquerda)">
+      <path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#A3231C"/>
+      <circle cx="260" cy="190" r="16.12" fill="none" stroke="rgba(22,22,27,.30)" stroke-width="1.6"/>
+      <path d="M266.15 198.1 254.98 183.86Q254.83 183.66 254.65 183.47Q254.47 183.28 254.32 183.15V195.35Q254.32 196.26 254.87 196.93Q255.43 197.59 256.34 197.59V197.8H251.91V197.59Q252.85 197.59 253.4 196.93Q253.96 196.26 253.96 195.33V182.85Q253 182.13 251.93 182.02V181.81H257.41L265.79 192.62V184.26Q265.79 183.35 265.23 182.68Q264.68 182.02 263.76 182.02V181.81H268.18V182.02Q267.26 182.02 266.71 182.68Q266.15 183.35 266.15 184.26Z" fill="rgba(250,248,243,.62)"/>
+    </g>
+  </symbol>
+  <symbol id="o-lacre-direita" viewBox="0 0 520 340">
+    <g transform="translate(1.5 1.5)" clip-path="url(#recorte-lacre-direita)"><path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#16161B" fill-opacity=".22"/></g>
+    <g clip-path="url(#recorte-lacre-direita)">
+      <path d="M285.4 190.0L284.7 193.9L283.3 197.6L281.8 201.1L279.3 204.0L276.7 206.7L274.8 210.3L271.7 213.0L267.3 212.6L263.5 211.8L260.0 213.2L256.2 214.1L252.5 213.2L248.9 211.8L245.5 210.0L243.3 206.7L241.2 203.7L237.6 201.4L234.9 198.1L235.6 193.9L237.1 190.0L236.9 186.3L237.3 182.6L238.8 179.2L240.2 175.6L242.5 172.5L246.3 171.2L249.8 169.9L252.4 166.6L255.9 164.1L260.0 164.8L263.7 166.4L267.4 167.2L270.8 168.7L273.9 170.8L277.5 172.5L280.3 175.2L280.7 179.5L280.9 183.2L283.4 186.3Z" fill="#A3231C"/>
+      <circle cx="260" cy="190" r="16.12" fill="none" stroke="rgba(22,22,27,.30)" stroke-width="1.6"/>
+      <path d="M266.15 198.1 254.98 183.86Q254.83 183.66 254.65 183.47Q254.47 183.28 254.32 183.15V195.35Q254.32 196.26 254.87 196.93Q255.43 197.59 256.34 197.59V197.8H251.91V197.59Q252.85 197.59 253.4 196.93Q253.96 196.26 253.96 195.33V182.85Q253 182.13 251.93 182.02V181.81H257.41L265.79 192.62V184.26Q265.79 183.35 265.23 182.68Q264.68 182.02 263.76 182.02V181.81H268.18V182.02Q267.26 182.02 266.71 182.68Q266.15 183.35 266.15 184.26Z" fill="rgba(250,248,243,.62)"/>
+    </g>
+  </symbol>
+  <symbol id="o-carimbo-postal" viewBox="0 0 100 100">
+    <g opacity=".78" transform="rotate(-9 74 23)" mask="url(#falhas-postal)">
+      <path d="M22 16 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0 M22 22 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0 M22 28 q4 -2.4 8 0 t8 0 t8 0 t8 0 t6 0" fill="none" stroke="#16161B" stroke-linecap="round" style="stroke-width:max(1.3px,calc(.9px * var(--px,1)))"/>
+      <circle cx="74" cy="23" r="15" fill="#FAF8F3" fill-opacity=".35" stroke="#16161B" style="stroke-width:max(1.6px,calc(1px * var(--px,1)))"/>
+      <circle cx="74" cy="23" r="11" fill="none" stroke="#16161B" style="stroke-width:max(.8px,calc(.7px * var(--px,1)))"/>
+    </g>
+  </symbol>
+  <symbol id="o-costura" viewBox="0 0 64 10">
+    <rect width="64" height="10" fill="#16161B"/>
+    <circle cx="20" cy="5" r="2" fill="#FAF8F3"/>
+    <circle cx="44" cy="5" r="2" fill="#FAF8F3"/>
+  </symbol>
+  <symbol id="o-registro" viewBox="0 0 20 20">
+    <g fill="none" style="stroke:var(--registro,#16161B)" stroke-width="1.2">
+      <circle cx="10" cy="10" r="7"/>
+      <path d="M0 10 H20 M10 0 V20"/>
+    </g>
+  </symbol>
+  <symbol id="o-cmyk" viewBox="0 0 36 9">
+    <rect width="9" height="9" fill="#00A3E0"/>
+    <rect x="9" width="9" height="9" fill="#E4007C"/>
+    <rect x="18" width="9" height="9" fill="#FFD21A"/>
+    <rect x="27.5" y=".5" width="8" height="8" fill="#16161B" style="stroke:var(--cmyk-fio,#FAF8F3)" stroke-width="1"/>
+  </symbol><!-- elenco:fim -->
   </svg>
 
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="topo">
-    <a class="topo__marca" href="#conteudo" aria-label="Nomeou, início">
+  <header class="topo" data-topo>
+    <a class="topo__marca" href="#sorteio" aria-label="Nomeou, início">
       <svg class="marca" viewBox="8 8 380.5 77.83" aria-hidden="true"><use href="#marca"/></svg>
     </a>
-    <a class="topo__baixar" href="#baixar" data-baixar hidden>Baixar o app</a>
+    <nav class="trilho" aria-label="Etapas da rodada" data-trilho>
+      <a href="#sorteio" data-etapa="sorteio">Sorteio</a>
+      <a href="#questao" data-etapa="questao">Questão</a>
+      <a href="#convocacao" data-etapa="convocacao">Convocação</a>
+      <a href="#errata" data-etapa="errata">Errata</a>
+      <a href="#diario" data-etapa="diario">Diário</a>
+      <a href="#resultado" data-etapa="resultado">Resultado</a>
+      <span class="trilho__fio" aria-hidden="true" data-trilho-fio></span>
+    </nav>
+    <p class="folio" aria-hidden="true" data-folio>Etapa <span class="folio__n" data-folio-n>1</span> de 6</p>
+    <div class="topo__fim">
+      <button class="album" type="button" data-album hidden>
+        <span class="album__casa" data-album-casa></span><span class="album__casa" data-album-casa></span><span class="album__casa" data-album-casa></span>
+      </button>
+      <button class="chave-som" type="button" data-som aria-pressed="false" hidden>
+        <span class="chave-som__rotulo">Som</span>
+        <span class="bolhas" aria-hidden="true"><span class="bolha bolha--pequena" data-som-s>S</span><span class="bolha bolha--pequena is-marcada" data-som-n>N</span></span>
+      </button>
+      <a class="botao botao--contorno botao--baixo topo__baixar" href="#baixar" data-baixar hidden>Baixar o app</a>
+    </div>
   </header>
 
   <main id="conteudo">
-    <section class="abertura cena" data-cena="abertura" aria-labelledby="titulo">
-      <h1 id="titulo" class="cartaz">
-        <span class="linha"><span class="m" style="--p:0"><span>Concurso</span></span></span>
-        <span class="linha"><span class="m" style="--p:1"><span>é</span></span> <span class="m" style="--p:2"><span>jogo</span></span><span class="ponto" aria-hidden="true"></span><span class="sr">.</span></span>
-      </h1>
-      <div class="abertura__bloco">
-        <p class="lead assenta" style="--d:900ms">Questões de concurso em duelos <span aria-hidden="true">1×1</span><span class="sr">um contra um</span> com quem estuda na sua área.</p>
-        <div class="lojas assenta" style="--d:1050ms" data-lojas>
-          <p class="lojas__breve">Em breve no iPhone e no Android.</p>
+    <!-- ================================================================= 1ª etapa: o sorteio -->
+    <section class="abertura cena" id="sorteio" data-cena="abertura" data-etapa-n="1" aria-labelledby="titulo">
+      <div class="abertura__texto">
+        <h1 id="titulo" class="cartaz" tabindex="-1">
+          <span class="linha"><span class="m" style="--p:0"><span>Concurso</span></span></span>
+          <span class="linha"><span class="m" style="--p:1"><span>é</span></span> <span class="m" style="--p:2"><span>jogo</span></span><span class="ponto" aria-hidden="true"></span><span class="sr">.</span></span>
+        </h1>
+        <p class="lead abertura__lead assenta" style="--d:300ms">Questões de concurso em duelos <span aria-hidden="true">1×1</span><span class="sr">um contra um</span> com quem estuda na sua área.</p>
+        <div class="abertura__acoes">
+          <button class="botao botao--cheio botao--grande" type="button" data-sortear aria-describedby="fonte-do-sorteio" hidden>Sortear a matéria</button>
+          <div class="lojas" data-lojas="abertura"><p class="lojas__breve">Em breve no iPhone e no Android.</p></div>
         </div>
       </div>
-    </section>
 
-    <section class="duelo cena" id="duelo" data-cena="duelo" aria-labelledby="duelo-titulo">
-      <h2 id="duelo-titulo" class="secao duelo__titulo"><span class="m" style="--p:0"><span>Duelo</span></span> <span class="m" style="--p:1"><span><span aria-hidden="true">1×1.</span><span class="sr">um contra um.</span></span></span></h2>
-      <p class="duelo__nome" aria-hidden="true" data-objeto><span class="m m--dado" style="--d:1260ms"><span data-nome>Português</span></span><span class="duelo__carimbo" data-carimbo-convocacao></span></p>
-      <p class="lead duelo__texto assenta">A caneta sorteia a matéria. Acertou, sorteia de novo. Quem junta 6 selos primeiro sai na Edição Extra.</p>
-      <div class="duelo__disco" data-roda data-objeto data-gatilho>
-        <!-- disco:inicio -->
-        <svg class="disco" viewBox="-3 -3 307 307" role="img" aria-label="Sorteio da matéria. Sete casas: Língua Portuguesa, Raciocínio Lógico, Informática, Direito Constitucional, Direito Administrativo, Direito Penal e a Convocação. Cada matéria vale 15%; a convocação, 10%."><defs><clipPath id="disco-conv"><path d="M16.3,81.9 A150,150 0 0 1 81.9,16.3 L106.4,64.5 A96,96 0 0 0 64.5,106.4Z"/></clipPath></defs><g class="disco__base"><circle cx="151.5" cy="152" r="150" fill="rgba(22,22,27,0.14)"/><circle cx="150" cy="150" r="150" fill="#FAF8F3"/></g><path class="disco__casa" style="--i:0" d="M81.9,16.3 A150,150 0 0 1 218.1,16.3 L193.6,64.5 A96,96 0 0 0 106.4,64.5Z" fill="#EF86A9"/><path class="disco__casa" style="--i:1" d="M218.1,16.3 A150,150 0 0 1 298.2,126.5 L244.8,135 A96,96 0 0 0 193.6,64.5Z" fill="#A68CEA"/><path class="disco__casa" style="--i:2" d="M298.2,126.5 A150,150 0 0 1 256.1,256.1 L217.9,217.9 A96,96 0 0 0 244.8,135Z" fill="#7FA6F2"/><path class="disco__casa" style="--i:3" d="M256.1,256.1 A150,150 0 0 1 126.5,298.2 L135,244.8 A96,96 0 0 0 217.9,217.9Z" fill="#4DC3B5"/><path class="disco__casa" style="--i:4" d="M126.5,298.2 A150,150 0 0 1 16.3,218.1 L64.5,193.6 A96,96 0 0 0 135,244.8Z" fill="#9BCB62"/><path class="disco__casa" style="--i:5" d="M16.3,218.1 A150,150 0 0 1 16.3,81.9 L64.5,106.4 A96,96 0 0 0 64.5,193.6Z" fill="#F4A05A"/><g class="disco__casa" style="--i:6" clip-path="url(#disco-conv)"><path d="M-300.0,0 L0.0,300 M-294.5,0 L5.5,300 M-289.0,0 L11.0,300 M-283.5,0 L16.5,300 M-278.0,0 L22.0,300 M-272.5,0 L27.5,300 M-267.0,0 L33.0,300 M-261.5,0 L38.5,300 M-256.0,0 L44.0,300 M-250.5,0 L49.5,300 M-245.0,0 L55.0,300 M-239.5,0 L60.5,300 M-234.0,0 L66.0,300 M-228.5,0 L71.5,300 M-223.0,0 L77.0,300 M-217.5,0 L82.5,300 M-212.0,0 L88.0,300 M-206.5,0 L93.5,300 M-201.0,0 L99.0,300 M-195.5,0 L104.5,300 M-190.0,0 L110.0,300 M-184.5,0 L115.5,300 M-179.0,0 L121.0,300 M-173.5,0 L126.5,300 M-168.0,0 L132.0,300 M-162.5,0 L137.5,300 M-157.0,0 L143.0,300 M-151.5,0 L148.5,300 M-146.0,0 L154.0,300 M-140.5,0 L159.5,300 M-135.0,0 L165.0,300 M-129.5,0 L170.5,300 M-124.0,0 L176.0,300 M-118.5,0 L181.5,300 M-113.0,0 L187.0,300 M-107.5,0 L192.5,300 M-102.0,0 L198.0,300 M-96.5,0 L203.5,300 M-91.0,0 L209.0,300 M-85.5,0 L214.5,300 M-80.0,0 L220.0,300 M-74.5,0 L225.5,300 M-69.0,0 L231.0,300 M-63.5,0 L236.5,300 M-58.0,0 L242.0,300 M-52.5,0 L247.5,300 M-47.0,0 L253.0,300 M-41.5,0 L258.5,300 M-36.0,0 L264.0,300 M-30.5,0 L269.5,300 M-25.0,0 L275.0,300 M-19.5,0 L280.5,300 M-14.0,0 L286.0,300 M-8.5,0 L291.5,300 M-3.0,0 L297.0,300 M2.5,0 L302.5,300 M8.0,0 L308.0,300 M13.5,0 L313.5,300 M19.0,0 L319.0,300 M24.5,0 L324.5,300 M30.0,0 L330.0,300 M35.5,0 L335.5,300 M41.0,0 L341.0,300 M46.5,0 L346.5,300 M52.0,0 L352.0,300 M57.5,0 L357.5,300 M63.0,0 L363.0,300 M68.5,0 L368.5,300 M74.0,0 L374.0,300 M79.5,0 L379.5,300 M85.0,0 L385.0,300 M90.5,0 L390.5,300 M96.0,0 L396.0,300 M101.5,0 L401.5,300 M107.0,0 L407.0,300 M112.5,0 L412.5,300 M118.0,0 L418.0,300 M123.5,0 L423.5,300 M129.0,0 L429.0,300 M134.5,0 L434.5,300 M140.0,0 L440.0,300 M145.5,0 L445.5,300 M151.0,0 L451.0,300 M156.5,0 L456.5,300 M162.0,0 L462.0,300 M167.5,0 L467.5,300 M173.0,0 L473.0,300 M178.5,0 L478.5,300 M184.0,0 L484.0,300 M189.5,0 L489.5,300 M195.0,0 L495.0,300 M200.5,0 L500.5,300 M206.0,0 L506.0,300 M211.5,0 L511.5,300 M217.0,0 L517.0,300 M222.5,0 L522.5,300 M228.0,0 L528.0,300 M233.5,0 L533.5,300 M239.0,0 L539.0,300 M244.5,0 L544.5,300 M250.0,0 L550.0,300 M255.5,0 L555.5,300 M261.0,0 L561.0,300 M266.5,0 L566.5,300 M272.0,0 L572.0,300 M277.5,0 L577.5,300 M283.0,0 L583.0,300 M288.5,0 L588.5,300 M294.0,0 L594.0,300 M299.5,0 L599.5,300 " stroke="rgba(22,22,27,0.22)" stroke-width="0.8"/></g><g class="disco__pintar"><path d="M81.9,16.3 A150,150 0 0 1 218.1,16.3 L160.2,130 A22.5,22.5 0 0 0 139.8,130Z" fill="#EF86A9"/></g><g class="disco__base"><line x1="193.6" y1="64.5" x2="218.1" y2="16.3" stroke="#FAF8F3" stroke-width="2.6"/><line x1="160.9" y1="128.6" x2="193.6" y2="64.5" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="244.8" y1="135" x2="298.2" y2="126.5" stroke="#FAF8F3" stroke-width="2.6"/><line x1="173.7" y1="146.2" x2="244.8" y2="135" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="217.9" y1="217.9" x2="256.1" y2="256.1" stroke="#FAF8F3" stroke-width="2.6"/><line x1="167" y1="167" x2="217.9" y2="217.9" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="135" y1="244.8" x2="126.5" y2="298.2" stroke="#FAF8F3" stroke-width="2.6"/><line x1="146.2" y1="173.7" x2="135" y2="244.8" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="64.5" y1="193.6" x2="16.3" y2="218.1" stroke="#FAF8F3" stroke-width="2.6"/><line x1="128.6" y1="160.9" x2="64.5" y2="193.6" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="64.5" y1="106.4" x2="16.3" y2="81.9" stroke="#FAF8F3" stroke-width="2.6"/><line x1="128.6" y1="139.1" x2="64.5" y2="106.4" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="106.4" y1="64.5" x2="81.9" y2="16.3" stroke="#FAF8F3" stroke-width="2.6"/><line x1="139.1" y1="128.6" x2="106.4" y2="64.5" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><circle cx="150" cy="150" r="96" fill="none" stroke="rgba(22,22,27,0.42)" stroke-width="1"/><circle cx="150" cy="150" r="149" fill="none" stroke="#16161B" stroke-width="2"/></g><text class="disco__casa disco__sigla" style="--i:0" x="150" y="37.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">PT</text><text class="disco__casa disco__sigla" style="--i:1" x="249.5" y="88.5" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">RL</text><text class="disco__casa disco__sigla" style="--i:2" x="267" y="198.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">IN</text><text class="disco__casa disco__sigla" style="--i:3" x="188" y="277.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">CF</text><text class="disco__casa disco__sigla" style="--i:4" x="77.7" y="260.3" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">AD</text><text class="disco__casa disco__sigla" style="--i:5" x="27" y="160.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">CP</text><g class="disco__casa disco__envelope" style="--i:6" fill="#FAF8F3" stroke="#16161B" stroke-width="1.6" stroke-linejoin="round"><rect x="52" y="55.5" width="22" height="15" rx="1"/><path fill="none" d="M52,55.5 L63,64.5 L74,55.5"/></g><g class="disco__apagar" fill="#FAF8F3" opacity="0.6"><path d="M218.1,16.3 A150,150 0 0 1 298.2,126.5 L172.2,146.5 A22.5,22.5 0 0 0 160.2,130Z"/><path d="M298.2,126.5 A150,150 0 0 1 256.1,256.1 L165.9,165.9 A22.5,22.5 0 0 0 172.2,146.5Z"/><path d="M256.1,256.1 A150,150 0 0 1 126.5,298.2 L146.5,172.2 A22.5,22.5 0 0 0 165.9,165.9Z"/><path d="M126.5,298.2 A150,150 0 0 1 16.3,218.1 L130,160.2 A22.5,22.5 0 0 0 146.5,172.2Z"/><path d="M16.3,218.1 A150,150 0 0 1 16.3,81.9 L130,139.8 A22.5,22.5 0 0 0 130,160.2Z"/><path d="M16.3,81.9 A150,150 0 0 1 81.9,16.3 L139.8,130 A22.5,22.5 0 0 0 130,139.8Z"/></g><g class="disco__circulo" fill="none" stroke="#2346C8" stroke-linecap="round" stroke-linejoin="round" transform="translate(131 8)"><path d="M-15.7,8.1C-15,7.1 -13.1,3.8 -11.4,1.9C-9.6,0 -7.5,-1.8 -5.2,-3.4C-2.9,-4.9 -0.2,-6.3 2.5,-7.4C5.2,-8.5 8.2,-9.5 11.2,-10.1C14.2,-10.7 17.4,-11 20.5,-11C23.6,-11 26.9,-10.8 29.9,-10.2C32.9,-9.6 35.8,-8.7 38.5,-7.6C41.2,-6.5 43.8,-5 46,-3.4C48.2,-1.8 50.2,0 51.8,2C53.4,4 54.8,6.1 55.7,8.3C56.6,10.5 57.2,12.9 57.4,15.2C57.6,17.5 57.5,19.9 57,22.2C56.5,24.5 55.5,26.9 54.2,29.1C52.9,31.3 51.3,33.3 49.4,35.2C47.5,37.1 45.3,38.9 42.8,40.4C40.3,41.9 37.6,43.3 34.7,44.3C31.9,45.3 28.8,46.1 25.7,46.6C22.6,47.1 19.3,47.3 16.2,47.2C13.1,47.1 9.9,46.7 6.9,46C3.9,45.4 0.9,44.5 -1.8,43.3C-4.5,42.1 -7,40.6 -9.3,39C-11.6,37.4 -13.7,35.6 -15.4,33.6C-17.1,31.6 -18.4,29.4 -19.4,27.1C-20.4,24.8 -21,22.3 -21.2,19.9C-21.4,17.5 -21.1,15 -20.5,12.6C-19.9,10.2 -18.8,7.8 -17.4,5.6C-16,3.4 -14.1,1.2 -12,-0.7C-9.9,-2.6 -6,-5 -4.8,-5.9" pathLength="1" stroke-width="2.4"/></g><g class="disco__base"><circle cx="150" cy="150" r="19.5" fill="#16161B"/><circle cx="150" cy="150" r="16.5" fill="none" stroke="rgba(250,248,243,0.35)" stroke-width="1"/></g><g class="disco__sombra" transform="translate(1.5 2) rotate(-5 150 150)"><rect x="142.2" y="79.5" width="15.6" height="100.5" rx="6.5" fill="rgba(22,22,27,0.22)"/><path d="M142.2,80.5 L148.6,62 L151.4,62 L157.8,80.5Z" fill="rgba(22,22,27,0.22)"/></g><g class="disco__caneta" transform="rotate(-5 150 150)"><rect x="142.2" y="79.5" width="15.6" height="100.5" rx="6.5" fill="#2346C8"/><path d="M142.2,80.5 L148.6,62 L151.4,62 L157.8,80.5Z" fill="#16161B"/><circle cx="150" cy="61.6" r="1.7" fill="#16161B"/><rect x="142.2" y="174" width="15.6" height="7" rx="6.5" fill="#1A3596"/><rect x="151.9" y="111.2" width="1.6" height="59.8" rx="0.8" fill="#FAF8F3" opacity="0.55"/><circle cx="150" cy="150" r="7.2" fill="#2346C8" stroke="#16161B" stroke-width="2"/></g></svg>
-        <!-- disco:fim -->
-      </div>
-      <div class="duelo__pe assenta" style="--d:1500ms" data-objeto>
-        <p class="fonte" id="fonte-do-sorteio"><!-- fonte:inicio -->Fonte: sorteio do Nomeou. Cada matéria vale 15%; a convocação, 10%.<!-- fonte:fim --></p>
-        <p class="duelo__areas">Na Saúde e em TI, o disco tem as matérias da área.</p>
-        <button class="sortear" type="button" data-sortear aria-describedby="fonte-do-sorteio" hidden>Sortear a matéria</button>
+      <div class="mesa mesa--abertura">
+        <div class="mesa__palco">
+          <div class="disco-casa" data-roda>
+            <!-- disco:inicio -->
+            <svg class="disco" viewBox="-3 -3 307 307" role="img" aria-label="Sorteio da matéria. Sete casas: Língua Portuguesa, Raciocínio Lógico, Informática, Direito Constitucional, Direito Administrativo, Direito Penal e a Convocação. Cada matéria vale 15%; a convocação, 10%."><defs><clipPath id="disco-conv"><path d="M16.3,81.9 A150,150 0 0 1 81.9,16.3 L106.4,64.5 A96,96 0 0 0 64.5,106.4Z"/></clipPath></defs><g class="disco__base"><circle cx="151.5" cy="152" r="150" fill="rgba(22,22,27,0.14)"/><circle cx="150" cy="150" r="150" fill="#FAF8F3"/></g><path class="disco__casa" style="--i:0" d="M81.9,16.3 A150,150 0 0 1 218.1,16.3 L193.6,64.5 A96,96 0 0 0 106.4,64.5Z" fill="#EF86A9"/><path class="disco__casa" style="--i:1" d="M218.1,16.3 A150,150 0 0 1 298.2,126.5 L244.8,135 A96,96 0 0 0 193.6,64.5Z" fill="#A68CEA"/><path class="disco__casa" style="--i:2" d="M298.2,126.5 A150,150 0 0 1 256.1,256.1 L217.9,217.9 A96,96 0 0 0 244.8,135Z" fill="#7FA6F2"/><path class="disco__casa" style="--i:3" d="M256.1,256.1 A150,150 0 0 1 126.5,298.2 L135,244.8 A96,96 0 0 0 217.9,217.9Z" fill="#4DC3B5"/><path class="disco__casa" style="--i:4" d="M126.5,298.2 A150,150 0 0 1 16.3,218.1 L64.5,193.6 A96,96 0 0 0 135,244.8Z" fill="#9BCB62"/><path class="disco__casa" style="--i:5" d="M16.3,218.1 A150,150 0 0 1 16.3,81.9 L64.5,106.4 A96,96 0 0 0 64.5,193.6Z" fill="#F4A05A"/><g class="disco__casa" style="--i:6" clip-path="url(#disco-conv)"><path d="M-300.0,0 L0.0,300 M-294.5,0 L5.5,300 M-289.0,0 L11.0,300 M-283.5,0 L16.5,300 M-278.0,0 L22.0,300 M-272.5,0 L27.5,300 M-267.0,0 L33.0,300 M-261.5,0 L38.5,300 M-256.0,0 L44.0,300 M-250.5,0 L49.5,300 M-245.0,0 L55.0,300 M-239.5,0 L60.5,300 M-234.0,0 L66.0,300 M-228.5,0 L71.5,300 M-223.0,0 L77.0,300 M-217.5,0 L82.5,300 M-212.0,0 L88.0,300 M-206.5,0 L93.5,300 M-201.0,0 L99.0,300 M-195.5,0 L104.5,300 M-190.0,0 L110.0,300 M-184.5,0 L115.5,300 M-179.0,0 L121.0,300 M-173.5,0 L126.5,300 M-168.0,0 L132.0,300 M-162.5,0 L137.5,300 M-157.0,0 L143.0,300 M-151.5,0 L148.5,300 M-146.0,0 L154.0,300 M-140.5,0 L159.5,300 M-135.0,0 L165.0,300 M-129.5,0 L170.5,300 M-124.0,0 L176.0,300 M-118.5,0 L181.5,300 M-113.0,0 L187.0,300 M-107.5,0 L192.5,300 M-102.0,0 L198.0,300 M-96.5,0 L203.5,300 M-91.0,0 L209.0,300 M-85.5,0 L214.5,300 M-80.0,0 L220.0,300 M-74.5,0 L225.5,300 M-69.0,0 L231.0,300 M-63.5,0 L236.5,300 M-58.0,0 L242.0,300 M-52.5,0 L247.5,300 M-47.0,0 L253.0,300 M-41.5,0 L258.5,300 M-36.0,0 L264.0,300 M-30.5,0 L269.5,300 M-25.0,0 L275.0,300 M-19.5,0 L280.5,300 M-14.0,0 L286.0,300 M-8.5,0 L291.5,300 M-3.0,0 L297.0,300 M2.5,0 L302.5,300 M8.0,0 L308.0,300 M13.5,0 L313.5,300 M19.0,0 L319.0,300 M24.5,0 L324.5,300 M30.0,0 L330.0,300 M35.5,0 L335.5,300 M41.0,0 L341.0,300 M46.5,0 L346.5,300 M52.0,0 L352.0,300 M57.5,0 L357.5,300 M63.0,0 L363.0,300 M68.5,0 L368.5,300 M74.0,0 L374.0,300 M79.5,0 L379.5,300 M85.0,0 L385.0,300 M90.5,0 L390.5,300 M96.0,0 L396.0,300 M101.5,0 L401.5,300 M107.0,0 L407.0,300 M112.5,0 L412.5,300 M118.0,0 L418.0,300 M123.5,0 L423.5,300 M129.0,0 L429.0,300 M134.5,0 L434.5,300 M140.0,0 L440.0,300 M145.5,0 L445.5,300 M151.0,0 L451.0,300 M156.5,0 L456.5,300 M162.0,0 L462.0,300 M167.5,0 L467.5,300 M173.0,0 L473.0,300 M178.5,0 L478.5,300 M184.0,0 L484.0,300 M189.5,0 L489.5,300 M195.0,0 L495.0,300 M200.5,0 L500.5,300 M206.0,0 L506.0,300 M211.5,0 L511.5,300 M217.0,0 L517.0,300 M222.5,0 L522.5,300 M228.0,0 L528.0,300 M233.5,0 L533.5,300 M239.0,0 L539.0,300 M244.5,0 L544.5,300 M250.0,0 L550.0,300 M255.5,0 L555.5,300 M261.0,0 L561.0,300 M266.5,0 L566.5,300 M272.0,0 L572.0,300 M277.5,0 L577.5,300 M283.0,0 L583.0,300 M288.5,0 L588.5,300 M294.0,0 L594.0,300 M299.5,0 L599.5,300 " stroke="rgba(22,22,27,0.22)" stroke-width="0.8"/></g><g class="disco__pintar"><path d="M81.9,16.3 A150,150 0 0 1 218.1,16.3 L160.2,130 A22.5,22.5 0 0 0 139.8,130Z" fill="#EF86A9"/></g><g class="disco__base"><line x1="193.6" y1="64.5" x2="218.1" y2="16.3" stroke="#FAF8F3" stroke-width="2.6"/><line x1="160.9" y1="128.6" x2="193.6" y2="64.5" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="244.8" y1="135" x2="298.2" y2="126.5" stroke="#FAF8F3" stroke-width="2.6"/><line x1="173.7" y1="146.2" x2="244.8" y2="135" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="217.9" y1="217.9" x2="256.1" y2="256.1" stroke="#FAF8F3" stroke-width="2.6"/><line x1="167" y1="167" x2="217.9" y2="217.9" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="135" y1="244.8" x2="126.5" y2="298.2" stroke="#FAF8F3" stroke-width="2.6"/><line x1="146.2" y1="173.7" x2="135" y2="244.8" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="64.5" y1="193.6" x2="16.3" y2="218.1" stroke="#FAF8F3" stroke-width="2.6"/><line x1="128.6" y1="160.9" x2="64.5" y2="193.6" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="64.5" y1="106.4" x2="16.3" y2="81.9" stroke="#FAF8F3" stroke-width="2.6"/><line x1="128.6" y1="139.1" x2="64.5" y2="106.4" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><line x1="106.4" y1="64.5" x2="81.9" y2="16.3" stroke="#FAF8F3" stroke-width="2.6"/><line x1="139.1" y1="128.6" x2="106.4" y2="64.5" stroke="rgba(22,22,27,0.16)" stroke-width="1"/><circle cx="150" cy="150" r="96" fill="none" stroke="rgba(22,22,27,0.42)" stroke-width="1"/><circle cx="150" cy="150" r="149" fill="none" stroke="#16161B" stroke-width="2"/></g><text class="disco__casa disco__sigla" style="--i:0" x="150" y="37.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">PT</text><text class="disco__casa disco__sigla" style="--i:1" x="249.5" y="88.5" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">RL</text><text class="disco__casa disco__sigla" style="--i:2" x="267" y="198.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">IN</text><text class="disco__casa disco__sigla" style="--i:3" x="188" y="277.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">CF</text><text class="disco__casa disco__sigla" style="--i:4" x="77.7" y="260.3" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">AD</text><text class="disco__casa disco__sigla" style="--i:5" x="27" y="160.8" text-anchor="middle" font-family="League Gothic, 'Arial Narrow', sans-serif" font-size="30" letter-spacing="0.5" fill="#16161B">CP</text><g class="disco__casa disco__envelope" style="--i:6" fill="#FAF8F3" stroke="#16161B" stroke-width="1.6" stroke-linejoin="round"><rect x="52" y="55.5" width="22" height="15" rx="1"/><path fill="none" d="M52,55.5 L63,64.5 L74,55.5"/></g><g class="disco__apagar" fill="#FAF8F3" opacity="0.6"><path d="M218.1,16.3 A150,150 0 0 1 298.2,126.5 L172.2,146.5 A22.5,22.5 0 0 0 160.2,130Z"/><path d="M298.2,126.5 A150,150 0 0 1 256.1,256.1 L165.9,165.9 A22.5,22.5 0 0 0 172.2,146.5Z"/><path d="M256.1,256.1 A150,150 0 0 1 126.5,298.2 L146.5,172.2 A22.5,22.5 0 0 0 165.9,165.9Z"/><path d="M126.5,298.2 A150,150 0 0 1 16.3,218.1 L130,160.2 A22.5,22.5 0 0 0 146.5,172.2Z"/><path d="M16.3,218.1 A150,150 0 0 1 16.3,81.9 L130,139.8 A22.5,22.5 0 0 0 130,160.2Z"/><path d="M16.3,81.9 A150,150 0 0 1 81.9,16.3 L139.8,130 A22.5,22.5 0 0 0 130,139.8Z"/></g><g class="disco__circulo" fill="none" stroke="#2346C8" stroke-linecap="round" stroke-linejoin="round" transform="translate(131 8)"><path d="M-15.7,8.1C-15,7.1 -13.1,3.8 -11.4,1.9C-9.6,0 -7.5,-1.8 -5.2,-3.4C-2.9,-4.9 -0.2,-6.3 2.5,-7.4C5.2,-8.5 8.2,-9.5 11.2,-10.1C14.2,-10.7 17.4,-11 20.5,-11C23.6,-11 26.9,-10.8 29.9,-10.2C32.9,-9.6 35.8,-8.7 38.5,-7.6C41.2,-6.5 43.8,-5 46,-3.4C48.2,-1.8 50.2,0 51.8,2C53.4,4 54.8,6.1 55.7,8.3C56.6,10.5 57.2,12.9 57.4,15.2C57.6,17.5 57.5,19.9 57,22.2C56.5,24.5 55.5,26.9 54.2,29.1C52.9,31.3 51.3,33.3 49.4,35.2C47.5,37.1 45.3,38.9 42.8,40.4C40.3,41.9 37.6,43.3 34.7,44.3C31.9,45.3 28.8,46.1 25.7,46.6C22.6,47.1 19.3,47.3 16.2,47.2C13.1,47.1 9.9,46.7 6.9,46C3.9,45.4 0.9,44.5 -1.8,43.3C-4.5,42.1 -7,40.6 -9.3,39C-11.6,37.4 -13.7,35.6 -15.4,33.6C-17.1,31.6 -18.4,29.4 -19.4,27.1C-20.4,24.8 -21,22.3 -21.2,19.9C-21.4,17.5 -21.1,15 -20.5,12.6C-19.9,10.2 -18.8,7.8 -17.4,5.6C-16,3.4 -14.1,1.2 -12,-0.7C-9.9,-2.6 -6,-5 -4.8,-5.9" pathLength="1" stroke-width="2.4"/></g><g class="disco__base"><circle cx="150" cy="150" r="19.5" fill="#16161B"/><circle cx="150" cy="150" r="16.5" fill="none" stroke="rgba(250,248,243,0.35)" stroke-width="1"/></g><g class="disco__sombra" transform="translate(1.5 2) rotate(-5 150 150)"><rect x="142.2" y="79.5" width="15.6" height="100.5" rx="6.5" fill="rgba(22,22,27,0.22)"/><path d="M142.2,80.5 L148.6,62 L151.4,62 L157.8,80.5Z" fill="rgba(22,22,27,0.22)"/></g><g class="disco__caneta" transform="rotate(-5 150 150)"><rect x="142.2" y="79.5" width="15.6" height="100.5" rx="6.5" fill="#2346C8"/><path d="M142.2,80.5 L148.6,62 L151.4,62 L157.8,80.5Z" fill="#16161B"/><circle cx="150" cy="61.6" r="1.7" fill="#16161B"/><rect x="142.2" y="174" width="15.6" height="7" rx="6.5" fill="#1A3596"/><rect x="151.9" y="111.2" width="1.6" height="59.8" rx="0.8" fill="#FAF8F3" opacity="0.55"/><circle cx="150" cy="150" r="7.2" fill="#2346C8" stroke="#16161B" stroke-width="2"/></g></svg>
+            <!-- disco:fim -->
+          </div>
+
+          <div class="ator" data-ator="selo-jogo" data-material="papel" style="--x:-.50; --y:-.42; --l:.26; --r:-8deg; --k:70; --g:3; --ordem:600; --xc:-.62; --yc:-.36; --lc:.30">
+            <div class="ator__pose">
+              <svg class="ator__sombra" viewBox="0 0 100 100" aria-hidden="true"><use href="#o-selo-sombra"/></svg>
+              <div class="ator__corpo" data-selo-jogo><!-- selo-jogo:inicio --><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">PT</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg><!-- selo-jogo:fim --></div>
+            </div>
+          </div>
+
+          <button class="ator ator--brinquedo ator--largo" type="button" data-rival aria-label="Trocar a rival" data-material="papel" style="--x:.48; --y:-.44; --l:.18; --r:5deg; --k:50; --g:2; --ordem:740; --chapa:#4DC3B5">
+            <span class="ator__pose">
+              <svg class="ator__sombra" viewBox="0 0 60 86" aria-hidden="true"><use href="#o-34-sombra"/></svg>
+              <span class="ator__corpo"><svg viewBox="0 0 60 86" aria-hidden="true"><use href="#o-34"/><text class="foto34__inicial" x="30" y="58" text-anchor="middle" data-rival-inicial>S</text></svg></span>
+            </span>
+          </button>
+
+          <div class="ator ator--largo" data-material="papel" style="--x:-.60; --y:.12; --l:.22; --r:6deg; --k:40; --g:2; --ordem:880">
+            <div class="ator__pose">
+              <svg class="ator__sombra" viewBox="0 0 100 100" aria-hidden="true"><use href="#o-selo-sombra"/></svg>
+              <div class="ator__corpo"><!-- selo-cf:inicio --><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#4DC3B5"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">CF</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg><!-- selo-cf:fim --></div>
+            </div>
+          </div>
+
+          <div class="ator" data-material="plastico" style="--x:-.46; --y:.40; --l:.40; --r:-18deg; --k:30; --g:2; --ordem:1020; --xc:-.62; --yc:.34; --lc:.42">
+            <div class="ator__pose">
+              <svg class="ator__sombra" viewBox="0 0 150 40" aria-hidden="true"><use href="#o-marca-texto-sombra"/></svg>
+              <div class="ator__corpo"><svg viewBox="0 0 150 40" aria-hidden="true"><use href="#o-marca-texto"/></svg></div>
+            </div>
+          </div>
+
+          <button class="ator ator--brinquedo" type="button" data-datador aria-label="Carimbar a data" data-material="madeira" style="--x:.62; --y:.10; --l:.21; --r:0deg; --k:20; --g:1; --ordem:1160; --xc:.66; --yc:.08; --lc:.26">
+            <span class="ator__pose">
+              <svg class="ator__sombra" viewBox="0 0 100 130" aria-hidden="true"><use href="#o-datador-sombra"/></svg>
+              <span class="ator__corpo"><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#o-datador"/></svg></span>
+            </span>
+          </button>
+
+          <div class="ator ator--data" data-material="impresso" style="--x:.52; --y:.40; --l:.30; --r:-4deg; --k:20; --g:1; --ordem:1320; --xc:.46; --yc:.40; --lc:.40">
+            <div class="ator__pose">
+              <div class="ator__corpo" data-marca-data><!-- data:inicio --><span class="carimbo-estatico carimbo-estatico--tinta">25 OUT 2026</span><!-- data:fim --></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mesa__linha" data-linha-sorteio>
+          <p class="fonte" id="fonte-do-sorteio" data-fonte><!-- fonte:inicio -->Fonte: sorteio do Nomeou. Cada matéria vale 15%; a convocação, 10%.<!-- fonte:fim --></p>
+          <div class="sorteada" data-sorteada hidden>
+            <p class="sorteada__nome"><span class="m"><span data-sorteada-nome></span></span><span class="sorteada__carimbo" data-sorteada-carimbo></span></p>
+            <p class="sorteada__linha" data-sorteada-linha></p>
+          </div>
+        </div>
         <p class="sr" aria-live="polite" data-viva></p>
       </div>
     </section>
 
-    <section class="diario cena" id="diario" data-cena="diario" aria-labelledby="diario-titulo">
-      <h2 id="diario-titulo" class="secao diario__titulo"><span class="m" style="--p:0"><span>5</span></span> <span class="m" style="--p:1"><span>questões</span></span> <span class="m" style="--p:2"><span>por</span></span> <span class="m" style="--p:3"><span>dia.</span></span></h2>
-      <figure class="grade" aria-label="Exemplo de resultado do Diário para mandar no grupo." data-objeto data-gatilho>
-        <!-- diario:inicio -->
-        <p class="grade__fileira"><span class="grade__quadrados" role="img" aria-label="4 de 5 certas"><span class="grade__q grade__q--certo" style="--q:0"></span><span class="grade__q grade__q--certo" style="--q:1"></span><span class="grade__q grade__q--errado" style="--q:2"></span><span class="grade__q grade__q--certo" style="--q:3"></span><span class="grade__q grade__q--certo" style="--q:4"></span></span><span class="grade__total" data-total aria-hidden="true"><span class="m m--dado" style="--d:600ms"><span>4/5</span></span></span></p>
-        <p class="grade__edicao assenta" style="--d:1100ms">Diário do Nomeou nº 024</p>
-        <p class="grade__siglas assenta" style="--d:1100ms">CF CP AD RL PT</p>
-        <p class="grade__convite assenta" style="--d:1100ms">Será que você gabarita? nomeou.app</p>
-        <!-- diario:fim -->
-      </figure>
-      <p class="lead diario__texto assenta" style="--d:1150ms" data-objeto>O Diário do Nomeou: as mesmas 5 para a área toda. Os acertos da semana contam na liga.</p>
-    </section>
-
-    <section class="errata cena" id="errata" data-cena="errata" aria-labelledby="errata-titulo">
-      <h2 id="errata-titulo" class="secao errata__titulo"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>erro</span></span> <span class="m" style="--p:2"><span>volta.</span></span></h2>
-      <p class="lead errata__texto assenta" style="--d:300ms">A questão errada volta amanhã, na Errata. A cada acerto, ela demora mais a voltar.</p>
-      <p class="lead errata__frase assenta" style="--d:450ms"><span class="sr">Frase com erro, riscada: </span><s data-risco>Fez referência à todos os presentes.</s><span class="sr"> O certo é a todos, sem crase.</span></p>
-      <ol class="intervalo" aria-label="Quando a questão errada volta: amanhã e, depois de cada acerto, 1, 3, 7 e 15 dias" data-objeto data-gatilho>
-        <li class="intervalo__termo" style="--g:0; --d:200ms"><span class="m m--dado"><span>Amanhã</span></span></li>
-        <li class="intervalo__termo" style="--g:1; --d:230ms"><span class="m m--dado"><span>1</span></span><span class="intervalo__unidade">dia</span></li>
-        <li class="intervalo__termo" style="--g:3; --d:320ms"><span class="m m--dado"><span>3</span></span><span class="intervalo__unidade">dias</span></li>
-        <li class="intervalo__termo" style="--g:7; --d:530ms"><span class="m m--dado"><span>7</span></span><span class="intervalo__unidade">dias</span></li>
-        <li class="intervalo__termo intervalo__termo--fim" style="--g:15; --d:980ms"><span class="m m--dado"><span>15</span></span><span class="intervalo__unidade">dias</span><span class="errata__carimbo" data-carimbo-sanada><span class="carimbo-estatico" aria-hidden="true">Sanada</span></span><span class="sr">Depois, sai sanada.</span></li>
-      </ol>
-    </section>
-
-    <section class="edital cena" id="edital" data-cena="edital" aria-labelledby="edital-titulo">
-      <h2 id="edital-titulo" class="secao edital__titulo"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>edital</span></span> <span class="m" style="--p:2"><span>do</span></span> <span class="grifado" data-grifo><span class="m" style="--p:3"><span>seu</span></span> <span class="m" style="--p:4"><span>cargo</span></span></span><span class="m" style="--p:5"><span>.</span></span></h2>
-      <p class="edital__dado" data-objeto data-gatilho><!-- cargos:inicio --><span class="numero"><span class="sr">212</span><span aria-hidden="true"><span class="m m--dado" style="--d:0ms"><span>2</span></span><span class="m m--dado" style="--d:60ms"><span>1</span></span><span class="m m--dado" style="--d:120ms"><span>2</span></span></span></span><!-- cargos:fim --> <span class="lead edital__base assenta" style="--d:200ms">cargos de <!-- numeros:concursos -->65<!-- /numeros --> concursos, <!-- situacao:inicio -->pelo último edital ou com inscrições abertas.<!-- situacao:fim --></span></p>
-      <div class="edital__corpo" data-objeto>
-        <p class="lead assenta" style="--d:350ms">O app conta os dias até a prova, e o treino segue o formato dela.</p>
-        <p class="nota" data-nota>no Cebraspe, um item errado anula um certo.</p>
+    <!-- ================================================================= A faixa das matérias -->
+    <section class="faixa cena" id="materias" data-cena="faixa" aria-labelledby="faixa-titulo">
+      <div class="faixa__texto">
+        <h2 id="faixa-titulo" class="sub"><span class="m" style="--p:0"><span>14</span></span> <span class="m" style="--p:1"><span>matérias</span></span> <span class="m" style="--p:2"><span>em</span></span> <span class="m" style="--p:3"><span>3</span></span> <span class="m" style="--p:4"><span>áreas.</span></span></h2>
+        <p class="lead faixa__lead assenta" style="--d:200ms">O disco sorteia as 6 da sua área.</p>
       </div>
-      <p class="edital__confira assenta" style="--d:1000ms" data-objeto>Confira sempre o edital.</p>
+      <div class="area" data-areas role="radiogroup" aria-label="Sua área" hidden></div>
+      <div class="tira" data-ui role="group" aria-label="Os selos das 14 matérias" aria-describedby="faixa-linha" data-tira data-objeto data-gatilho>
+        <!-- faixa:inicio --><div class="tira__grupo" role="group" aria-labelledby="tira-rotulo-0"><p class="tira__rotulo" id="tira-rotulo-0">Conhecimentos gerais</p><div class="tira__selos"><button class="tira__selo" type="button" data-materia="portugues" aria-pressed="true" aria-label="Selo da Norma Culta, Língua Portuguesa"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">PT</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="rlm" aria-pressed="false" aria-label="Selo do Silogismo, Raciocínio Lógico"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#A68CEA"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">RL</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="informatica" aria-pressed="false" aria-label="Selo do Byte, Informática"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#7FA6F2"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">IN</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="constitucional" aria-pressed="false" aria-label="Selo da Carta Magna, Direito Constitucional"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#4DC3B5"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">CF</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="administrativo" aria-pressed="false" aria-label="Selo do LIMPE, Direito Administrativo"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#9BCB62"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">AD</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="penal" aria-pressed="false" aria-label="Selo do Código, Direito Penal"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#F4A05A"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">CP</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button></div></div><div class="tira__grupo" role="group" aria-labelledby="tira-rotulo-1"><p class="tira__rotulo" id="tira-rotulo-1">Saúde</p><div class="tira__selos"><button class="tira__selo" type="button" data-materia="sus" aria-pressed="false" aria-label="Selo da Universalidade, Legislação do SUS"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#5ECB98"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="62.5" text-anchor="middle" class="selo__sigla" font-size="34">SUS</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="vigilancia" aria-pressed="false" aria-label="Selo da Notificação, Vigilância em Saúde"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#C2C451"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">VS</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="enfermagem" aria-pressed="false" aria-label="Selo da SAE, Enfermagem"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#F59C80"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="62.5" text-anchor="middle" class="selo__sigla" font-size="34">ENF</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button></div></div><div class="tira__grupo" role="group" aria-labelledby="tira-rotulo-2"><p class="tira__rotulo" id="tira-rotulo-2">Tecnologia da Informação</p><div class="tira__selos"><button class="tira__selo" type="button" data-materia="dados" aria-pressed="false" aria-label="Selo da Chave Primária, Banco de Dados e BI"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#C493E6"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">BD</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="desenvolvimento" aria-pressed="false" aria-label="Selo do Commit, Desenvolvimento de Software"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#8F9CF4"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="62.5" text-anchor="middle" class="selo__sigla" font-size="34">DEV</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="redes" aria-pressed="false" aria-label="Selo do Protocolo, Redes e Infraestrutura"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#45BCCB"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">RD</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="seguranca" aria-pressed="false" aria-label="Selo do Hash, Segurança da Informação"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#86CC6A"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">SI</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button><button class="tira__selo" type="button" data-materia="governanca" aria-pressed="false" aria-label="Selo do SLA, Governança de TI"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#F0A94E"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="62.5" text-anchor="middle" class="selo__sigla" font-size="34">GOV</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></button></div></div><!-- faixa:fim -->
+      </div>
+      <p class="faixa__linha" id="faixa-linha" data-faixa-linha><!-- faixa-linha:inicio -->Selo da Norma Culta · Língua Portuguesa · 216 questões no app.<!-- faixa-linha:fim --></p>
     </section>
 
-    <section class="baixar cena" id="baixar" data-cena="baixar" aria-labelledby="baixar-titulo">
-      <h2 id="baixar-titulo" class="cartaz cartaz--tinta">
-        <span class="linha"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>jogo</span></span></span>
-        <span class="linha"><span class="m" style="--p:2"><span>é</span></span> <span class="m" style="--p:3"><span>grátis</span></span><span class="ponto" aria-hidden="true"></span><span class="sr">.</span></span>
-      </h2>
-      <div class="baixar__bloco">
-        <p class="lead assenta" style="--d:950ms">Duelos, o Diário, a Errata e a liga, sem pagar.</p>
-        <p class="baixar__pro assenta" style="--d:1050ms">O PRO é opcional e tira os tetos diários do treino e da revisão. Na liga, o teto de pontos é o mesmo para todos. Preço e cancelamento ficam na loja.</p>
-        <div class="lojas lojas--tinta assenta" style="--d:0ms" data-lojas data-objeto data-gatilho data-depois="1150">
-          <p class="lojas__breve">Em breve no iPhone e no Android.</p>
+    <!-- ================================================================= 2ª etapa: a questão -->
+    <section class="questao cena" id="questao" data-cena="questao" data-etapa-n="2" aria-labelledby="questao-titulo">
+      <div class="questao__texto">
+        <h2 id="questao-titulo" class="secao" tabindex="-1"><span class="m" style="--p:0"><span><!-- numeros:questoes -->2.425<!-- /numeros --></span></span> <span class="m" style="--p:1"><span>questões</span></span> <span class="m" style="--p:2"><span>autorais.</span></span></h2>
+        <p class="lead assenta" style="--d:300ms">No estilo de cada banca. A caneta corrige na hora.</p>
+        <div class="escalada assenta" style="--d:450ms" data-escalada>
+          <!-- escalada:inicio --><span class="escalada__caixas" aria-hidden="true"><span class="caixinha" data-caixinha><svg class="rabisco" viewBox="-3 -5 29 28" width="29" height="28" aria-hidden="true" style="left:-4.1px;top:-10.5px"><path d="M0,10.5C2.6,12.1 5.3,15.8 7.5,20.2C11,10.7 16.5,2.6 23.8,-2.8" fill="none" stroke="#2346C8" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.84" opacity="0.45" transform="translate(0.4 0.35)"/><path d="M0,10.5C2.6,12.1 5.3,15.8 7.5,20.2C11,10.7 16.5,2.6 23.8,-2.8" fill="none" stroke="#2346C8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span><span class="caixinha" data-caixinha></span><span class="caixinha" data-caixinha></span></span>
+          <p class="escalada__texto"><span class="numero-pequeno" data-escalada-n>1</span> de 3 para a convocação.</p><!-- escalada:fim -->
+          <button class="botao botao--texto" type="button" data-ir-sortear hidden>Sortear a matéria</button>
         </div>
+      </div>
+      <div class="pilha" data-ui data-objeto data-gatilho>
+        <article class="folha" data-folha aria-labelledby="folha-enunciado">
+          <!-- folha:inicio --><div class="folha__tira" aria-hidden="true">AMOSTRA · QUESTÃO <span data-folha-n>1</span> DE 12</div><div class="folha__miolo"><header class="folha__cabeca"><svg class="selo selo--emblema folha__selo" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="69" text-anchor="middle" class="selo__sigla" font-size="46">PT</text></svg><span class="folha__materia">Língua Portuguesa</span><span class="folha__estilo">Estilo Marinha · fácil</span></header><p class="folha__enunciado" id="folha-enunciado">Assinale a opção em que <span class="pegadinha" data-pegadinha>o primeiro termo</span> é hiperônimo do segundo.</p><ol class="alternativas"><li><button class="alternativa" type="button" data-i="0" aria-label="A: fragata — embarcação" disabled><span class="bolha" aria-hidden="true">A</span><span class="alternativa__texto" aria-hidden="true">fragata — embarcação</span></button></li><li><button class="alternativa is-marcada is-certa" type="button" data-i="1" aria-label="B: embarcação — fragata, marcada, certa" disabled><span class="bolha is-marcada" aria-hidden="true">B</span><span class="alternativa__texto" aria-hidden="true">embarcação — fragata</span></button></li><li><button class="alternativa" type="button" data-i="2" aria-label="C: convés — navio" disabled><span class="bolha" aria-hidden="true">C</span><span class="alternativa__texto" aria-hidden="true">convés — navio</span></button></li><li><button class="alternativa" type="button" data-i="3" aria-label="D: marinheiro — marujo" disabled><span class="bolha" aria-hidden="true">D</span><span class="alternativa__texto" aria-hidden="true">marinheiro — marujo</span></button></li><li><button class="alternativa" type="button" data-i="4" aria-label="E: proa — popa" disabled><span class="bolha" aria-hidden="true">E</span><span class="alternativa__texto" aria-hidden="true">proa — popa</span></button></li></ol><div class="resultado-linha" tabindex="-1" data-resultado-linha><span class="resultado-linha__carimbo" data-carimbo><span class="carimbo-estatico">Acertou</span></span><span class="resultado-linha__errou" data-errou hidden>Errou</span><span class="sr" data-resultado-sr></span></div><div class="folha__depois" data-depois><p class="nota is-escrita" data-nota>hiperônimo: o geral que abrange o específico</p><p class="comentario">Hiperônimo é o termo de sentido mais geral, que abrange outros: toda fragata é uma embarcação, mas nem toda embarcação é fragata. Na ordem inversa, “fragata” é hipônimo; convés e navio formam relação de parte e todo; marinheiro e marujo são sinônimos; proa e popa são extremidades opostas do navio.<span class="fim-de-materia" aria-hidden="true"></span></p><p class="folha__aviso" data-aviso>1 de 3 para a convocação.</p></div></div><!-- folha:fim -->
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================= 3ª etapa: a convocação -->
+    <section class="convocacao cena" id="convocacao" data-cena="convocacao" data-etapa-n="3" aria-labelledby="convocacao-titulo">
+      <div class="convocacao__texto">
+        <h2 id="convocacao-titulo" class="secao" tabindex="-1"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>selo</span></span> <span class="m" style="--p:2"><span>vem</span></span> <span class="m" style="--p:3"><span>lacrado.</span></span></h2>
+        <p class="lead assenta" style="--d:300ms">Três acertos abrem a convocação. A Questão do selo decide.</p>
+        <button class="botao botao--cheio" type="button" data-romper hidden>Romper o lacre</button>
+        <p class="convocacao__aviso" data-convocacao-aviso hidden></p>
+      </div>
+      <div class="convocacao__mesa" data-ui data-objeto data-gatilho>
+        <!-- oficio:inicio --><div class="envelope is-aberto" data-envelope><svg class="envelope__sombra" viewBox="0 0 520 340" aria-hidden="true"><use href="#o-envelope-sombra"/></svg><div class="envelope__corpo"><svg viewBox="0 0 520 340" aria-hidden="true"><use href="#o-envelope-corpo"/></svg><p class="envelope__remetente" aria-hidden="true" data-remetente>OFÍCIO DE CONVOCAÇÃO · AMOSTRA</p></div><div class="envelope__aba" data-aba><svg viewBox="0 0 520 340" aria-hidden="true"><use class="envelope__frente" href="#o-envelope-aba"/><use class="envelope__avesso" href="#o-envelope-aba-avesso"/></svg></div><span class="envelope__lacre" data-lacre aria-hidden="true"><svg class="lacre lacre--e" viewBox="0 0 520 340"><use href="#o-lacre-esquerda"/></svg><svg class="lacre lacre--d" viewBox="0 0 520 340"><use href="#o-lacre-direita"/></svg></span><span class="envelope__toque" data-toque-lacre aria-hidden="true"></span></div><div class="oficio" data-oficio><div class="oficio__fio" aria-hidden="true"></div><p class="oficio__tarja" aria-hidden="true" data-tarja>CONVOCAÇÃO</p><div class="oficio__escolha" data-escolha hidden><p class="sub oficio__titulo" tabindex="-1" data-titulo-escolha>Escolha a matéria.</p><ol class="oficio__selos"></ol></div><div class="oficio__questao" data-questao-selo><p class="chapeu" tabindex="-1" data-titulo-questao>Questão do selo · Língua Portuguesa</p><div class="oficio__item"><span class="oficio__em-jogo" data-selo-em-jogo><svg class="selo selo--carimbado" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">PT</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text><g class="selo__postal" data-postal><use href="#o-carimbo-postal"/><g transform="rotate(-9 74 23)" opacity=".78" mask="url(#falhas-postal)"><text x="74" y="24.8" text-anchor="middle" class="selo__data">25 OUT</text></g></g></svg></span><p class="oficio__enunciado">Na frase “<span class="pegadinha" data-pegadinha>Daqui há</span> dois meses sairá o edital”, o emprego de “há” está correto, pois a expressão indica tempo.</p></div><div class="ce" role="group" aria-label="Certo ou Errado"><button class="botao botao--contorno ce__botao" type="button" data-ce="true" disabled><span class="ce__rotulo">Certo</span></button><button class="botao botao--contorno ce__botao is-marcada is-certa" type="button" data-ce="false" aria-label="Errado, marcada, certa" disabled><span class="ce__rotulo">Errado</span></button></div><div class="resultado-linha" tabindex="-1" data-resultado-linha><span class="resultado-linha__carimbo" data-carimbo><span class="carimbo-estatico">Acertou</span></span><span class="resultado-linha__errou" data-errou hidden>Errou</span><span class="sr" data-resultado-sr></span></div><p class="oficio__legenda" data-legenda>Selo da Norma Culta.</p><button class="botao botao--texto oficio__outra" type="button" data-outra hidden>Outra convocação</button></div></div><!-- oficio:fim -->
+      </div>
+      <p class="sr" aria-live="polite" data-viva-convocacao></p>
+    </section>
+
+    <!-- ================================================================= 4ª etapa: a Errata -->
+    <section class="errata cena" id="errata" data-cena="errata" data-etapa-n="4" aria-labelledby="errata-titulo">
+      <div class="errata__texto">
+        <h2 id="errata-titulo" class="secao" tabindex="-1"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>erro</span></span> <span class="m" style="--p:2"><span>volta.</span></span></h2>
+        <p class="lead assenta" style="--d:300ms">A questão errada volta amanhã. A cada acerto, demora mais a voltar.</p>
+      </div>
+      <div class="errata__recorte" data-ui data-objeto data-gatilho>
+        <!-- errata:inicio --><div class="recorte errata__folha" data-recorte-errata><p class="chapeu">Errata · Língua Portuguesa</p><p class="recorte__enunciado">Assinale a alternativa em que a concordância verbal está de acordo com a norma-padrão.</p><p class="errata__marcada"><span class="bolha is-marcada" aria-hidden="true">B</span><span class="sr">Marcada antes, errada: </span><s class="errata__riscada" data-risco-errata>Podem haver falhas no sistema de inscrição.</s></p><p class="nota nota--erro is-escrita" data-nota-errata>haver = existir: auxiliar também no singular</p><div class="errata__refazer" data-refazer hidden></div><p class="errata__aviso" data-errata-aviso></p><button class="botao botao--cheio errata__botao" type="button" data-responder-de-novo hidden>Responder de novo</button></div><ol class="folhinhas" data-folhinhas aria-label="Quando a questão errada volta: amanhã e, depois de cada acerto, 1, 3, 7 e 15 dias."><li class="folhinha" style="--vao:0" data-folhinha><span class="folhinha__bloco" aria-hidden="true"><svg class="folhinha__costura" viewBox="0 0 64 10"><use href="#o-costura"/></svg><span class="folhinha__pagina folhinha__pagina--baixo"><span class="folhinha__visto" data-visto-folhinha></span></span><span class="folhinha__pagina" data-pagina><span class="folhinha__mes">OUT</span><span class="folhinha__dia">26</span></span></span><span class="folhinha__rotulo">amanhã</span><span class="sr">, 26/10</span></li><li class="folhinha" style="--vao:1" data-folhinha><span class="folhinha__bloco" aria-hidden="true"><svg class="folhinha__costura" viewBox="0 0 64 10"><use href="#o-costura"/></svg><span class="folhinha__pagina folhinha__pagina--baixo"><span class="folhinha__visto" data-visto-folhinha></span></span><span class="folhinha__pagina" data-pagina><span class="folhinha__mes">OUT</span><span class="folhinha__dia">27</span></span></span><span class="folhinha__rotulo">1 dia</span><span class="sr">, 27/10</span></li><li class="folhinha" style="--vao:3" data-folhinha><span class="folhinha__bloco" aria-hidden="true"><svg class="folhinha__costura" viewBox="0 0 64 10"><use href="#o-costura"/></svg><span class="folhinha__pagina folhinha__pagina--baixo"><span class="folhinha__visto" data-visto-folhinha></span></span><span class="folhinha__pagina" data-pagina><span class="folhinha__mes">OUT</span><span class="folhinha__dia">30</span></span></span><span class="folhinha__rotulo">3 dias</span><span class="sr">, 30/10</span></li><li class="folhinha" style="--vao:7" data-folhinha><span class="folhinha__bloco" aria-hidden="true"><svg class="folhinha__costura" viewBox="0 0 64 10"><use href="#o-costura"/></svg><span class="folhinha__pagina folhinha__pagina--baixo"><span class="folhinha__visto" data-visto-folhinha></span></span><span class="folhinha__pagina" data-pagina><span class="folhinha__mes">NOV</span><span class="folhinha__dia">6</span></span></span><span class="folhinha__rotulo">7 dias</span><span class="sr">, 06/11</span></li><li class="folhinha" style="--vao:15" data-folhinha><span class="folhinha__bloco" aria-hidden="true"><svg class="folhinha__costura" viewBox="0 0 64 10"><use href="#o-costura"/></svg><span class="folhinha__pagina folhinha__pagina--baixo"><span class="folhinha__visto" data-visto-folhinha></span></span><span class="folhinha__pagina" data-pagina><span class="folhinha__mes">NOV</span><span class="folhinha__dia">21</span></span></span><span class="folhinha__rotulo">15 dias</span><span class="sr">, 21/11</span></li><li class="folhinhas__sanada"><span class="folhinhas__carimbo" data-carimbo-sanada><span class="carimbo-estatico">Sanada</span></span><span class="sr">Depois, sai sanada.</span></li></ol><!-- errata:fim -->
+      </div>
+    </section>
+
+    <!-- ================================================================= 5ª etapa: o Diário -->
+    <section class="diario cena" id="diario" data-cena="diario" data-etapa-n="5" aria-labelledby="diario-titulo">
+      <h2 id="diario-titulo" class="secao diario__titulo" tabindex="-1"><span class="m" style="--p:0"><span>5</span></span> <span class="m" style="--p:1"><span>questões</span></span> <span class="m" style="--p:2"><span>por</span></span> <span class="m" style="--p:3"><span>dia.</span></span></h2>
+      <figure class="grade" data-ui data-grade data-objeto data-gatilho>
+        <!-- diario:inicio --><p class="grade__titulo">Diário do Nomeou nº 025</p><p class="grade__fileira"><span class="grade__quadrados" role="img" aria-label="4 de 5 certas"><span class="grade__q grade__q--certo" style="--q:0"></span><span class="grade__q grade__q--certo" style="--q:1"></span><span class="grade__q grade__q--errado" style="--q:2"></span><span class="grade__q grade__q--certo" style="--q:3"></span><span class="grade__q grade__q--certo" style="--q:4"></span></span><span class="grade__total" data-total aria-hidden="true"><span class="m m--dado" style="--d:600ms"><span>4/5</span></span></span></p><p class="grade__siglas assenta" style="--d:1100ms">RL CF CP AD PT</p><p class="grade__convite assenta" style="--d:1100ms">Será que você gabarita? nomeou.app</p><!-- diario:fim -->
+      </figure>
+      <div class="diario__fim">
+        <p class="lead assenta" style="--d:300ms">As mesmas 5 para a área toda.</p>
+        <button class="botao botao--cheio" type="button" data-mandar hidden>Mandar o resultado</button>
+        <p class="diario__copiado" aria-live="polite" data-copiado></p>
+      </div>
+    </section>
+
+    <!-- ================================================================= O edital -->
+    <section class="edital cena" id="edital" data-cena="edital" aria-labelledby="edital-titulo">
+      <h2 id="edital-titulo" class="secao edital__titulo" tabindex="-1"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>edital</span></span> <span class="m" style="--p:2"><span>do</span></span> <span class="grifado" data-grifo><span class="m" style="--p:3"><span>seu</span></span> <span class="m" style="--p:4"><span>cargo</span></span></span><span class="m" style="--p:5"><span>.</span></span></h2>
+      <p class="edital__dado" data-objeto data-gatilho><!-- cargos:inicio --><span class="numero"><span class="sr">212</span><span aria-hidden="true"><span class="m m--dado" style="--d:0ms"><span>2</span></span><span class="m m--dado" style="--d:60ms"><span>1</span></span><span class="m m--dado" style="--d:120ms"><span>2</span></span></span></span><!-- cargos:fim --> <span class="lead edital__base assenta" style="--d:200ms">cargos de <!-- numeros:concursos -->65<!-- /numeros --> concursos, <!-- situacao:inicio -->pelo último edital ou com inscrições abertas.<!-- situacao:fim --></span></p>
+      <p class="lead edital__lead assenta" style="--d:300ms" data-objeto>O app conta os dias até a prova. O treino segue o formato dela.</p>
+      <div class="edital__corpo" data-ui data-objeto>
+        <!-- edital:inicio --><div class="fichas" role="radiogroup" aria-label="Cargos de exemplo" data-fichas><button class="botao botao--contorno botao--baixo ficha" type="button" role="radio" aria-checked="true" data-cargo="0">BCB · Auditor do BCB, Economia e Finanças · Cebraspe</button><button class="botao botao--contorno botao--baixo ficha" type="button" role="radio" aria-checked="false" data-cargo="1">IBGE · Agente de Pesquisas e Mapeamento (PSS 2025) · FGV</button><button class="botao botao--contorno botao--baixo ficha" type="button" role="radio" aria-checked="false" data-cargo="2">CIAAR · CAMAR, CADAR e CAFAR, Médicos, Dentistas e Farmacêuticos (1º Tenente) · Aeronáutica</button></div><p class="edital__formato" data-formato><span class="m"><span>120 itens de Certo ou Errado</span></span></p><ol class="verticalizado" data-verticalizado aria-label="As matérias da prova e o peso de cada uma"><li class="verticalizado__linha" style="--chapa:#EF86A9; --pct:0.210; --i:0"><span class="verticalizado__nome">Língua Portuguesa</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">21%</span></li><li class="verticalizado__linha" style="--chapa:#A68CEA; --pct:0.080; --i:1"><span class="verticalizado__nome">Noções de Lógica e Estatística</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">8%</span></li><li class="verticalizado__linha" style="--chapa:#9BCB62; --pct:0.040; --i:2"><span class="verticalizado__nome">Direito Administrativo</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">4%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.080; --i:3"><span class="verticalizado__nome">Fundamentos de Macroeconomia e Microeconomia</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">8%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.150; --i:4"><span class="verticalizado__nome">Macroeconomia</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">15%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.080; --i:5"><span class="verticalizado__nome">Microeconomia</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">8%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.150; --i:6"><span class="verticalizado__nome">Finanças</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">15%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.100; --i:7"><span class="verticalizado__nome">Estatística e Econometria</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">10%</span></li><li class="verticalizado__linha" style="--chapa:rgba(22,22,27,0.32); --pct:0.100; --i:8"><span class="verticalizado__nome">Contabilidade de Instituições Financeiras (COSIF)</span><span class="verticalizado__barra" aria-hidden="true"><span></span></span><span class="verticalizado__pct">10%</span></li></ol><p class="edital__sem" data-sem>Ainda sem questões no Nomeou: Fundamentos de Macroeconomia e Microeconomia, Macroeconomia, Microeconomia, Finanças, Estatística e Econometria e Contabilidade de Instituições Financeiras (COSIF).</p><p class="nota" data-nota>no Cebraspe, um item errado anula um certo.</p><!-- edital:fim -->
+      </div>
+      <p class="edital__confira assenta" style="--d:900ms" data-objeto>Confira sempre o edital.</p>
+    </section>
+
+    <!-- ================================================================= 6ª etapa: o Resultado -->
+    <section class="resultado cena" id="resultado" data-cena="resultado" data-etapa-n="6" aria-labelledby="resultado-titulo">
+      <article class="jornal" data-ui data-jornal data-objeto data-gatilho>
+        <!-- resultado:inicio --><header class="jornal__cabeca"><p class="jornal__nome">Diário do Nomeou</p><p class="jornal__data">JOGO DE ESTUDO · DOMINGO, 25 DE OUTUBRO DE 2026 · Nº 001</p></header><h2 class="jornal__manchete" id="resultado-titulo" tabindex="-1"><span class="jornal__branco" data-branco><span class="jornal__fio" aria-hidden="true"></span><span class="sr">Seu nome</span></span> <span data-manchete-resto>se inscreve no Nomeou.</span></h2><p class="jornal__rotulo" data-rotulo-nome>Seu nome na manchete. Fica só nesta página.</p><div class="jornal__corpo"><div class="jornal__retrato"><span class="jornal__foto" data-foto-visitante><svg class="foto34 foto34--visitante" viewBox="0 0 60 86" aria-hidden="true" style="--chapa:#FAF8F3"><use href="#o-34"/><text class="foto34__inicial" x="30" y="58" text-anchor="middle" data-inicial></text></svg></span><p class="jornal__fina">Duelo de treino · Uns 6 minutos.</p></div><div class="recorte jornal__recorte"><ol class="jornal__selos"><li class="jornal__selo"><svg class="selo selo--carimbado" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">PT</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text><g class="selo__postal" data-postal><use href="#o-carimbo-postal"/><g transform="rotate(-9 74 23)" opacity=".78" mask="url(#falhas-postal)"><text x="74" y="24.8" text-anchor="middle" class="selo__data">25 OUT</text></g></g></svg><span class="sr">Selo da Norma Culta, ganho.</span></li><li class="jornal__selo"><svg class="selo selo--pendente" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#A68CEA"><use href="#o-selo-picote"/><text x="50" y="69" text-anchor="middle" class="selo__sigla selo__sigla--lapis" font-size="46">RL</text></svg><span class="sr">Selo do Silogismo, pendente.</span></li><li class="jornal__selo"><svg class="selo selo--pendente" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#7FA6F2"><use href="#o-selo-picote"/><text x="50" y="69" text-anchor="middle" class="selo__sigla selo__sigla--lapis" font-size="46">IN</text></svg><span class="sr">Selo do Byte, pendente.</span></li></ol><p class="jornal__nomes" aria-hidden="true">Norma Culta.</p><p class="jornal__regra">No duelo, leva quem junta 6 selos primeiro.</p><span class="jornal__carimbo" data-carimbo-publicado></span></div></div><!-- resultado:fim -->
+      </article>
+      <p class="sr" aria-live="polite" data-viva-resultado></p>
+    </section>
+
+    <!-- ================================================================= O fecho -->
+    <section class="fecho cena" id="baixar" data-cena="fecho" aria-labelledby="baixar-titulo">
+      <div class="mesa mesa--fecho" aria-hidden="true" data-mesa-fecho data-objeto data-gatilho>
+        <!-- fecho:inicio --><div class="ator ator--bic" data-material="plastico" style="--px:78%; --py:16%; --w:240px; --wc:168px; --r:28deg; --k:80; --g:3; --ordem:1340"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 240 28" aria-hidden="true"><use href="#o-bic-sombra"/></svg><div class="ator__corpo"><svg class="" viewBox="0 0 240 28" aria-hidden="true"><use href="#o-bic"/></svg></div></div></div><div class="ator" data-material="papel" style="--px:62%; --py:12%; --w:96px; --wc:72px; --r:0deg; --k:35; --g:1; --ordem:160"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 96 64" aria-hidden="true"><use href="#o-xicara-sombra"/></svg><div class="ator__corpo"><svg class="" viewBox="0 0 96 64" aria-hidden="true"><use href="#o-xicara"/></svg></div></div></div><div class="ator ator--tablet" data-material="papel" style="--px:32%; --py:10%; --w:64px; --wc:64px; --r:4deg; --k:50; --g:2; --ordem:320"><div class="ator__pose"><div class="ator__corpo"><svg class="folhinha-da-mesa" viewBox="0 0 66 77" aria-hidden="true"><rect x="1" y="11" width="64" height="66" fill="var(--sombra)"/><rect x="0.5" y="10.5" width="64" height="65" fill="var(--folha)" stroke="var(--fio-forte)"/><use href="#o-costura" width="64" height="10"/><text class="folhinha-da-mesa__mes" x="32.5" y="32" text-anchor="middle">OUT</text><text class="folhinha-da-mesa__dia" x="32.5" y="66" text-anchor="middle">26</text></svg></div></div></div><div class="ator" data-material="papel" style="--px:14%; --py:22%; --w:110px; --wc:76px; --r:-9deg; --k:60; --g:3; --ordem:0"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 100 100" aria-hidden="true"><use href="#o-selo-sombra"/></svg><div class="ator__corpo"><svg class="selo selo--carimbado" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#EF86A9"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">PT</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text><g class="selo__postal" data-postal><use href="#o-carimbo-postal"/><g transform="rotate(-9 74 23)" opacity=".78" mask="url(#falhas-postal)"><text x="74" y="24.8" text-anchor="middle" class="selo__data">25 OUT</text></g></g></svg></div></div></div><div class="ator ator--largo" data-material="papel" style="--px:8%; --py:56%; --w:96px; --wc:76px; --r:7deg; --k:40; --g:2; --ordem:640"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 100 100" aria-hidden="true"><use href="#o-selo-sombra"/></svg><div class="ator__corpo"><svg class="selo selo--emblema" viewBox="0 0 100 100" aria-hidden="true" style="--chapa:#4DC3B5"><use href="#o-selo-papel"/><rect x="17" y="9" width="66" height="82" fill="var(--chapa)"/><text x="50" y="64.5" text-anchor="middle" class="selo__sigla" font-size="40">CF</text><text x="50" y="86" text-anchor="middle" class="selo__legenda">NOMEOU</text></svg></div></div></div><div class="ator" data-material="papel" style="--px:18%; --py:82%; --w:84px; --wc:64px; --r:-5deg; --k:30; --g:2; --ordem:480"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 60 86" aria-hidden="true"><use href="#o-34-sombra"/></svg><div class="ator__corpo"><svg class="foto34 foto34--visitante" viewBox="0 0 60 86" aria-hidden="true" style="--chapa:#FAF8F3"><use href="#o-34"/><text class="foto34__inicial" x="30" y="58" text-anchor="middle" data-inicial></text></svg></div></div></div><div class="ator ator--tablet" data-material="papel" style="--px:64%; --py:88%; --w:140px; --wc:140px; --r:-3deg; --k:25; --g:1; --ordem:800"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 140 100" aria-hidden="true"><use href="#o-folha-dobrada-sombra"/></svg><div class="ator__corpo"><svg class="" viewBox="0 0 140 100" aria-hidden="true"><use href="#o-folha-dobrada"/></svg></div></div></div><div class="ator" data-material="plastico" style="--px:84%; --py:80%; --w:180px; --wc:120px; --r:-14deg; --k:70; --g:2; --ordem:960"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 150 40" aria-hidden="true"><use href="#o-marca-texto-sombra"/></svg><div class="ator__corpo"><svg class="" viewBox="0 0 150 40" aria-hidden="true"><use href="#o-marca-texto"/></svg></div></div></div><div class="ator ator--largo" data-material="madeira" style="--px:90%; --py:48%; --w:96px; --wc:72px; --r:0deg; --k:20; --g:1; --ordem:1120"><div class="ator__pose"><svg class="ator__sombra" viewBox="0 0 100 130" aria-hidden="true"><use href="#o-datador-sombra"/></svg><div class="ator__corpo"><svg class="" viewBox="0 0 100 130" aria-hidden="true"><use href="#o-datador"/></svg></div></div></div><!-- fecho:fim -->
+      </div>
+      <div class="fecho__texto">
+        <h2 id="baixar-titulo" class="cartaz cartaz--fecho" tabindex="-1">
+          <span class="linha"><span class="m" style="--p:0"><span>O</span></span> <span class="m" style="--p:1"><span>jogo</span></span></span>
+          <span class="linha"><span class="m" style="--p:2"><span>é</span></span> <span class="m" style="--p:3"><span>grátis</span></span><span class="ponto" aria-hidden="true"></span><span class="sr">.</span></span>
+        </h2>
+        <p class="lead assenta" style="--d:300ms">Duelos, o Diário, a Errata e a liga, sem pagar.</p>
+        <div class="lojas lojas--fecho assenta" style="--d:400ms" data-lojas="fecho"><p class="lojas__breve">Em breve no iPhone e no Android.</p></div>
+        <p class="fecho__pro assenta" style="--d:500ms">O PRO é opcional e tira os tetos diários do treino e da revisão. Na liga, o teto de pontos é o mesmo para todos. Preço e cancelamento ficam na loja.</p>
       </div>
     </section>
   </main>
@@ -149,22 +471,53 @@
   <footer class="rodape">
     <svg class="rodape__marca" viewBox="8 8 380.5 77.83" role="img" aria-label="Nomeou"><use href="#marca"/></svg>
     <div class="rodape__colunas">
-      <div class="rodape__aviso">
-        <p>Jogo de estudo. Não é publicação oficial.</p>
-        <p>As <!-- numeros:questoes -->2.425<!-- /numeros --> questões são autorais, no estilo das bancas, sem vínculo com bancas ou órgãos.</p>
-        <p>Sem ninguém em 10 minutos, entra um rival simulado, sempre com esse rótulo.</p>
-        <p>iPhone e App Store são marcas da Apple Inc., registradas nos EUA e em outros países. Android e Google Play são marcas da Google LLC.</p>
+      <div class="expediente">
+        <p class="expediente__chapeu">Expediente</p>
+        <ul class="expediente__lista">
+          <li><span>Bic azul</span><span class="expediente__pontos" aria-hidden="true"></span><span>sorteia e marca</span></li>
+          <li><span>Caneta vermelha</span><span class="expediente__pontos" aria-hidden="true"></span><span>corrige</span></li>
+          <li><span>Marca-texto</span><span class="expediente__pontos" aria-hidden="true"></span><span>grifa o que é seu</span></li>
+          <li><span>Lápis da Redação</span><span class="expediente__pontos" aria-hidden="true"></span><span>escreve a regra</span></li>
+          <li><span>Carimbo</span><span class="expediente__pontos" aria-hidden="true"></span><span>decide</span></li>
+          <li><span>Selos</span><span class="expediente__pontos" aria-hidden="true"></span><span>ficam em disputa</span></li>
+          <li><span>Envelope pardo</span><span class="expediente__pontos" aria-hidden="true"></span><span>convoca</span></li>
+          <li><span>Foto 3×4</span><span class="expediente__pontos" aria-hidden="true"></span><span>apresenta quem disputa</span></li>
+          <li><span>Folhinha</span><span class="expediente__pontos" aria-hidden="true"></span><span>traz o erro de volta</span></li>
+          <li><span>Edição Extra</span><span class="expediente__pontos" aria-hidden="true"></span><span>publica quem vence</span></li>
+        </ul>
       </div>
-      <div class="rodape__contato">
-        <p><a href="mailto:contato@nomeou.app">contato@nomeou.app</a></p>
-        <p>© 2026 Nomeou.</p>
+      <div class="rodape__lado">
+        <div class="rodape__aviso">
+          <p>Jogo de estudo. Não é publicação oficial.</p>
+          <p>As <!-- numeros:questoes -->2.425<!-- /numeros --> questões são autorais, no estilo das bancas, sem vínculo com bancas ou órgãos.</p>
+          <p>Sem ninguém em 10 minutos, entra um rival simulado, sempre com esse rótulo.</p>
+          <p>iPhone e App Store são marcas da Apple Inc., registradas nos EUA e em outros países. Android e Google Play são marcas da Google LLC.</p>
+        </div>
+        <div class="preferencias" data-preferencias hidden>
+          <div class="preferencia" role="radiogroup" aria-label="Som">
+            <span class="preferencia__rotulo" aria-hidden="true">Som</span>
+            <button class="opcao" type="button" role="radio" aria-checked="false" data-pref-som="sim"><span class="bolha bolha--pequena" aria-hidden="true">S</span>Sim</button>
+            <button class="opcao" type="button" role="radio" aria-checked="true" data-pref-som="nao"><span class="bolha bolha--pequena" aria-hidden="true">N</span>Não</button>
+          </div>
+          <div class="preferencia" role="radiogroup" aria-label="Movimento">
+            <span class="preferencia__rotulo" aria-hidden="true">Movimento</span>
+            <button class="opcao" type="button" role="radio" aria-checked="true" data-pref-mov="completo"><span class="bolha bolha--pequena" aria-hidden="true">C</span>Completo</button>
+            <button class="opcao" type="button" role="radio" aria-checked="false" data-pref-mov="reduzido"><span class="bolha bolha--pequena" aria-hidden="true">R</span>Reduzido</button>
+          </div>
+          <p class="preferencias__nota" id="pref-mov-sistema" data-pref-mov-sistema hidden>O sistema pede movimento reduzido.</p>
+        </div>
+        <div class="rodape__contato">
+          <p><a href="mailto:contato@nomeou.app">contato@nomeou.app</a></p>
+          <p>© 2026 Nomeou.<span class="fim-de-materia" aria-hidden="true"></span></p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/rabisco.js" defer></script>
-  <script src="assets/js/disco.js" defer></script>
-  <script src="assets/js/conteudo.js" defer></script>
-  <script src="assets/js/site.js" defer></script>
+  <div class="barra" data-barra hidden>
+    <a class="botao botao--contorno" href="#baixar" data-barra-link>Baixar o app</a>
+  </div>
+
+  <script src="assets/js/site.js?v=9671c040" defer></script>
 </body>
 </html>
