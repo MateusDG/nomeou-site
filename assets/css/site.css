@@ -1,0 +1,495 @@
+/* Site de divulgação do Nomeou. Sistema "Anotado à margem" (turno-concurso/docs/DESIGN.md), enxuto:
+   uma manchete por tela, muito papel, e a mão do app anotando a tipografia. */
+
+/* ------------------------------------------------------------------ Fontes (as do app, em subconjunto) */
+
+@font-face { font-family: "Gloock"; src: url("../fonts/gloock-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "League Gothic"; src: url("../fonts/league-gothic-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("../fonts/newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("../fonts/newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("../fonts/archivo-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("../fonts/archivo-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Mynerve Nomeou"; src: url("../fonts/mynerve-nomeou.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* As reservas, ajustadas à largura das fontes da marca: sem salto quando a fonte chega. */
+@font-face { font-family: "Gloock Reserva"; src: local("Georgia"); size-adjust: 102%; }
+@font-face { font-family: "League Gothic Reserva"; src: local("Arial Narrow"), local("ArialNarrow"); size-adjust: 66.5%; }
+@font-face { font-family: "Newsreader Reserva"; src: local("Georgia"); size-adjust: 94.7%; }
+@font-face { font-family: "Archivo Reserva"; src: local("Arial"); size-adjust: 95%; }
+
+/* ------------------------------------------------------------------ Tokens */
+
+:root {
+  /* Cor: os tokens do app (src/theme/tokens.ts). */
+  --papel: #EFEBE2;
+  --folha: #FAF8F3;
+  --tinta: #16161B;
+  --tinta-2: #4A4A53;
+  --lapis: #4F4B45;
+  --caneta: #2346C8;
+  --caneta-sobre-tinta: #6F8CF0;
+  --vermelho: #BF2A1D;
+  --amarelo: #FFD21A;
+  --verde: #1C7745;
+  --papel-74: rgba(239, 235, 226, 0.74);
+
+  --f-manchete: "Gloock", "Gloock Reserva", serif;
+  --f-tarja: "League Gothic", "League Gothic Reserva", sans-serif;
+  --f-leitura: "Newsreader", "Newsreader Reserva", serif;
+  --f-interface: "Archivo", "Archivo Reserva", sans-serif;
+  --f-mao: "Mynerve Nomeou", "Segoe Print", "Bradley Hand", cursive;
+
+  /* Quatro corpos, nada entre eles. */
+  --t-cartaz: clamp(3.5rem, 0.5rem + 15.5vw, 15rem);
+  --t-secao: clamp(2.625rem, 1rem + 6.4vw, 7rem);
+  --t-lead: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --t-texto: 1rem;
+
+  --margem: 16px;
+  --calha: 20px;
+  --secao: clamp(6rem, 3rem + 8vw, 11rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sai: cubic-bezier(0.55, 0, 1, 0.45);
+
+  color-scheme: light;
+}
+
+@media (min-width: 480px) { :root { --margem: 24px; } }
+@media (min-width: 1024px) { :root { --margem: 32px; --calha: 20px; } }
+@media (min-width: 1200px) { :root { --calha: 24px; } }
+
+/* ------------------------------------------------------------------ Base */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--tinta); }
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--f-interface);
+  font-size: var(--t-texto);
+  line-height: 1.5;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+[hidden] { display: none !important; }
+img, svg { display: block; max-width: 100%; }
+h1, h2, p, figure, ol { margin: 0; }
+ol { padding: 0; list-style: none; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+h1, h2 { font-weight: 400; text-wrap: balance; overflow-wrap: break-word; hyphens: none; }
+p { text-wrap: pretty; }
+
+::selection { background: var(--amarelo); color: var(--tinta); }
+:focus-visible { outline: 3px solid var(--caneta); outline-offset: 3px; box-shadow: 0 0 0 3px var(--folha); } /* taste-skill-ignore: o anel de foco */
+
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.pular {
+  position: absolute; left: var(--margem); top: -100px; z-index: 50;
+  padding: 12px 18px; background: var(--folha); color: var(--tinta);
+  font-weight: 600; text-decoration: none;
+}
+.pular:focus { top: 12px; }
+
+.lead { font-family: var(--f-leitura); font-size: var(--t-lead); line-height: 1.4; }
+
+/* ------------------------------------------------------------------ O topo */
+
+.topo {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; padding: 0 var(--margem);
+  max-width: 1600px; margin: 0 auto;
+}
+.topo__marca { display: flex; align-items: center; min-height: 44px; color: var(--tinta); }
+.topo__marca .marca { width: 96px; height: auto; }
+.topo__baixar {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.25em;
+}
+@media (min-width: 1200px) {
+  .topo { height: 72px; }
+  .topo__marca .marca { width: 120px; }
+}
+
+/* ------------------------------------------------------------------ As cenas: a palavra sobe da máscara */
+
+/* A porcentagem do padding é da largura do <main>, que já desconta a barra de rolagem (100vw não desconta). */
+main > section { position: relative; padding: var(--secao) max(var(--margem), (100% - 1536px) / 2); }
+main > section > * { max-width: 1536px; }
+
+.m {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.2em 0.04em 0.18em;
+  margin: -0.2em -0.04em -0.18em;
+}
+.m > span { display: inline-block; }
+
+.linha { display: block; }
+
+/* A bolinha da marca é o ponto das duas manchetes-cartaz: o anel de tinta e o miolo a caneta. */
+.ponto {
+  position: relative;
+  display: inline-block;
+  width: 0.17em; height: 0.17em;
+  margin-left: 0.03em;
+  border: 0.024em solid var(--tinta);
+  border-radius: 50%;
+}
+.ponto::after {
+  content: ""; position: absolute; inset: 0.012em;
+  border-radius: 50%;
+  background: var(--caneta);
+}
+.cartaz--tinta .ponto { border-color: var(--papel); }
+.cartaz--tinta .ponto::after { background: var(--caneta-sobre-tinta); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Escondida, a palavra também fica transparente: só aparece quando começa a subir. Cada cena tem dois
+     tempos: a manchete (.is-in) e o objeto ([data-objeto], que toca com .is-objeto quando aparece). */
+  .js .cena:not(.is-pronta) .m > span { transform: translateY(140%); opacity: 0; }
+  .js .cena.is-in:not(.is-pronta) .m:not([data-objeto] .m) > span,
+  .js .cena.is-objeto:not(.is-pronta) [data-objeto] .m > span {
+    --sobe: calc(var(--d, 0ms) + var(--p, 0) * 40ms);
+    transform: none; opacity: 1;
+    transition: transform 720ms var(--ease) var(--sobe), opacity 0s linear var(--sobe);
+  }
+  .js .cena.is-in:not(.is-pronta) .m--dado:not([data-objeto] .m) > span,
+  .js .cena.is-objeto:not(.is-pronta) [data-objeto] .m--dado > span { transition-duration: 520ms, 0s; }
+
+  .js .cena:not(.is-pronta) .assenta { opacity: 0; transform: translateY(8px); }
+  .js .cena.is-in:not(.is-pronta) .assenta:not([data-objeto]):not([data-objeto] .assenta),
+  .js .cena.is-objeto:not(.is-pronta) [data-objeto] .assenta,
+  .js .cena.is-objeto:not(.is-pronta) .assenta[data-objeto] {
+    opacity: 1; transform: none;
+    transition: opacity 400ms var(--ease) var(--d, 0ms), transform 400ms var(--ease) var(--d, 0ms);
+  }
+
+  .js .cena:not(.is-pronta) .ponto { opacity: 0; }
+  .js .cena:not(.is-pronta) .ponto::after { transform: scale(0.2); }
+  .js .cena.is-in:not(.is-pronta) .ponto { opacity: 1; transition: opacity 80ms linear var(--ponto, 760ms); }
+  .js .cena.is-in:not(.is-pronta) .ponto::after { transform: none; transition: transform 170ms var(--ease) calc(var(--ponto, 760ms) + 80ms); }
+}
+
+/* ------------------------------------------------------------------ Abertura */
+
+.abertura {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 24px;
+  min-height: calc(100svh - 56px);
+  padding-top: 0 !important;
+  padding-bottom: clamp(3rem, 8svh, 6rem) !important;
+}
+.cartaz {
+  font-family: var(--f-manchete);
+  font-size: var(--t-cartaz);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-left: -0.04em;
+}
+.abertura__bloco { display: flex; flex-direction: column; gap: 24px; }
+.abertura__bloco .lead { max-width: 18em; }
+/* As descendentes da Gloock passam uns 0,14 em da caixa da linha (entrelinha 0,9): a linha fina desce junto. */
+@media (max-width: 1199px) { .abertura__bloco { margin-top: calc(var(--t-cartaz) * 0.12); } }
+/* No fecho, o agudo de "grátis" cairia na barriga do g de "jogo". */
+.cartaz--tinta .linha + .linha { margin-top: 0.12em; }
+
+@media (min-width: 1200px) {
+  .abertura {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha);
+    align-content: end;
+    min-height: calc(100svh - 72px);
+  }
+  .abertura .cartaz { grid-column: 1 / -1; grid-row: 1; }
+  .abertura__bloco { grid-column: 7 / -1; grid-row: 1; align-self: end; margin-bottom: calc(var(--t-cartaz) * 0.09); }
+}
+
+/* ------------------------------------------------------------------ As lojas */
+
+.lojas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; min-height: 48px; }
+.lojas__breve { font-weight: 600; }
+.loja {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 22px;
+  background: var(--tinta); color: var(--folha);
+  border-radius: 2px;
+  font-weight: 600; text-decoration: none; white-space: nowrap;
+  transition: transform 140ms var(--ease);
+}
+.loja:active { transform: translateY(1px); }
+.loja__depois { margin-top: 0; color: var(--tinta-2); font-weight: 600; }
+.lojas--tinta .loja { background: var(--folha); color: var(--tinta); }
+.lojas--tinta .loja__depois { color: var(--papel-74); }
+@media (min-width: 1024px) { .lojas, .loja { min-height: 52px; } }
+@media (hover: hover) {
+  .loja:hover { background: var(--tinta-2); }
+  .lojas--tinta .loja:hover { background: var(--papel); }
+}
+@media (max-width: 479px) { .lojas { display: grid; justify-content: start; } }
+
+/* ------------------------------------------------------------------ Duelo */
+
+.duelo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "titulo" "texto" "disco" "nome" "pe";
+  justify-items: start;
+}
+.secao {
+  font-family: var(--f-manchete);
+  font-size: var(--t-secao);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-left: -0.03em;
+}
+.duelo__titulo { grid-area: titulo; }
+/* No celular o texto vem logo abaixo do título; no desktop, depois do nome sorteado. */
+.duelo__texto { grid-area: texto; max-width: 36ch; margin-top: 24px; --d: 300ms; }
+/* A pinça amplia e o arrasto vertical rola mesmo começando no disco: os dois viram pointercancel. */
+.duelo__disco { grid-area: disco; justify-self: center; width: min(86vw, 340px); margin-top: 40px; touch-action: pan-y pinch-zoom; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.duelo__disco.is-ativo { cursor: pointer; }
+.duelo__disco .disco { width: 100%; height: auto; overflow: visible; }
+/* O nome nunca encolhe (a máscara corta): quando o carimbo não cabe ao lado, desce para baixo dele. */
+.duelo__nome {
+  grid-area: nome; justify-self: center;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: 16px; row-gap: 8px;
+  margin-top: 24px;
+  font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9;
+  letter-spacing: 0.01em; text-transform: uppercase;
+}
+.duelo__nome > .m { flex: none; max-width: 100%; }
+.duelo__carimbo:empty { display: none; }
+.duelo__pe { grid-area: pe; justify-self: center; display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 20px; text-align: center; }
+.fonte, .duelo__areas { font-family: var(--f-leitura); font-style: italic; color: var(--tinta-2); text-wrap: balance; }
+.duelo__areas { margin-top: -8px; }
+.sortear {
+  min-height: 48px; padding: 0 4px;
+  background: none; border: 0; cursor: pointer;
+  font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.25em;
+}
+.sortear[aria-disabled="true"] { cursor: default; text-decoration: none; color: var(--tinta-2); }
+
+@media (min-width: 1024px) {
+  .duelo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto auto 1fr auto;
+    grid-template-areas: ". disco" "titulo disco" "nome disco" "texto disco" ". disco" ". pe";
+    column-gap: var(--calha);
+  }
+  .duelo__nome { justify-self: start; justify-content: flex-start; margin-top: 0; }
+  .duelo__texto { margin-top: 32px; --d: 1500ms; }
+  .duelo__disco { width: clamp(300px, 34vw, 500px); margin-top: 0; }
+}
+
+/* O disco: a base, as casas que se imprimem em sentido horário e a caneta que assenta. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .duelo:not(.is-pronta) .disco__base { opacity: 0; transform: translateY(8px); }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__base { opacity: 1; transform: none; transition: opacity 300ms var(--ease), transform 300ms var(--ease); }
+  .js .duelo:not(.is-pronta) .disco__casa { opacity: 0; }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__casa { opacity: 1; transition: opacity 160ms linear calc(120ms + var(--i) * 55ms); }
+  .js .duelo:not(.is-pronta) .disco__caneta, .js .duelo:not(.is-pronta) .disco__sombra { opacity: 0; }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__caneta, .js .duelo.is-objeto:not(.is-pronta) .disco__sombra { opacity: 1; transition: opacity 80ms linear 560ms; }
+  .js .duelo:not(.is-pronta) .disco__pintar { opacity: 0; }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__pintar { opacity: 1; transition: opacity 160ms linear 1100ms; }
+  .js .duelo:not(.is-pronta) .disco__apagar { opacity: 0; }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__apagar { opacity: 0.6; transition: opacity 200ms linear 1100ms; }
+  .js .duelo:not(.is-pronta) .disco__circulo path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .js .duelo.is-objeto:not(.is-pronta) .disco__circulo path { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 280ms linear 1100ms; }
+}
+
+/* ------------------------------------------------------------------ Diário */
+
+.diario { display: flex; flex-direction: column; gap: 40px; }
+.grade { display: flex; flex-direction: column; gap: 10px; }
+.grade__fileira { margin-bottom: 8px; }
+.grade__edicao, .grade__siglas { font-weight: 600; color: var(--tinta-2); }
+.grade__convite { font-family: var(--f-leitura); font-style: italic; }
+.grade__fileira { display: flex; align-items: center; gap: 0.3em; font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9; }
+.grade__quadrados { display: inline-flex; gap: 0.12em; }
+.grade__q { width: 0.6em; height: 0.6em; }
+.grade__q--certo { background: var(--verde); }
+.grade__q--errado { background: var(--vermelho); }
+.grade__total { position: relative; isolation: isolate; margin-left: 0.3em; }
+@media (forced-colors: active) { .grade__q { forced-color-adjust: none; } }
+.diario__texto { max-width: 34ch; }
+
+@media (max-width: 1023px) {
+  .grade__fileira { gap: 0.4em; }
+  .grade__q { width: 25px; height: 25px; }
+  .grade__quadrados { gap: 6px; }
+}
+
+@media (min-width: 1024px) {
+  .diario {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha); row-gap: 48px;
+  }
+  .diario__titulo { grid-column: 1 / 10; }
+  .grade { grid-column: 1 / 8; grid-row: 2; }
+  .diario__texto { grid-column: 8 / -1; grid-row: 2; align-self: end; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .cena:not(.is-pronta) .grade__q { opacity: 0; transform: translateY(-2px); }
+  .js .cena.is-objeto:not(.is-pronta) .grade__q { opacity: 1; transform: none; transition: opacity 160ms var(--ease) calc(120ms + var(--q) * 110ms), transform 160ms var(--ease) calc(120ms + var(--q) * 110ms); }
+}
+
+/* ------------------------------------------------------------------ Errata: o espaço vazio é o tempo */
+
+.errata { background: var(--folha); display: flex; flex-direction: column; }
+.errata__texto { max-width: 34ch; margin-top: 24px; }
+.errata__frase { position: relative; margin-top: 56px; color: var(--tinta-2); }
+.errata__frase s { position: relative; text-decoration: line-through; text-decoration-color: var(--vermelho); text-decoration-thickness: 2px; }
+.js .errata__frase s { text-decoration: none; }
+
+.intervalo { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+.intervalo__termo {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-top: calc(var(--g) * 6px);
+}
+.intervalo__termo .m { font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase; }
+.intervalo__unidade { color: var(--tinta-2); }
+@media (max-width: 1023px) {
+  /* Em coluna, a unidade vai no mesmo corpo do número: "3 DIAS" é uma palavra só, não um rótulo. */
+  .intervalo__termo { gap: 0.22em; }
+  .intervalo__unidade { font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase; }
+  .intervalo__termo { font-size: var(--t-secao); }
+  .intervalo__termo .errata__carimbo { font-size: var(--t-texto); }
+}
+.errata__carimbo { margin-left: 8px; align-self: center; }
+
+.carimbo-estatico {
+  display: inline-block;
+  padding: 0.05em 0.35em;
+  border: 4px double var(--verde);
+  color: var(--verde);
+  font-family: var(--f-tarja); font-size: 2.5rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.06em;
+  transform: rotate(-3deg);
+}
+
+@media (min-width: 1024px) {
+  .errata {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha);
+  }
+  .errata__titulo { grid-column: 1 / 7; grid-row: 1; }
+  .errata__texto { grid-column: 8 / -1; grid-row: 1; align-self: end; margin-top: 0; }
+  .errata__frase { grid-column: 1 / -1; margin-top: 64px; }
+  .intervalo { grid-column: 1 / -1; flex-direction: row; align-items: flex-end; }
+  .intervalo__termo {
+    flex: var(--g) 1 auto;
+    flex-direction: column; align-items: flex-end; justify-content: flex-end; gap: 6px;
+    margin-top: 0; padding-left: 24px; min-width: 0;
+  }
+  .intervalo__termo:first-child { padding-left: 0; padding-bottom: calc(1.5rem + 6px); align-items: flex-start; }
+  .intervalo__termo--fim { display: grid; grid-template-columns: auto auto; justify-content: end; align-items: end; column-gap: 24px; row-gap: 6px; }
+  .intervalo__termo--fim .m { grid-column: 1; grid-row: 1; justify-self: end; }
+  .intervalo__termo--fim .intervalo__unidade { grid-column: 1; grid-row: 2; justify-self: end; }
+  .intervalo__termo--fim .errata__carimbo { grid-column: 2; grid-row: 1 / 3; margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .cena:not(.is-pronta) .intervalo__unidade { opacity: 0; }
+  .js .cena.is-objeto:not(.is-pronta) .intervalo__unidade { opacity: 1; transition: opacity 300ms linear calc(var(--d, 0ms) + 200ms); }
+  .js .cena:not(.is-pronta) .errata__carimbo { opacity: 0; }
+}
+
+/* ------------------------------------------------------------------ Edital */
+
+.edital { display: flex; flex-direction: column; }
+.edital__titulo { isolation: isolate; position: relative; max-width: 11ch; }
+.grifado { position: relative; white-space: nowrap; background: var(--amarelo); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.js .grifado { background: none; }
+.edital__dado { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; margin-top: 48px; }
+.numero { font-family: var(--f-tarja); font-size: var(--t-secao); line-height: 0.9; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+.edital__base { max-width: 40ch; }
+.edital__corpo { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; }
+.edital__corpo .lead { max-width: 36ch; }
+.edital__confira { margin-top: 16px; font-family: var(--f-leitura); font-style: italic; color: var(--tinta-2); }
+
+.nota {
+  font-family: var(--f-mao); font-size: var(--t-lead); line-height: 1.2; color: var(--lapis);
+  transform: rotate(-1.5deg); transform-origin: left center;
+  margin-left: 24px;
+}
+
+@media (min-width: 1024px) {
+  .edital { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha); }
+  .edital__titulo { grid-column: 1 / 9; max-width: none; }
+  .edital__dado { grid-column: 1 / -1; }
+  .edital__corpo { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: start; }
+  .edital__corpo .lead { grid-column: 1 / 8; }
+  .edital__corpo .nota { grid-column: 8 / -1; margin-left: 0; }
+  .edital__confira { grid-column: 1 / 8; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .nota[data-nota] { clip-path: inset(-0.4em 100% -0.4em -0.2em); transition: clip-path var(--escrita, 700ms) linear; }
+  .js .nota[data-nota].is-escrita { clip-path: inset(-0.4em -0.4em -0.4em -0.2em); }
+  .js .is-pronta .nota[data-nota] { transition: none; }
+}
+
+/* ------------------------------------------------------------------ Baixar e rodapé, na tinta */
+
+.baixar { background: var(--tinta); color: var(--papel); display: flex; flex-direction: column; gap: 40px; }
+.baixar__bloco { display: flex; flex-direction: column; max-width: 40ch; }
+.baixar__pro { margin-top: 16px; color: var(--papel-74); }
+.baixar .lojas { margin-top: 32px; }
+.baixar :focus-visible { outline-color: var(--caneta-sobre-tinta); box-shadow: 0 0 0 3px var(--tinta); } /* taste-skill-ignore: o anel de foco */
+
+.rodape {
+  --bolinha: var(--caneta-sobre-tinta);
+  padding: 0 var(--margem) 40px;
+  background: var(--tinta); color: var(--papel);
+}
+.rodape > * { max-width: 1536px; margin-left: auto; margin-right: auto; }
+.rodape__marca { width: 120px; height: auto; color: var(--papel); margin: 0 0 0 max(0px, (100% - 1536px) / 2); }
+.rodape__colunas { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; color: var(--papel-74); }
+.rodape__colunas p + p { margin-top: 6px; }
+.rodape a { text-decoration-color: rgba(239, 235, 226, 0.4); text-underline-offset: 0.2em; }
+.rodape__contato a { display: inline-block; padding: 10px 0; margin: -10px 0; }
+.rodape :focus-visible { outline-color: var(--caneta-sobre-tinta); box-shadow: 0 0 0 3px var(--tinta); } /* taste-skill-ignore: o anel de foco */
+
+@media (min-width: 1024px) {
+  .baixar { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha); }
+  .baixar .cartaz { grid-column: 1 / 10; }
+  .baixar__bloco { grid-column: 1 / 7; }
+  .rodape__marca { width: 160px; }
+  .rodape__colunas { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--calha); }
+  .rodape__aviso { grid-column: 1 / 7; }
+  .rodape__contato { grid-column: 8 / -1; }
+}
+@media (min-width: 1200px) {
+  .baixar .cartaz { grid-column: 1 / -1; grid-row: 1; }
+  .baixar__bloco { grid-column: 9 / -1; grid-row: 1; align-self: end; margin-bottom: calc(var(--t-cartaz) * 0.09); max-width: none; }
+  .baixar__bloco .lead { max-width: 18em; }
+}
+
+/* ------------------------------------------------------------------ A mão e o carimbo */
+
+.rabisco { position: absolute; pointer-events: none; overflow: visible; z-index: 1; max-width: none; }
+.rabisco--atras { z-index: -1; }
+.grifo { position: absolute; pointer-events: none; overflow: visible; z-index: -1; max-width: none; }
+.carimbo { display: block; overflow: visible; transform: rotate(-3deg); transform-origin: 50% 50%; height: clamp(56px, 20px + 4.5vw, 84px); width: auto; }
+.carimbo--batida { animation: carimbo-cai 330ms forwards; }
+@keyframes carimbo-cai {
+  0% { opacity: 0; transform: rotate(-3deg) scale(1.25); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.5); }
+  33% { opacity: 1; transform: rotate(-3deg) scale(1); animation-timing-function: var(--ease); }
+  55% { transform: rotate(-3deg) scale(0.985); }
+  100% { opacity: 1; transform: rotate(-3deg) scale(1); }
+}
+@keyframes carimbo-aparece { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .carimbo--batida { animation: carimbo-aparece 200ms ease both; }
+}
+
+/* ------------------------------------------------------------------ Celular */
+
+@media (max-width: 479px) {
+  .abertura { gap: 24px; }
+  .cartaz--tinta { font-size: var(--t-cartaz); }
+}

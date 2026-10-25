@@ -1,0 +1,13 @@
+{
+  "name": "Nomeou · Questões de concurso em duelos",
+  "short_name": "Nomeou",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#EFEBE2",
+  "theme_color": "#EFEBE2",
+  "icons": [
+    { "src": "assets/img/marca/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/marca/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
